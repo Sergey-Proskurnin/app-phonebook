@@ -1,0 +1,12 @@
+.list {
+  font-size: 15px;
+  text-align: start;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media screen and (min-width: 720px) {
+  .list {
+    font-size: 20px;
+  }
+}
