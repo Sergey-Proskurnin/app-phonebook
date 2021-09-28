@@ -11,16 +11,19 @@ const ContactForm = () => {
   const initialState = {
     name: '',
     number: '',
+    email: '',
   };
   const nameInputId = uuidv4();
   const numberInputId = uuidv4();
+  const emailInputId = uuidv4();
 
   const [state, setState] = useState(initialState);
 
   const contacts = useSelector(state => getAllContacts(state));
 
   const dispatch = useDispatch();
-  const onSubmit = (name, number) => dispatch(addContact(name, number));
+  const onSubmit = (name, number, email) =>
+    dispatch(addContact(name, number, email));
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -35,11 +38,12 @@ const ContactForm = () => {
       ...prev,
       name: '',
       number: '',
+      email: '',
     }));
   };
 
   const addNoRepeatContact = (state, contacts) => {
-    const { name, number } = state;
+    const { name, number, email } = state;
     if (
       contacts.some(
         contacts => contacts.name.toLowerCase() === name.toLowerCase(),
@@ -52,6 +56,10 @@ const ContactForm = () => {
       alert(`${number} is already in contacts`);
       return;
     }
+    if (contacts.some(contacts => contacts.email === email)) {
+      alert(`${number} is already in contacts`);
+      return;
+    }
 
     onSubmit(state);
     reset();
@@ -61,7 +69,7 @@ const ContactForm = () => {
     e.preventDefault();
     addNoRepeatContact(state, contacts);
   };
-  const { name, number } = state;
+  const { name, number, email } = state;
 
   return (
     <>
@@ -95,7 +103,20 @@ const ContactForm = () => {
             id={numberInputId}
           />
         </label>
-
+        <label htmlFor={emailInputId} className="lable">
+          <span className={s.span}>Email</span>
+          <input
+            className={s.input}
+            type="text"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+            required
+            id={emailInputId}
+          />
+        </label>
         <button className={s.button} type="submit">
           Add contact
         </button>

@@ -14,11 +14,14 @@ import alert from 'helpers/alert';
 
 const ContactFormChange = () => {
   const toggleModal = useContext(contextProps);
-  const { name, number, id } = useSelector(state => getChangeContact(state));
+  const { name, number, email, id } = useSelector(state =>
+    getChangeContact(state),
+  );
   const contacts = useSelector(state => getAllContacts(state));
 
   const [newName, setStateNewName] = useState(name);
   const [newNumber, setStateNewNumber] = useState(number);
+  const [newEmail, setStateNewEmail] = useState(email);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -27,6 +30,9 @@ const ContactFormChange = () => {
         break;
       case 'number':
         setStateNewNumber(value);
+        break;
+      case 'email':
+        setStateNewEmail(value);
         break;
       default:
         return;
@@ -37,7 +43,7 @@ const ContactFormChange = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (newName === name && newNumber === number) {
+    if (newName === name && newNumber === number && newEmail === email) {
       alert(`You haven't made a change!`);
       return;
     }
@@ -57,8 +63,16 @@ const ContactFormChange = () => {
       alert(`${newNumber} is already in contacts`);
       return;
     }
+    if (
+      contacts
+        .filter(contact => contact.id !== id)
+        .some(contact => contact.email === newEmail)
+    ) {
+      alert(`${newEmail} is already in contacts`);
+      return;
+    }
 
-    const contact = { id, name: newName, number: newNumber };
+    const contact = { id, name: newName, number: newNumber, email: newEmail };
 
     dispatch(changeContact(contact));
     dispatch(contactChange({}));
@@ -97,6 +111,21 @@ const ContactFormChange = () => {
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
           required
           id="2"
+        />
+      </label>
+
+      <label htmlFor="3" className="lable">
+        <span className={s.span}>Email</span>
+        <input
+          className={s.input}
+          type="text"
+          name="name"
+          value={newEmail}
+          onChange={handleChange}
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+          required
+          id="3"
         />
       </label>
 

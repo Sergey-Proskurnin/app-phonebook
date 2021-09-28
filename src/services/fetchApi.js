@@ -28,8 +28,8 @@ const fetchPostContacts = contact => axios.post('/contacts', contact);
 
 const fetchDeleteContacts = id => axios.delete(`/contacts/${id}`);
 
-const fetchChangeContacts = ({ id, name, number }) =>
-  axios.patch(`/contacts/${id}`, { name, number });
+const fetchChangeContacts = ({ id, name, number, email }) =>
+  axios.put(`/contacts/${id}`, { name, number, email });
 
 export {
   token,

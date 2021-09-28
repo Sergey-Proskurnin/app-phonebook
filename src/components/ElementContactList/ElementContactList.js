@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
+import ContactMailIcon from '@material-ui/icons/ContactMail';
 import { getVisibleContacts } from 'redux/contacts';
 import contextProps from 'context/context';
 import { contactChange } from 'redux/contacts';
@@ -19,13 +19,15 @@ const ElementContactList = () => {
     return toggleModal();
   };
 
-  return contacts.map(({ name, number, id }) => {
+  return contacts.map(({ name, number, email, id }) => {
     return (
       <li className={s.item} key={id}>
-        <a className={s.link} href={`tel:${number}`}>
+        <a className={s.link} href={`mailto:${number}`}>
           <span className={s.span}>
-            <ContactPhoneIcon color="primary" fontSize="large" />
+            <ContactMailIcon color="primary" fontSize="large" />
           </span>
+        </a>
+        <a className={s.link} href={`tel:${email}`}>
           <span className={s.spanLink}>
             {name}: {number}
           </span>
@@ -34,14 +36,18 @@ const ElementContactList = () => {
           <button
             type="button"
             className={s.btnListChan}
-            onClick={() => onChangeContact({ name, number, id, change: true })}
+            onClick={() =>
+              onChangeContact({ email, name, number, id, change: true })
+            }
           >
             Сhange
           </button>
           <button
             type="button"
             className={s.btnListDel}
-            onClick={() => onChangeContact({ name, number, id, change: false })}
+            onClick={() =>
+              onChangeContact({ email, name, number, id, change: false })
+            }
           >
             Delete
           </button>
