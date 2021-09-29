@@ -23,7 +23,7 @@ import {
 //--------------------------------createAsyncThunk------------------------
 const fetchContacts = createAsyncThunk('contacts/fetchContact', async () => {
   const { data } = await fetchGetContacts();
-  return data;
+  return data.data.contacts;
 });
 
 // --------------------------------then-cath----------------------------------

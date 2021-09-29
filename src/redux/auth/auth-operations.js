@@ -27,8 +27,9 @@ const register = credentials => async dispatch => {
   dispatch(registerRequest());
   try {
     const response = await fetchSignUp(credentials);
-    token.set(response.data.token);
-    dispatch(registerSuccess(response.data));
+    // token.set(response.data.token);
+    console.log(response);
+    // dispatch(registerSuccess(response.data));
   } catch (error) {
     dispatch(registerError(error.message));
     alert(`Incorrect login!
@@ -40,8 +41,8 @@ const logIn = credentials => async dispatch => {
   dispatch(loginRequest());
   try {
     const response = await fetchLogin(credentials);
-    token.set(response.data.token);
-    dispatch(loginSuccess(response.data));
+    token.set(response.data.data);
+    dispatch(loginSuccess(response.data.data));
   } catch (error) {
     dispatch(loginError(error.message));
     alert(`Incorrect login or password! Server error: ${error.message}`);
@@ -72,7 +73,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(getCurrentUserRequest());
   try {
     const response = await fetchCurrent();
-    dispatch(getCurrentUserSuccess(response.data));
+    dispatch(getCurrentUserSuccess(response.data.user));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
     alert(`Server error: ${error.message}`);

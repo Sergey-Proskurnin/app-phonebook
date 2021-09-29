@@ -23,7 +23,7 @@ const user = createReducer(initialUserState, {
 });
 
 const token = createReducer(null, {
-  [registerSuccess]: (_, { payload }) => payload.token,
+  // [registerSuccess]: (_, { payload }) => payload.token,
   [loginSuccess]: (_, { payload }) => payload.token,
   [logoutSuccess]: () => null,
 });
@@ -36,7 +36,7 @@ const error = createReducer(null, {
   [getCurrentUserError]: setError,
 });
 const isLogin = createReducer(false, {
-  [registerSuccess]: () => true,
+  [registerSuccess]: () => false,
   [loginSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
   [registerError]: () => false,

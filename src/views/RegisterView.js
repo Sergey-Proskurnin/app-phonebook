@@ -5,6 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 import { register } from 'redux/auth';
 import RegisterComponent from 'components/RegisterComponent';
 import alert from 'helpers/alert';
+import routes from 'routes';
 
 import s from './Views.module.css';
 import sAr from 'helpers/animation/animationRight.module.css';
@@ -16,7 +17,6 @@ const RegisterView = () => {
     password: '',
     passwordRepeat: '',
   };
-
   const [state, setState] = useState(initialState);
 
   const dispatch = useDispatch();
@@ -31,6 +31,7 @@ const RegisterView = () => {
 
   const onPasswordVerification = state => {
     const { password, passwordRepeat, name, email } = state;
+    console.log(typeof state);
     if (
       password === '' ||
       passwordRepeat === '' ||
@@ -49,7 +50,7 @@ const RegisterView = () => {
       }));
     }
     return (
-      onRegister(state) &&
+      onRegister({ name, email, password }) &&
       setState(prev => ({
         ...prev,
         ...initialState,
@@ -60,6 +61,7 @@ const RegisterView = () => {
   const handleSubmit = e => {
     e.preventDefault();
     onPasswordVerification(state);
+    window.open(routes.login);
   };
 
   const { name, email, password, passwordRepeat } = state;
