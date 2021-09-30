@@ -2,7 +2,7 @@ import alert from 'helpers/alert';
 
 import {
   registerRequest,
-  registerSuccess,
+  // registerSuccess,
   registerError,
   logoutRequest,
   logoutSuccess,

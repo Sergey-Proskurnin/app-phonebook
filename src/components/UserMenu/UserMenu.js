@@ -2,14 +2,20 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
 
-import { getUserName, logOut } from 'redux/auth';
+import { getUserName, logOut, getUserAvatar } from 'redux/auth';
 import defaultAvatar from 'images/guardsman.png';
 
 import s from './UserMenu.module.css';
 
 const UserMenu = () => {
   const name = useSelector(state => getUserName(state));
-  const avatar = defaultAvatar;
+  const gravatar = useSelector(state => getUserAvatar(state));
+  const avatar =
+    !gravatar ||
+    gravatar !==
+      'https://s.gravatar.com/avatar/eee8af510870708594f1c5465104cffd?s=250'
+      ? gravatar
+      : defaultAvatar;
 
   const dispatch = useDispatch();
   const onLogout = () => dispatch(logOut());

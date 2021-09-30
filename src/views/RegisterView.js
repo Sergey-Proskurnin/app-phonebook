@@ -5,7 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 import { register } from 'redux/auth';
 import RegisterComponent from 'components/RegisterComponent';
 import alert from 'helpers/alert';
-import routes from 'routes';
+// import routes from 'routes';
 
 import s from './Views.module.css';
 import sAr from 'helpers/animation/animationRight.module.css';
@@ -61,7 +61,10 @@ const RegisterView = () => {
   const handleSubmit = e => {
     e.preventDefault();
     onPasswordVerification(state);
-    window.open(routes.login);
+    // window.location.assign(routes.login);
+    alert(
+      `Congratulations, your email ${email} has been registered, an email has been sent to it to confirm your registration. Verify please!`,
+    );
   };
 
   const { name, email, password, passwordRepeat } = state;

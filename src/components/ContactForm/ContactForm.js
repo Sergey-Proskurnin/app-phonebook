@@ -57,7 +57,7 @@ const ContactForm = () => {
       return;
     }
     if (contacts.some(contacts => contacts.email === email)) {
-      alert(`${number} is already in contacts`);
+      alert(`${email} is already in contacts`);
       return;
     }
 

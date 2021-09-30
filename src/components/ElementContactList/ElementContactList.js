@@ -22,12 +22,12 @@ const ElementContactList = () => {
   return contacts.map(({ name, number, email, id }) => {
     return (
       <li className={s.item} key={id}>
-        <a className={s.link} href={`mailto:${number}`}>
+        <a className={s.link} href={`mailto:${email}`}>
           <span className={s.span}>
             <ContactMailIcon color="primary" fontSize="large" />
           </span>
         </a>
-        <a className={s.link} href={`tel:${email}`}>
+        <a className={s.link} href={`tel:${number}`}>
           <span className={s.spanLink}>
             {name}: {number}
           </span>

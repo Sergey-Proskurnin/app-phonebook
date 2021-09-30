@@ -30,7 +30,7 @@ const fetchContacts = createAsyncThunk('contacts/fetchContact', async () => {
 const addContact = contact => dispatch => {
   dispatch(addContactRequest());
   fetchPostContacts(contact)
-    .then(({ data }) => dispatch(addContactSuccess(data)))
+    .then(({ data }) => dispatch(addContactSuccess(data.data.contacts)))
     .catch(error => {
       dispatch(addContactError(error.message));
       alert(`Error server: ${error.message}`);
@@ -40,7 +40,7 @@ const addContact = contact => dispatch => {
 const changeContact = contact => dispatch => {
   dispatch(changeContactRequest());
   fetchChangeContacts(contact)
-    .then(({ data }) => dispatch(changeContactSuccess(data)))
+    .then(({ data }) => dispatch(changeContactSuccess(data.data.contact)))
     .catch(error => {
       dispatch(changeContactError(error.message));
       alert(`Error server: ${error.message}`);
