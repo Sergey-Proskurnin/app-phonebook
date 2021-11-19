@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 
 import { logIn } from 'redux/auth';
 import LoginComponent from 'components/LoginComponent';
+import alert from 'helpers/alert';
 
 import sAl from 'helpers/animation/animationLeft.module.css';
 
@@ -27,6 +28,10 @@ const LoginView = () => {
   };
   const handleSubmit = e => {
     e.preventDefault();
+    if (email.length === 0 || password.length === 0) {
+      alert('Please fill in all the fields! Enter your email and password!');
+      return;
+    }
     onLogin(state);
     setState(prev => ({
       ...prev,

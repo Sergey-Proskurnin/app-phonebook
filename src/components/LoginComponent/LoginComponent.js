@@ -16,9 +16,10 @@ const LoginComponent = ({ handleChange, email, password, handleSubmit }) => {
           onChange={handleChange}
           type="email"
           name="email"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          placeholder="For example 'email@gmail.com'"
+          pattern="^[a-zA-Zа-яА-Я]+(([' @ .-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Email can consist of letters of numbers and a mandatory symbol '@'. Например user@example.com и т.п."
           required
+          placeholder="For example 'email@gmail.com'"
           autoComplete="off"
           value={email}
           color="secondary"
@@ -31,6 +32,8 @@ const LoginComponent = ({ handleChange, email, password, handleSubmit }) => {
           onChange={handleChange}
           type="password"
           name="password"
+          pattern="[0-9A-Za-zА-Яа-яЁёЄєЇї!@#$%^&*]{6,}"
+          title="The password can be at least six letters of numbers and symbols '!@#$%^&*'"
           required
           value={password}
           id="2"

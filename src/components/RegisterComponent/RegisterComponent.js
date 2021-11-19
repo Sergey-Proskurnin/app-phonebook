@@ -24,6 +24,8 @@ const RegisterComponent = ({
           type="text"
           name="name"
           placeholder="For example 'John'"
+          pattern="^[A-Za-zА-Яа-яЁёЄєЇї' '\-()0-9]{3,30}$"
+          title="The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета и т.п."
           required
           autoComplete="off"
           value={name}
@@ -37,6 +39,8 @@ const RegisterComponent = ({
           type="email"
           name="email"
           placeholder="For example 'email@gmail.com'"
+          pattern="[A-Za-zА-Яа-яЁёЄєЇї0-9._%+-]+@[A-Za-zА-Яа-яЁёЄєЇї0-9.-]+\.[A-Za-zА-Яа-яЁёЄєЇї]{2,4}$"
+          title="Email can consist of letters of numbers and a mandatory symbol '@'"
           required
           autoComplete="off"
           value={email}
@@ -49,6 +53,8 @@ const RegisterComponent = ({
           onChange={handleChange}
           type="password"
           name="password"
+          pattern="[0-9A-Za-zА-Яа-яЁёЄєЇї!@#$%^&*]{6,}"
+          title="The password can be at least six letters of numbers and symbols '!@#$%^&*'"
           required
           value={password}
           id="3"
@@ -60,6 +66,8 @@ const RegisterComponent = ({
           onChange={handleChange}
           type="password"
           name="passwordRepeat"
+          pattern="[0-9A-Za-zА-Яа-яЁёЄєЇї!@#$%^&*]{6,}"
+          title="The password can be at least six letters of numbers and symbols '!@#$%^&*'"
           required
           value={passwordRepeat}
           id="4"
