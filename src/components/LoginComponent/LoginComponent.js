@@ -17,7 +17,7 @@ const LoginComponent = ({ handleChange, email, password, handleSubmit }) => {
           type="email"
           name="email"
           pattern="^[a-zA-Zа-яА-Я]+(([' @ .-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Email can consist of letters of numbers and a mandatory symbol '@'. Например user@example.com и т.п."
+          title="Email can consist of letters of numbers and a mandatory symbol '@'. For example user@example.com etc."
           required
           placeholder="For example 'email@gmail.com'"
           autoComplete="off"

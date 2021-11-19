@@ -25,7 +25,7 @@ const RegisterComponent = ({
           name="name"
           placeholder="For example 'John'"
           pattern="^[A-Za-zА-Яа-яЁёЄєЇї' '\-()0-9]{3,30}$"
-          title="The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета и т.п."
+          title="The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета etc."
           required
           autoComplete="off"
           value={name}

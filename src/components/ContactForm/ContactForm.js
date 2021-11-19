@@ -83,7 +83,7 @@ const ContactForm = () => {
             value={name}
             onChange={handleChange}
             pattern="^[A-Za-zА-Яа-яЁёЄєЇї' '\-()0-9]{3,30}$"
-            title="The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета и т.п."
+            title="The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета etc."
             required
             id={nameInputId}
           />
@@ -112,7 +112,7 @@ const ContactForm = () => {
             value={email}
             onChange={handleChange}
             pattern="^[a-zA-Zа-яА-Я]+(([' @ .-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Email can consist of letters of numbers and a mandatory symbol '@'. Например user@example.com и т.п."
+            title="Email can consist of letters of numbers and a mandatory symbol '@'. For example user@example.com etc."
             required
             id={emailInputId}
           />
