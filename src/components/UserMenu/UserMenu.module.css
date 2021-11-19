@@ -19,5 +19,6 @@
   }
   .avatar {
     width: 57px;
+    border-radius: 50%;
   }
 }

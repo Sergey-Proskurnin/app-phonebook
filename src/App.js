@@ -9,7 +9,7 @@ import {
   getCurrentToken,
 } from 'redux/auth';
 import routes from './routes';
-import PrivateRoute from 'components/PriveteRoute';
+import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 import OnLoader from 'components/OnLoader';
 
