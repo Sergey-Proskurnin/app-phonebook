@@ -4,9 +4,32 @@
   align-items: center;
   margin-bottom: 10px;
 }
+.contactAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #52555f;
+
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  align-self: center;
+  border-radius: 30px;
+  background-color: #f5f6fa;
+
+  cursor: pointer;
+}
 .span {
   display: block;
   margin-right: 10px;
+  padding-top: 4px;
 }
 .btnListDel {
   cursor: pointer;

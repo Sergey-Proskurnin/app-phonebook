@@ -22,6 +22,9 @@ const ElementContactList = () => {
   return contacts.map(({ name, number, email, id }) => {
     return (
       <li className={s.item} key={id}>
+        <p className={s.contactAvatar} onClick={'openModalContact'}>
+          {name.slice(0, 1).toUpperCase()}
+        </p>
         <a className={s.link} href={`mailto:${email}`}>
           <span className={s.span}>
             <ContactMailIcon color="primary" fontSize="large" />
