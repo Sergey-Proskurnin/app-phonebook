@@ -19,17 +19,29 @@ const ElementContactList = () => {
     return toggleModal();
   };
 
-  return contacts.map(({ name, number, email, id }) => {
+  return contacts.map(({ name, number, email, id, avatarContactURL }) => {
     return (
       <li className={s.item} key={id}>
-        <p className={s.contactAvatar} onClick={'openModalContact'}>
-          {name.slice(0, 1).toUpperCase()}
-        </p>
-        <a className={s.link} href={`mailto:${email}`}>
-          <span className={s.span}>
-            <ContactMailIcon color="primary" fontSize="large" />
-          </span>
-        </a>
+        <div className={s.avatarContainer}>
+          {avatarContactURL ? (
+            <img
+              src={avatarContactURL}
+              alt="Avatar"
+              className={s.contactAvatar}
+              onClick={'openModalProfile'}
+            />
+          ) : (
+            <p className={s.contactAvatar} onClick={'openModalContact'}>
+              {name.slice(0, 1).toUpperCase()}
+            </p>
+          )}
+
+          <a className={s.link} href={`mailto:${email}`}>
+            <span className={s.span}>
+              <ContactMailIcon color="primary" fontSize="large" />
+            </span>
+          </a>
+        </div>
         <a className={s.link} href={`tel:${number}`}>
           <span className={s.spanLink}>
             {name}: {number}

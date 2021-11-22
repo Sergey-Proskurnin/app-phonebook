@@ -8,6 +8,14 @@ const addContactRequest = createAction('contacts/addContactRequest');
 const addContactSuccess = createAction('contacts/addContactSuccess');
 const addContactError = createAction('contacts/addContactError');
 
+const addAvatarContactRequest = createAction(
+  'contacts/addAvatarContactRequest',
+);
+const addAvatarContactSuccess = createAction(
+  'contacts/addAvatarContactSuccess',
+);
+const addAvatarContactError = createAction('contacts/addAvatarContactError');
+
 const deleteContactRequest = createAction('contacts/deleteContactRequest');
 const deleteContactSuccess = createAction('contacts/deleteContactSuccess');
 const deleteContactError = createAction('contacts/deleteContactError');
@@ -26,6 +34,9 @@ export {
   addContactRequest,
   addContactSuccess,
   addContactError,
+  addAvatarContactRequest,
+  addAvatarContactSuccess,
+  addAvatarContactError,
   changeContactRequest,
   changeContactSuccess,
   changeContactError,

@@ -31,6 +31,10 @@
   margin-right: 10px;
   padding-top: 4px;
 }
+.avatarContainer {
+  display: flex;
+}
+
 .btnListDel {
   cursor: pointer;
   width: 50px;

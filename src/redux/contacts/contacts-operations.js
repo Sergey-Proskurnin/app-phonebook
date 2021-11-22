@@ -5,6 +5,9 @@ import {
   addContactRequest,
   addContactSuccess,
   addContactError,
+  addAvatarContactRequest,
+  addAvatarContactSuccess,
+  addAvatarContactError,
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,
@@ -18,6 +21,7 @@ import {
   fetchPostContacts,
   fetchDeleteContacts,
   fetchChangeContacts,
+  fetchPostAvatarContact,
 } from 'services/fetchApi';
 
 //--------------------------------createAsyncThunk------------------------
@@ -30,9 +34,18 @@ const fetchContacts = createAsyncThunk('contacts/fetchContact', async () => {
 const addContact = contact => dispatch => {
   dispatch(addContactRequest());
   fetchPostContacts(contact)
-    .then(({ data }) => dispatch(addContactSuccess(data.data.contacts)))
+    .then(({ data }) => dispatch(addAvatarContactSuccess(data.data.contacts)))
     .catch(error => {
       dispatch(addContactError(error.message));
+      alert(`Error server: ${error.message}`);
+    });
+};
+const addAvatarContact = contact => dispatch => {
+  dispatch(addAvatarContactRequest());
+  fetchPostAvatarContact(contact)
+    .then(({ data }) => dispatch(addContactSuccess(data.data.contact)))
+    .catch(error => {
+      dispatch(addAvatarContactError(error.message));
       alert(`Error server: ${error.message}`);
     });
 };
@@ -40,7 +53,7 @@ const addContact = contact => dispatch => {
 const changeContact = contact => dispatch => {
   dispatch(changeContactRequest());
   fetchChangeContacts(contact)
-    .then(({ data }) => dispatch(changeContactSuccess(data.data.contact)))
+    .then(({ data }) => dispatch(changeContactSuccess(data.data.contacts)))
     .catch(error => {
       dispatch(changeContactError(error.message));
       alert(`Error server: ${error.message}`);
@@ -57,4 +70,10 @@ const deleteContact = id => dispatch => {
     });
 };
 
-export { addContact, deleteContact, fetchContacts, changeContact };
+export {
+  addContact,
+  addAvatarContact,
+  deleteContact,
+  fetchContacts,
+  changeContact,
+};

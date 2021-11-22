@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-axios.defaults.baseURL =
-  'https://server-contacts-rest-api.herokuapp.com/api/v1';
+// axios.defaults.baseURL =
+//   'https://server-contacts-rest-api.herokuapp.com/api/v1';
+axios.defaults.baseURL = 'http://localhost:5737/api/v1/';
 
 //--------------------------------auth-operations-------------------------------
 const token = {
@@ -27,6 +28,9 @@ const fetchGetContacts = () => axios.get('/contacts');
 
 const fetchPostContacts = contact => axios.post('/contacts', contact);
 
+const fetchPostAvatarContact = formContact =>
+  axios.post('/contacts/avatar', formContact);
+
 const fetchDeleteContacts = id => axios.delete(`/contacts/${id}`);
 
 const fetchChangeContacts = ({ id, name, number, email }) =>
@@ -42,4 +46,5 @@ export {
   fetchPostContacts,
   fetchDeleteContacts,
   fetchChangeContacts,
+  fetchPostAvatarContact,
 };
