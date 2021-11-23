@@ -28,12 +28,9 @@ const ElementContactList = () => {
               src={avatarContactURL}
               alt="Avatar"
               className={s.contactAvatar}
-              onClick={'openModalProfile'}
             />
           ) : (
-            <p className={s.contactAvatar} onClick={'openModalContact'}>
-              {name.slice(0, 1).toUpperCase()}
-            </p>
+            <p className={s.contactAvatar}>{name.slice(0, 1).toUpperCase()}</p>
           )}
 
           <a className={s.link} href={`mailto:${email}`}>
