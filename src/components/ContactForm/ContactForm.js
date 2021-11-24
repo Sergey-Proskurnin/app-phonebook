@@ -1,19 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 
 import alert from 'helpers/alert';
-import {
-  // addContact,
-  addAvatarContact,
-  getAllContacts,
-} from 'redux/contacts';
+import { addContact, getAllContacts } from 'redux/contacts';
+import InputFileAvatar from 'components/InputFileAvatar';
 
 import s from './ContactForm.module.css';
 
 const ContactForm = () => {
-  const fileInput = useRef(null);
-
   const initialState = {
     name: '',
     number: '',
@@ -31,26 +26,13 @@ const ContactForm = () => {
 
   const dispatch = useDispatch();
 
-  const handleChangeAvatar = e => {
-    if (
-      (e.target.files[0].type.includes('image/png') ||
-        e.target.files[0].type.includes('image/jpeg')) &&
-      e.target.files[0].size <= 2000000
-    ) {
-      setFile(e.target.files[0]);
-    } else {
-      alert('The file format can be .png or .jpg and must not exceed 2 MB');
-    }
-  };
-  // const onSubmit = (name, number, email) =>
-  //   dispatch(addContact(name, number, email));
   const onSubmit = () => {
     const formData = new FormData();
     formData.set('name', state.name);
     formData.set('email', state.email);
     formData.set('number', state.number);
     formData.append('avatar', file);
-    dispatch(addAvatarContact(formData));
+    dispatch(addContact(formData));
   };
 
   const handleDelFile = () => {
@@ -66,10 +48,6 @@ const ContactForm = () => {
     }));
   };
 
-  const onClickInputFile = e => {
-    e.preventDefault();
-    fileInput.current.click();
-  };
   const reset = () => {
     setState(prev => ({
       ...prev,
@@ -112,25 +90,12 @@ const ContactForm = () => {
   return (
     <>
       <form className={s.form} onSubmit={handleSubmit}>
-        <label className={s}>
-          <span className={s.span}>Select avatar</span>
-          <input
-            type="file"
-            name="avatar"
-            className={s}
-            id={fileInputId}
-            ref={fileInput}
-            onChange={handleChangeAvatar}
-            accept="image/png, image/jpeg"
-            style={{ display: 'none' }}
-          />
-          <button className={s.uploadBtn} onClick={onClickInputFile}>
-            {file ? file.name : 'Choose File'}
-          </button>
-          <button type="button" className={s.deleteBtn} onClick={handleDelFile}>
-            &#10006;
-          </button>
-        </label>
+        <InputFileAvatar
+          fileInputId={fileInputId}
+          setFile={setFile}
+          file={file}
+          handleDelFile={handleDelFile}
+        />
         <label htmlFor={nameInputId} className="lable">
           <span className={s.span}>Name</span>
           <input
@@ -168,7 +133,7 @@ const ContactForm = () => {
             name="email"
             value={email}
             onChange={handleChange}
-            pattern="^[a-zA-Zа-яА-Я]+(([' @ .-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            pattern="^[a-zA-Zа-яА-Я0-9]+(([' @ .-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Email can consist of letters of numbers and a mandatory symbol '@'. For example user@example.com etc."
             required
             id={emailInputId}

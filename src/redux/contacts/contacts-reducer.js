@@ -12,9 +12,6 @@ import {
   addContactRequest,
   addContactSuccess,
   addContactError,
-  addAvatarContactRequest,
-  addAvatarContactSuccess,
-  addAvatarContactError,
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,
@@ -25,7 +22,6 @@ import { fetchContacts } from './contacts-operations';
 const items = createReducer(contactsTest, {
   [fetchContacts.fulfilled]: (_, { payload }) => payload,
   [addContactSuccess]: (state, action) => [action.payload, ...state],
-  [addAvatarContactSuccess]: (state, action) => [action.payload, ...state],
   [deleteContactSuccess]: (state, action) =>
     state.filter(({ id }) => id !== action.payload),
   [changeContactSuccess]: (state, action) => [
@@ -41,9 +37,6 @@ const loading = createReducer(false, {
   [addContactRequest]: () => true,
   [addContactSuccess]: () => false,
   [addContactError]: () => false,
-  [addAvatarContactRequest]: () => true,
-  [addAvatarContactSuccess]: () => false,
-  [addAvatarContactError]: () => false,
   [deleteContactRequest]: () => true,
   [deleteContactSuccess]: () => false,
   [deleteContactError]: () => false,
@@ -71,7 +64,6 @@ const error = createReducer(null, {
     return payload;
   },
   [addContactError]: setError,
-  [addAvatarContactError]: setError,
   [deleteContactError]: setError,
   [changeContactError]: setError,
 });
