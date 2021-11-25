@@ -13,6 +13,12 @@
   margin-right: 12px;
   margin-left: 12px;
 }
+.button {
+  height: 20px;
+  font-size: 10px;
+  padding-top: 14px;
+  padding-bottom: 13px;
+}
 @media screen and (min-width: 720px) {
   .name {
     font-size: 23px;
@@ -20,5 +26,9 @@
   .avatar {
     width: 57px;
     border-radius: 50%;
+  }
+  .button {
+    height: 40px;
+    font-size: 15px;
   }
 }

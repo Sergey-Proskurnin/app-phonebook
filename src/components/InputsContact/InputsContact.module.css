@@ -1,0 +1,77 @@
+.span {
+  display: block;
+  font-size: 15px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.uploadBtn {
+  width: 175px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 4px 0 0 4px;
+  background-color: #fff;
+  color: #3f51b5;
+  text-decoration: none;
+  border: none;
+  font-size: 13px;
+  padding-top: 4px;
+}
+.uploadBtn:hover,
+:focus {
+  color: #fff;
+  background-color: #3f51b5;
+}
+.deleteBtn {
+  height: 20px;
+  border-radius: 0 4px 4px 0;
+  background-color: #fff;
+  border-left: 0px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+.deleteBtn:hover,
+:focus {
+  color: #e84a5f;
+}
+
+.input {
+  height: 20px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  padding-left: 25px;
+  cursor: pointer;
+  width: 203px;
+  font-size: 15px;
+}
+.input:focus,
+:hover {
+  border-color: #3f51b5;
+}
+.input:focus {
+  outline: none;
+}
+
+@media screen and (min-width: 720px) {
+  .span {
+    font-size: 25px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .input {
+    height: 30px;
+    width: 256px;
+    font-size: 20px;
+  }
+  .uploadBtn {
+    width: 230px;
+    height: 30px;
+    font-size: 16px;
+    padding-top: 1px;
+  }
+
+  .deleteBtn {
+    height: 30px;
+  }
+}

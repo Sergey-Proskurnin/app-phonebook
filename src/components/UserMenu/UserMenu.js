@@ -31,6 +31,7 @@ const UserMenu = () => {
       </span>
       <Button
         type="button"
+        className={s.button}
         onClick={onLogout}
         style={{ marginTop: '05px' }}
         variant="contained"

@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import alert from 'helpers/alert';
 import { addContact, getAllContacts } from 'redux/contacts';
-import InputFileAvatar from 'components/InputFileAvatar';
-
+import InputsContact from 'components/InputsContact';
 import s from './ContactForm.module.css';
 
 const ContactForm = () => {
@@ -13,15 +12,19 @@ const ContactForm = () => {
     name: '',
     number: '',
     email: '',
+    file: null,
   };
-  const nameInputId = uuidv4();
-  const numberInputId = uuidv4();
-  const emailInputId = uuidv4();
+
   const fileInputId = uuidv4();
 
   const [state, setState] = useState(initialState);
-  const [file, setFile] = useState(null);
 
+  const setFile = value => {
+    setState(prev => ({
+      ...prev,
+      file: value,
+    }));
+  };
   const contacts = useSelector(state => getAllContacts(state));
 
   const dispatch = useDispatch();
@@ -31,13 +34,16 @@ const ContactForm = () => {
     formData.set('name', state.name);
     formData.set('email', state.email);
     formData.set('number', state.number);
-    formData.append('avatar', file);
+    formData.append('avatar', state.file);
     dispatch(addContact(formData));
   };
 
   const handleDelFile = () => {
     document.getElementById(`${fileInputId}`).value = '';
-    setFile(null);
+    setState(prev => ({
+      ...prev,
+      file: null,
+    }));
   };
 
   const handleChange = e => {
@@ -51,9 +57,7 @@ const ContactForm = () => {
   const reset = () => {
     setState(prev => ({
       ...prev,
-      name: '',
-      number: '',
-      email: '',
+      ...initialState,
     }));
     handleDelFile();
   };
@@ -85,60 +89,21 @@ const ContactForm = () => {
     e.preventDefault();
     addNoRepeatContact(state, contacts);
   };
-  const { name, number, email } = state;
+  const { name, number, email, file } = state;
 
   return (
     <>
       <form className={s.form} onSubmit={handleSubmit}>
-        <InputFileAvatar
+        <InputsContact
           fileInputId={fileInputId}
           setFile={setFile}
           file={file}
+          name={name}
+          email={email}
+          number={number}
           handleDelFile={handleDelFile}
+          handleChange={handleChange}
         />
-        <label htmlFor={nameInputId} className="lable">
-          <span className={s.span}>Name</span>
-          <input
-            className={s.input}
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-            pattern="^[A-Za-zА-Яа-яЁёЄєЇї' '\-()0-9]{3,30}$"
-            title="The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета etc."
-            required
-            id={nameInputId}
-          />
-        </label>
-
-        <label htmlFor={numberInputId} className="lable">
-          <span className={s.span}>Number</span>
-          <input
-            className={s.input}
-            type="tel"
-            name="number"
-            value={number}
-            onChange={handleChange}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-            id={numberInputId}
-          />
-        </label>
-        <label htmlFor={emailInputId} className="lable">
-          <span className={s.span}>Email</span>
-          <input
-            className={s.input}
-            type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            pattern="^[a-zA-Zа-яА-Я0-9]+(([' @ .-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Email can consist of letters of numbers and a mandatory symbol '@'. For example user@example.com etc."
-            required
-            id={emailInputId}
-          />
-        </label>
         <button className={s.button} type="submit">
           Add contact
         </button>

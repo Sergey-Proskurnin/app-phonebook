@@ -1,17 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+
 import {
   getAllContacts,
   getChangeContact,
   changeContact,
   contactChange,
-  // changeAvatarContact,
 } from 'redux/contacts';
-import InputFileAvatar from 'components/InputFileAvatar';
-
+import InputsContact from 'components/InputsContact';
 import s from './ContactFormChange.module.css';
-
 import contextProps from 'context/context';
 import alert from 'helpers/alert';
 
@@ -21,9 +19,6 @@ const ContactFormChange = () => {
     getChangeContact(state),
   );
 
-  const nameInputId = uuidv4();
-  const numberInputId = uuidv4();
-  const emailInputId = uuidv4();
   const fileInputId = uuidv4();
 
   const contacts = useSelector(state => getAllContacts(state));
@@ -110,56 +105,17 @@ const ContactFormChange = () => {
   };
   return (
     <form className={s.cardOverley} onSubmit={handleSubmit}>
-      <InputFileAvatar
+      <InputsContact
         fileInputId={fileInputId}
         setFile={setNewFile}
         file={newFile}
+        name={newName}
+        email={newEmail}
+        number={newNumber}
         handleDelFile={handleDelFile}
+        handleChange={handleChange}
       />
-      <label htmlFor={nameInputId} className="lable">
-        <span className={s.span}>Name</span>
-        <input
-          className={s.input}
-          type="text"
-          name="name"
-          value={newName}
-          onChange={handleChange}
-          pattern="^[A-Za-zА-Яа-яЁёЄєЇї' '\-()0-9]{3,30}$"
-          title="The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета etc."
-          required
-          id={nameInputId}
-        />
-      </label>
 
-      <label htmlFor={numberInputId} className="lable">
-        <span className={s.span}>Number</span>
-        <input
-          className={s.input}
-          type="tel"
-          name="number"
-          value={newNumber}
-          onChange={handleChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          id={numberInputId}
-        />
-      </label>
-
-      <label htmlFor={emailInputId} className="lable">
-        <span className={s.span}>Email</span>
-        <input
-          className={s.input}
-          type="text"
-          name="email"
-          value={newEmail}
-          onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я0-9]+(([' @ .-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Email can consist of letters of numbers and a mandatory symbol '@'. For example user@example.com etc."
-          required
-          id={emailInputId}
-        />
-      </label>
       <div className={s.buttonsGrup}>
         <button className={s.buttonChange} type="submit">
           Change

@@ -1,50 +1,32 @@
 .cardOverley {
-  width: 350px;
-  height: 200px;
+  width: 380px;
+  height: 240px;
   background: linear-gradient(rgba(150, 154, 187, 0.9), rgba(47, 48, 58, 0.4)),
     url('images/telephone.jpg') no-repeat center center fixed;
-  background-size: 350px 200px;
+  background-size: 380px 240px;
   padding: 10px 5px;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.input {
-  height: 20px;
-  border: 1px solid rgba(33, 33, 33, 0.2);
-  border-radius: 4px;
-  padding-left: 25px;
-  cursor: pointer;
-  max-width: 325px;
-  font-size: 15px;
+.buttonsGrup {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  margin-top: 15px;
 }
-.input:focus,
-:hover {
-  border-color: #3f51b5;
-}
-.input:focus {
-  outline: none;
-}
-.span {
-  display: block;
-  font-size: 20px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
+
 .buttonChange {
   cursor: pointer;
-  max-width: 260px;
+  width: 110px;
   border: none;
   color: white;
-  padding: 5px 78px;
+  padding: 5px 22px;
   text-decoration: none;
   background-color: #e84a5f;
   font-size: 10px;
   border-radius: 4px;
-  margin-top: 12px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .buttonChange:hover,
 :focus {
@@ -53,17 +35,14 @@
 }
 .buttonUnchanged {
   cursor: pointer;
-  max-width: 260px;
+  width: 110px;
   border: none;
   color: white;
-  padding: 5px 71px;
+  padding: 5px 22px;
   text-decoration: none;
   background-color: #3f51b5;
   font-size: 10px;
   border-radius: 4px;
-  margin-top: 12px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .buttonUnchanged:hover,
 :focus {
@@ -78,25 +57,9 @@
     background-size: 700px 420px;
     padding: 20px 20px;
   }
-  .input {
-    height: 30px;
-    border: 1px solid rgba(33, 33, 33, 0.2);
-    border-radius: 4px;
-    padding-left: 25px;
-    cursor: pointer;
-    max-width: 325px;
-    font-size: 20px;
-  }
-  .span {
-    display: block;
-    font-size: 28px;
-    padding-top: 10px;
-    padding-bottom: 5px;
-  }
+
   .buttonsGrup {
-    display: flex;
-    margin-bottom: 30px;
-    margin-top: 10px;
+    margin-top: 30px;
   }
   .buttonChange {
     width: 255px;
