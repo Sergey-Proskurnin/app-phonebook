@@ -1,9 +1,9 @@
 .cardOverley {
-  width: 380px;
-  height: 240px;
+  width: 360px;
+  height: 420px;
   background: linear-gradient(rgba(150, 154, 187, 0.9), rgba(47, 48, 58, 0.4)),
     url('images/telephone.jpg') no-repeat center center fixed;
-  background-size: 380px 240px;
+  background-size: 656px;
   padding: 10px 5px;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 30px;
-  margin-top: 15px;
+  margin-top: 40px;
 }
 
 .buttonChange {
@@ -25,7 +25,7 @@
   padding: 5px 22px;
   text-decoration: none;
   background-color: #e84a5f;
-  font-size: 10px;
+  font-size: 15px;
   border-radius: 4px;
 }
 .buttonChange:hover,
@@ -41,7 +41,7 @@
   padding: 5px 22px;
   text-decoration: none;
   background-color: #3f51b5;
-  font-size: 10px;
+  font-size: 15px;
   border-radius: 4px;
 }
 .buttonUnchanged:hover,
@@ -52,23 +52,17 @@
 
 @media screen and (min-width: 720px) {
   .cardOverley {
-    width: 700px;
-    height: 420px;
-    background-size: 700px 420px;
+    width: 550px;
     padding: 20px 20px;
   }
 
-  .buttonsGrup {
-    margin-top: 30px;
-  }
   .buttonChange {
-    width: 255px;
-    padding: 5px 75px;
-    font-size: 22px;
+    width: 130px;
+    font-size: 18px;
   }
+
   .buttonUnchanged {
-    width: 255px;
-    padding: 5px 75px;
-    font-size: 22px;
+    width: 130px;
+    font-size: 18px;
   }
 }

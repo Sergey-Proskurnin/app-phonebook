@@ -7,13 +7,13 @@
 
 .button {
   cursor: pointer;
-  width: 203px;
+  width: 231px;
   border: none;
   color: white;
-  padding: 5px 30px;
+  padding: 5px 55px;
   text-decoration: none;
   background-color: #3f51b5;
-  font-size: 20px;
+  font-size: 22px;
   border-radius: 4px;
   margin-top: 30px;
   margin-left: auto;
@@ -23,11 +23,4 @@
 :focus {
   color: #3f51b5;
   background-color: white;
-}
-@media screen and (min-width: 720px) {
-  .button {
-    width: 256px;
-    font-size: 22px;
-    padding: 5px 65px;
-  }
 }

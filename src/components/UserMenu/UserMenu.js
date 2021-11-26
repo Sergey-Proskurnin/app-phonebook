@@ -33,7 +33,7 @@ const UserMenu = () => {
         type="button"
         className={s.button}
         onClick={onLogout}
-        style={{ marginTop: '05px' }}
+        style={{ marginTop: '05px', paddingTop: '10px' }}
         variant="contained"
         color="primary"
       >

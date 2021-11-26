@@ -8,16 +8,13 @@
   width: 37px;
 }
 .name {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   margin-right: 12px;
   margin-left: 12px;
 }
 .button {
-  height: 20px;
-  font-size: 10px;
-  padding-top: 14px;
-  padding-bottom: 13px;
+  height: 30px;
 }
 @media screen and (min-width: 720px) {
   .name {
@@ -29,6 +26,5 @@
   }
   .button {
     height: 40px;
-    font-size: 15px;
   }
 }

@@ -1,7 +1,6 @@
 html {
   box-sizing: border-box;
   width: 100vw;
-  /* overflow: hidden; */
 }
 
 *,
@@ -67,7 +66,7 @@ img {
   html {
     box-sizing: border-box;
     width: 100vw;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
   body {
     background-color: rgb(245, 235, 204);

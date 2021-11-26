@@ -1,21 +1,21 @@
 .span {
   display: block;
-  font-size: 15px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  font-size: 25px;
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
 
 .uploadBtn {
-  width: 175px;
-  height: 20px;
+  width: 205px;
+  height: 30px;
   cursor: pointer;
   border-radius: 4px 0 0 4px;
   background-color: #fff;
   color: #3f51b5;
   text-decoration: none;
   border: none;
-  font-size: 13px;
-  padding-top: 4px;
+  font-size: 16px;
+  padding-top: 1px;
 }
 .uploadBtn:hover,
 :focus {
@@ -37,13 +37,13 @@
 }
 
 .input {
-  height: 20px;
+  height: 30px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
   padding-left: 25px;
   cursor: pointer;
-  width: 203px;
-  font-size: 15px;
+  width: 231px;
+  font-size: 20px;
 }
 .input:focus,
 :hover {
@@ -53,25 +53,6 @@
   outline: none;
 }
 
-@media screen and (min-width: 720px) {
-  .span {
-    font-size: 25px;
-    padding-top: 10px;
-    padding-bottom: 5px;
-  }
-  .input {
-    height: 30px;
-    width: 256px;
-    font-size: 20px;
-  }
-  .uploadBtn {
-    width: 230px;
-    height: 30px;
-    font-size: 16px;
-    padding-top: 1px;
-  }
-
-  .deleteBtn {
-    height: 30px;
-  }
+.deleteBtn {
+  height: 30px;
 }
