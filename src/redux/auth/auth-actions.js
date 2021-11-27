@@ -16,6 +16,10 @@ const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
+const editUserInfoRequest = createAction('auth/editUserInfoRequest');
+const editUserInfoSuccess = createAction('auth/editUserInfoSuccess');
+const editUserInfoError = createAction('auth/editUserInfoError');
+
 export {
   registerRequest,
   registerSuccess,
@@ -29,4 +33,7 @@ export {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  editUserInfoRequest,
+  editUserInfoSuccess,
+  editUserInfoError,
 };

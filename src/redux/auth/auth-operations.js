@@ -13,6 +13,9 @@ import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  editUserInfoRequest,
+  editUserInfoSuccess,
+  editUserInfoError,
 } from './auth-actions';
 
 import {
@@ -21,6 +24,7 @@ import {
   fetchLogin,
   fetchLogout,
   fetchCurrent,
+  fetchEditUserInfo,
 } from 'services/fetchApi';
 
 const register = credentials => async dispatch => {
@@ -80,4 +84,15 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-export { register, logOut, logIn, getCurrentUser };
+const editUserInfo = formData => async dispatch => {
+  dispatch(editUserInfoRequest());
+  try {
+    const response = await fetchEditUserInfo(formData);
+    dispatch(editUserInfoSuccess(response.data.data));
+  } catch ({ response }) {
+    dispatch(editUserInfoError(response.data.message));
+    alert(response.data.message);
+  }
+};
+
+export { register, logOut, logIn, getCurrentUser, editUserInfo };

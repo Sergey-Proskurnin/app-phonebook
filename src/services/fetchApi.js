@@ -22,6 +22,8 @@ const fetchLogout = () => axios.post('/users/logout');
 
 const fetchCurrent = () => axios.get('/users/current');
 
+const fetchEditUserInfo = formData => axios.patch('/users/avatars', formData);
+
 //---------------------------contacts-operation----------------------------------
 
 const fetchGetContacts = () => axios.get('/contacts');
@@ -46,4 +48,5 @@ export {
   fetchPostContacts,
   fetchDeleteContacts,
   fetchChangeContact,
+  fetchEditUserInfo,
 };

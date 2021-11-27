@@ -23,7 +23,7 @@ const ContactsView = () => {
 
   return (
     <div className={s.ContactsContainer}>
-      <Container title="Phonebook">
+      <Container title="Add contact">
         <CSSTransition
           in={true}
           appear={true}

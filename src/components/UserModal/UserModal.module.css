@@ -1,0 +1,164 @@
+.avatarModallWrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.changeAvatarForm {
+  width: 285px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  color: #fff;
+
+  background: linear-gradient(rgba(150, 154, 187, 0.9), rgba(47, 48, 58, 0.4)),
+    url('images/red-telephone-box-trafalgar.jpg') no-repeat center center fixed;
+  background-size: 285px;
+  padding: 15px 16px 40px;
+  border-radius: 4px;
+}
+
+.modalAvatarTitle {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+.dropZone {
+  border: 2px dashed #52555f;
+  margin: auto;
+  width: 85%;
+  overflow: hidden;
+  color: #fff;
+  padding-bottom: 55px;
+}
+.arrowDown {
+  font-size: 40px;
+  text-align: center;
+  color: #52555f;
+}
+.arrowDownRed {
+  font-size: 40px;
+  text-align: center;
+  color: #e84a5f;
+}
+.fileName {
+  text-align: center;
+}
+
+.buttonDelFile {
+  display: block;
+  margin: 5px auto;
+  border-radius: 16px;
+  outline: none;
+  border: none;
+  color: #52555f;
+  background-color: #f5f6fb;
+}
+.buttonDelFile:hover,
+.buttonDelFile:focus {
+  color: #fff;
+  background-color: #e84a5f;
+}
+.inputFileAvatar {
+  display: none;
+}
+.avatarInputFileLabel:hover,
+.avatarInputFileLabel:focus {
+  color: #fff;
+  background-color: #e84a5f;
+}
+
+.avatarInputFileLabel {
+  width: 75%;
+  text-align: center;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px auto;
+  background-color: #3f51b5;
+  cursor: pointer;
+}
+.nameInput {
+  outline: none;
+  border: none;
+  text-align: center;
+  color: #000;
+  height: 30px;
+  border-bottom: 1px solid #f5f6fb;
+  cursor: pointer;
+  max-width: 79%;
+  border-radius: 4px;
+}
+.nameLabel {
+  text-align: center;
+}
+.avatarInputFileLabel:hover,
+.avatarInputFileLabel:focus {
+  color: #3f51b5;
+  background-color: #fff;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.buttonOk {
+  margin-left: 5px;
+
+  cursor: pointer;
+  color: #fff;
+  background-color: #3f51b5;
+  outline: none;
+  border: none;
+  width: 120px;
+  height: 35px;
+  border-radius: 4px;
+}
+
+.buttonOk:hover,
+.buttonOk:focus {
+  color: #3f51b5;
+  background-color: #fff;
+}
+
+.buttonCancel {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #e84a5f;
+  outline: none;
+  border: none;
+  width: 120px;
+  height: 35px;
+  border-radius: 4px;
+}
+
+.buttonCancel:hover,
+.buttonCancel:focus {
+  color: #e84a5f;
+  background-color: #fff;
+  outline: none;
+  border: none;
+  width: 120px;
+  height: 35px;
+  border-radius: 4px;
+}
+
+.closeIcon {
+  margin-left: auto;
+  color: #52555f;
+  cursor: pointer;
+}
+.closeIcon:hover,
+.closeIcon:focus {
+  margin-left: auto;
+  color: #e84a5f;
+}

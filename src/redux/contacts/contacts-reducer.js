@@ -16,6 +16,20 @@ import {
   deleteContactSuccess,
   deleteContactError,
 } from './contacts-actions';
+import {
+  editUserInfoRequest,
+  editUserInfoSuccess,
+  editUserInfoError,
+  registerRequest,
+  registerSuccess,
+  registerError,
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
+  loginRequest,
+  loginSuccess,
+  loginError,
+} from 'redux/auth/auth-actions';
 
 import { fetchContacts } from './contacts-operations';
 
@@ -43,6 +57,18 @@ const loading = createReducer(false, {
   [changeContactRequest]: () => true,
   [changeContactSuccess]: () => false,
   [changeContactError]: () => false,
+  [editUserInfoRequest]: () => true,
+  [editUserInfoSuccess]: () => false,
+  [editUserInfoError]: () => false,
+  [registerRequest]: () => true,
+  [registerSuccess]: () => false,
+  [registerError]: () => false,
+  [logoutRequest]: () => true,
+  [logoutSuccess]: () => false,
+  [logoutError]: () => false,
+  [loginRequest]: () => true,
+  [loginSuccess]: () => false,
+  [loginError]: () => false,
 });
 
 const filter = createReducer('', {
