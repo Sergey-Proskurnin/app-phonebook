@@ -6,6 +6,7 @@
 .avatar {
   margin-right: 4;
   width: 37px;
+  border-radius: 50%;
   cursor: pointer;
 }
 .name {
@@ -24,7 +25,6 @@
   }
   .avatar {
     width: 57px;
-    border-radius: 50%;
   }
   .button {
     height: 40px;

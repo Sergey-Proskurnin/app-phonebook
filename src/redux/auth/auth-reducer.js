@@ -30,6 +30,11 @@ const token = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.token,
   [logoutSuccess]: () => null,
 });
+const refreshToken = createReducer(null, {
+  // [registerSuccess]: (_, { payload }) => payload.token,
+  [loginSuccess]: (_, { payload }) => payload.refreshToken,
+  [logoutSuccess]: () => null,
+});
 const setError = (_, { payload }) => payload;
 
 const error = createReducer(null, {
@@ -59,6 +64,7 @@ const authReducer = combineReducers({
   user,
   isLogin,
   token,
+  refreshToken,
   error,
   isFetchigCurrentUser,
 });
