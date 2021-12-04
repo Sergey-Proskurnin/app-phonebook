@@ -24,6 +24,8 @@ const fetchCurrent = () => axios.get('/users/current');
 
 const fetchEditUserInfo = formData => axios.patch('/users/avatars', formData);
 
+const fetchRefreshToken = () => axios.get('/users/refresh');
+
 //---------------------------contacts-operation----------------------------------
 
 const fetchGetContacts = () => axios.get('/contacts');
@@ -49,4 +51,5 @@ export {
   fetchDeleteContacts,
   fetchChangeContact,
   fetchEditUserInfo,
+  fetchRefreshToken,
 };

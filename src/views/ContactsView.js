@@ -14,7 +14,8 @@ import sAl from 'helpers/animation/animationLeft.module.css';
 import sAr from 'helpers/animation/animationRight.module.css';
 
 const ContactsView = () => {
-  const isLoadingContacts = useSelector(state => getLoading(state));
+  const isLoadingContacts = useSelector(getLoading);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import alert from 'helpers/alert';
+import { refresh } from 'redux/auth';
 
 import {
   addContactRequest,
@@ -27,34 +28,55 @@ const fetchContacts = createAsyncThunk('contacts/fetchContact', async () => {
 });
 
 // --------------------------------then-cath----------------------------------
-const addContact = contact => dispatch => {
+const addContact = contact => async (dispatch, getState) => {
   dispatch(addContactRequest());
-  fetchPostContacts(contact)
-    .then(({ data }) => dispatch(addContactSuccess(data.data.contact)))
-    .catch(error => {
-      dispatch(addContactError(error.message));
-      alert(`Error server: ${error.message}`);
-    });
+  try {
+    const response = await fetchPostContacts(contact);
+    dispatch(addContactSuccess(response.data.data.contact));
+  } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetchPostContacts(contact);
+      dispatch(addContactSuccess(response.data.data.contact));
+    } else {
+      dispatch(addContactError(response.data.message));
+      alert(`Server error addContact: ${response.data.message}`);
+    }
+  }
 };
 
-const changeContact = contact => dispatch => {
+const changeContact = contact => async (dispatch, getState) => {
   dispatch(changeContactRequest());
-  fetchChangeContact(contact)
-    .then(({ data }) => dispatch(changeContactSuccess(data.data.contact)))
-    .catch(error => {
-      dispatch(changeContactError(error.message));
-      alert(`Error server: ${error.message}`);
-    });
+  try {
+    const response = await fetchChangeContact(contact);
+    dispatch(changeContactSuccess(response.data.data.contact));
+  } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetchChangeContact(contact);
+      dispatch(changeContactSuccess(response.data.data.contact));
+    } else {
+      dispatch(changeContactError(response.data.message));
+      alert(`Server error addContact: ${response.data.message}`);
+    }
+  }
 };
 
-const deleteContact = id => dispatch => {
+const deleteContact = id => async (dispatch, getState) => {
   dispatch(deleteContactRequest());
-  fetchDeleteContacts(id)
-    .then(() => dispatch(deleteContactSuccess(id)))
-    .catch(error => {
-      dispatch(deleteContactError(error.message));
-      alert(`Error server: ${error.message}`);
-    });
+  try {
+    await fetchDeleteContacts(id);
+    dispatch(deleteContactSuccess(id));
+  } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      await fetchDeleteContacts(id);
+      dispatch(deleteContactSuccess(id));
+    } else {
+      dispatch(deleteContactError(response.data.message));
+      alert(`Server error addContact: ${response.data.message}`);
+    }
+  }
 };
 
 export { addContact, deleteContact, fetchContacts, changeContact };

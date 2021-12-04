@@ -6,7 +6,6 @@ import {
   registerError,
   logoutRequest,
   logoutSuccess,
-  logoutError,
   loginRequest,
   loginSuccess,
   loginError,
@@ -25,6 +24,7 @@ import {
   fetchLogout,
   fetchCurrent,
   fetchEditUserInfo,
+  fetchRefreshToken,
 } from 'services/fetchApi';
 
 const register = credentials => async dispatch => {
@@ -60,8 +60,8 @@ const logOut = () => async dispatch => {
     token.unset();
     dispatch(logoutSuccess());
   } catch (error) {
-    dispatch(logoutError(error.message));
-    alert(`Server error: ${error.message}`);
+    token.unset();
+    dispatch(logoutSuccess());
   }
 };
 
@@ -78,21 +78,52 @@ const getCurrentUser = () => async (dispatch, getState) => {
   try {
     const response = await fetchCurrent();
     dispatch(getCurrentUserSuccess(response.data.user));
-  } catch (error) {
-    dispatch(getCurrentUserError(error.message));
-    alert(`Server error: ${error.message}`);
+  } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      return await refresh(dispatch, getState);
+    }
+    dispatch(getCurrentUserError(response.data.message));
+    alert(`Server error: ${response.data.message}`);
   }
 };
 
-const editUserInfo = formData => async dispatch => {
+const editUserInfo = formData => async (dispatch, getState) => {
   dispatch(editUserInfoRequest());
   try {
     const response = await fetchEditUserInfo(formData);
     dispatch(editUserInfoSuccess(response.data.data));
   } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetchEditUserInfo(formData);
+      return dispatch(editUserInfoSuccess(response.data.data));
+    }
     dispatch(editUserInfoError(response.data.message));
-    alert(response.data.message);
+    alert(`Server error: ${response.data.message}`);
   }
 };
 
-export { register, logOut, logIn, getCurrentUser, editUserInfo };
+const refresh = async (dispatch, getState) => {
+  const {
+    auth: { refreshToken: persistedRefreshToken },
+  } = getState();
+  token.set(persistedRefreshToken);
+  try {
+    const response = await fetchRefreshToken();
+    token.set(response.data.data.token);
+    dispatch(getCurrentUserSuccess(response.data.data.user));
+    dispatch(
+      loginSuccess({
+        token: response.data.data.token,
+        refreshToken: response.data.data.refreshToken,
+      }),
+    );
+  } catch (error) {
+    dispatch(logoutSuccess());
+    dispatch(getCurrentUserError());
+    token.unset();
+    console.log(error.message);
+  }
+};
+
+export { register, logOut, logIn, getCurrentUser, editUserInfo, refresh };
