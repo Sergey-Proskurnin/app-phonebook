@@ -8,10 +8,13 @@ const getFetchigCurrentUser = state => state.auth.isFetchigCurrentUser;
 
 const getCurrentToken = state => state.auth.token;
 
+const getStatusLogout = state => state.auth.logout;
+
 export {
   getIsAuthenticated,
   getUserName,
   getFetchigCurrentUser,
   getCurrentToken,
   getUserAvatar,
+  getStatusLogout,
 };

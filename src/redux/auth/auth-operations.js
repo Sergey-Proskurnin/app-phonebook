@@ -53,13 +53,19 @@ const logIn = credentials => async dispatch => {
   }
 };
 
-const logOut = () => async dispatch => {
+const logOut = () => async (dispatch, getState) => {
   dispatch(logoutRequest());
   try {
     await fetchLogout();
     token.unset();
     dispatch(logoutSuccess());
-  } catch (error) {
+  } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      await fetchLogout();
+      token.unset();
+      return dispatch(logoutSuccess());
+    }
     token.unset();
     dispatch(logoutSuccess());
   }

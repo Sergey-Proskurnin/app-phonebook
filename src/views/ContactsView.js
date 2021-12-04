@@ -8,6 +8,7 @@ import Container from 'components/Container';
 import ContactContainer from 'components/ContactContainer';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import { getLoading } from 'redux/contacts/contacts-selectors';
+import { getStatusLogout } from 'redux/auth/auth-selector';
 
 import s from './Views.module.css';
 import sAl from 'helpers/animation/animationLeft.module.css';
@@ -15,12 +16,13 @@ import sAr from 'helpers/animation/animationRight.module.css';
 
 const ContactsView = () => {
   const isLoadingContacts = useSelector(getLoading);
+  const isLogout = useSelector(getStatusLogout);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    !isLogout && dispatch(fetchContacts());
+  }, [dispatch, isLogout]);
 
   return (
     <div className={s.ContactsContainer}>

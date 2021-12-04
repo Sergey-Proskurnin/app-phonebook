@@ -4,6 +4,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import {
   registerSuccess,
   registerError,
+  logoutRequest,
   logoutSuccess,
   logoutError,
   loginSuccess,
@@ -60,6 +61,12 @@ const isFetchigCurrentUser = createReducer(false, {
   [getCurrentUserError]: () => false,
 });
 
+const logout = createReducer(false, {
+  [logoutRequest]: () => true,
+  [logoutSuccess]: () => true,
+  [logoutError]: () => false,
+});
+
 const authReducer = combineReducers({
   user,
   isLogin,
@@ -67,5 +74,6 @@ const authReducer = combineReducers({
   refreshToken,
   error,
   isFetchigCurrentUser,
+  logout,
 });
 export { authReducer };
