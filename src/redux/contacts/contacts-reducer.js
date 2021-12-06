@@ -23,6 +23,10 @@ import {
   registerRequest,
   registerSuccess,
   registerError,
+  repeatEmailVerifyRequest,
+  repeatEmailVerifySuccess,
+  repeatEmailVerifyOk,
+  repeatEmailVerifyError,
   logoutRequest,
   logoutSuccess,
   logoutError,
@@ -69,6 +73,10 @@ const loading = createReducer(false, {
   [loginRequest]: () => true,
   [loginSuccess]: () => false,
   [loginError]: () => false,
+  [repeatEmailVerifyRequest]: () => true,
+  [repeatEmailVerifySuccess]: () => false,
+  [repeatEmailVerifyOk]: () => false,
+  [repeatEmailVerifyError]: () => false,
 });
 
 const filter = createReducer('', {
