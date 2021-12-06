@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 
 import { logIn } from 'redux/auth';
 import LoginComponent from 'components/LoginComponent';
 import alert from 'helpers/alert';
+import OnLoader from 'components/OnLoader';
+import { getLoading } from 'redux/contacts/contacts-selectors';
 
 import sAl from 'helpers/animation/animationLeft.module.css';
 
@@ -19,6 +21,7 @@ const LoginView = () => {
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
   const onLogin = s => dispatch(logIn(s));
+  const isLoading = useSelector(getLoading);
 
   const handleChange = ({ target: { name, value } }) => {
     setState(prev => ({
@@ -42,20 +45,24 @@ const LoginView = () => {
   const { email, password } = state;
   return (
     <div className={s.LoginContainer}>
-      <CSSTransition
-        in={true}
-        appear={true}
-        timeout={250}
-        classNames={sAl}
-        unmountOnExit
-      >
-        <LoginComponent
-          handleChange={handleChange}
-          email={email}
-          password={password}
-          handleSubmit={handleSubmit}
-        />
-      </CSSTransition>
+      {isLoading ? (
+        <OnLoader />
+      ) : (
+        <CSSTransition
+          in={true}
+          appear={true}
+          timeout={250}
+          classNames={sAl}
+          unmountOnExit
+        >
+          <LoginComponent
+            handleChange={handleChange}
+            email={email}
+            password={password}
+            handleSubmit={handleSubmit}
+          />
+        </CSSTransition>
+      )}
     </div>
   );
 };

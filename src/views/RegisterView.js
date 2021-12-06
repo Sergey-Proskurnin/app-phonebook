@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 
 import { register } from 'redux/auth';
 import RegisterComponent from 'components/RegisterComponent';
 import alert from 'helpers/alert';
+import OnLoader from 'components/OnLoader';
+import { getLoading } from 'redux/contacts/contacts-selectors';
 // import routes from 'routes';
 
 import s from './Views.module.css';
@@ -18,6 +20,7 @@ const RegisterView = () => {
     passwordRepeat: '',
   };
   const [state, setState] = useState(initialState);
+  const isLoading = useSelector(getLoading);
 
   const dispatch = useDispatch();
   const onRegister = s => dispatch(register(s));
@@ -72,24 +75,30 @@ const RegisterView = () => {
 
   const { name, email, password, passwordRepeat } = state;
   return (
-    <div className={s.RegisterContainer}>
-      <CSSTransition
-        in={true}
-        appear={true}
-        timeout={500}
-        classNames={sAr}
-        unmountOnExit
-      >
-        <RegisterComponent
-          handleChange={handleChange}
-          name={name}
-          email={email}
-          password={password}
-          passwordRepeat={passwordRepeat}
-          handleSubmit={handleSubmit}
-        />
-      </CSSTransition>
-    </div>
+    <>
+      <div className={s.RegisterContainer}>
+        {isLoading ? (
+          <OnLoader />
+        ) : (
+          <CSSTransition
+            in={true}
+            appear={true}
+            timeout={500}
+            classNames={sAr}
+            unmountOnExit
+          >
+            <RegisterComponent
+              handleChange={handleChange}
+              name={name}
+              email={email}
+              password={password}
+              passwordRepeat={passwordRepeat}
+              handleSubmit={handleSubmit}
+            />
+          </CSSTransition>
+        )}
+      </div>
+    </>
   );
 };
 export default RegisterView;
