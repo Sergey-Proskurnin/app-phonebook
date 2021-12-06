@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-axios.defaults.baseURL =
-  'https://server-contacts-rest-api.herokuapp.com/api/v1';
-// axios.defaults.baseURL = 'http://localhost:5737/api/v1/';
+// axios.defaults.baseURL =
+//   'https://server-contacts-rest-api.herokuapp.com/api/v1';
+axios.defaults.baseURL = 'http://localhost:5737/api/v1/';
 
 //--------------------------------auth-operations-------------------------------
 const token = {
@@ -25,6 +25,8 @@ const fetchCurrent = () => axios.get('/users/current');
 const fetchEditUserInfo = formData => axios.patch('/users/avatars', formData);
 
 const fetchRefreshToken = () => axios.get('/users/refresh');
+
+const fetchRepeatVerify = email => axios.post('/users/verify', email);
 
 //---------------------------contacts-operation----------------------------------
 
@@ -52,4 +54,5 @@ export {
   fetchChangeContact,
   fetchEditUserInfo,
   fetchRefreshToken,
+  fetchRepeatVerify,
 };

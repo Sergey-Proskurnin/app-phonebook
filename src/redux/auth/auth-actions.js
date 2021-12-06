@@ -20,6 +20,11 @@ const editUserInfoRequest = createAction('auth/editUserInfoRequest');
 const editUserInfoSuccess = createAction('auth/editUserInfoSuccess');
 const editUserInfoError = createAction('auth/editUserInfoError');
 
+const repeatEmailVerifyRequest = createAction('auth/repeatEmailVerifyRequest');
+const repeatEmailVerifySuccess = createAction('auth/repeatEmailVerifySuccess');
+const repeatEmailVerifyOk = createAction('auth/repeatEmailVerifyOk');
+const repeatEmailVerifyError = createAction('auth/repeatEmailVerifyError');
+
 export {
   registerRequest,
   registerSuccess,
@@ -36,4 +41,8 @@ export {
   editUserInfoRequest,
   editUserInfoSuccess,
   editUserInfoError,
+  repeatEmailVerifyRequest,
+  repeatEmailVerifySuccess,
+  repeatEmailVerifyOk,
+  repeatEmailVerifyError,
 };

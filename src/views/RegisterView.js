@@ -31,7 +31,6 @@ const RegisterView = () => {
 
   const onPasswordVerification = state => {
     const { password, passwordRepeat, name, email } = state;
-    console.log(typeof state);
     if (
       password === '' ||
       passwordRepeat === '' ||
@@ -60,7 +59,11 @@ const RegisterView = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (name === '' || email === '' || password === '') {
+      return alert('Please fill in all fields for registration');
+    }
     onPasswordVerification(state);
+
     // window.location.assign(routes.login);
     alert(
       `Congratulations, your email ${email} has been registered, an email has been sent to it to confirm your registration. Verify please!`,

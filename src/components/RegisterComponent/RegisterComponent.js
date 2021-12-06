@@ -1,10 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 import s from './RegisterComponent.module.css';
+import RepeatEmail from 'components/RepeatEmail';
+
+import { getUserEmail } from 'redux/auth';
 
 const RegisterComponent = ({
   handleChange,
@@ -14,6 +18,7 @@ const RegisterComponent = ({
   passwordRepeat,
   handleSubmit,
 }) => {
+  const userEmail = useSelector(getUserEmail);
   return (
     <div className={s.RegisterSection}>
       <h1 className={s.RegisterTitle}>Registration</h1>
@@ -84,6 +89,7 @@ const RegisterComponent = ({
           Сheck in
         </Button>
       </FormControl>
+      {userEmail && <RepeatEmail />}
     </div>
   );
 };

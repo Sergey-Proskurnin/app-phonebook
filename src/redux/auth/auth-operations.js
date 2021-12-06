@@ -2,7 +2,7 @@ import alert from 'helpers/alert';
 
 import {
   registerRequest,
-  // registerSuccess,
+  registerSuccess,
   registerError,
   logoutRequest,
   logoutSuccess,
@@ -15,6 +15,10 @@ import {
   editUserInfoRequest,
   editUserInfoSuccess,
   editUserInfoError,
+  repeatEmailVerifyRequest,
+  repeatEmailVerifySuccess,
+  repeatEmailVerifyOk,
+  repeatEmailVerifyError,
 } from './auth-actions';
 
 import {
@@ -25,6 +29,7 @@ import {
   fetchCurrent,
   fetchEditUserInfo,
   fetchRefreshToken,
+  fetchRepeatVerify,
 } from 'services/fetchApi';
 
 const register = credentials => async dispatch => {
@@ -32,12 +37,23 @@ const register = credentials => async dispatch => {
   try {
     const response = await fetchSignUp(credentials);
     // token.set(response.data.token);
-    console.log(response);
-    // dispatch(registerSuccess(response.data));
+    dispatch(registerSuccess(response.data));
   } catch (error) {
     dispatch(registerError(error.message));
     alert(`Incorrect login!
     Server error: ${error.message}`);
+  }
+};
+
+const repeatVerify = email => async dispatch => {
+  dispatch(repeatEmailVerifyRequest());
+  try {
+    const response = await fetchRepeatVerify(email);
+    dispatch(repeatEmailVerifySuccess(response.data));
+    dispatch(repeatEmailVerifyOk());
+  } catch ({ response }) {
+    dispatch(repeatEmailVerifyError(response.data.message));
+    alert(response.data.message);
   }
 };
 
@@ -132,4 +148,12 @@ const refresh = async (dispatch, getState) => {
   }
 };
 
-export { register, logOut, logIn, getCurrentUser, editUserInfo, refresh };
+export {
+  register,
+  logOut,
+  logIn,
+  getCurrentUser,
+  editUserInfo,
+  refresh,
+  repeatVerify,
+};
