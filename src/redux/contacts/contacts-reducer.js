@@ -9,6 +9,9 @@ import {
   changeContactRequest,
   changeContactSuccess,
   changeContactError,
+  changeFavoriteContactRequest,
+  changeFavoriteContactSuccess,
+  changeFavoriteContactError,
   addContactRequest,
   addContactSuccess,
   addContactError,
@@ -46,6 +49,10 @@ const items = createReducer(contactsTest, {
     ...state.filter(({ id }) => id !== action.payload.id),
     action.payload,
   ],
+  [changeFavoriteContactSuccess]: (state, action) => [
+    ...state.filter(({ id }) => id !== action.payload.id),
+    action.payload,
+  ],
 });
 
 const loading = createReducer(false, {
@@ -61,6 +68,9 @@ const loading = createReducer(false, {
   [changeContactRequest]: () => true,
   [changeContactSuccess]: () => false,
   [changeContactError]: () => false,
+  [changeFavoriteContactRequest]: () => true,
+  [changeFavoriteContactSuccess]: () => false,
+  [changeFavoriteContactError]: () => false,
   [editUserInfoRequest]: () => true,
   [editUserInfoSuccess]: () => false,
   [editUserInfoError]: () => false,
@@ -97,9 +107,20 @@ const error = createReducer(null, {
     alert(`Error server`);
     return payload;
   },
+  [fetchContacts.pending]: () => null,
+  [fetchContacts.fulfilled]: () => null,
   [addContactError]: setError,
+  [addContactSuccess]: () => null,
+  [addContactRequest]: () => null,
   [deleteContactError]: setError,
+  [deleteContactSuccess]: () => null,
+  [deleteContactRequest]: () => null,
   [changeContactError]: setError,
+  [changeContactSuccess]: () => null,
+  [changeContactRequest]: () => null,
+  [changeFavoriteContactError]: setError,
+  [changeFavoriteContactSuccess]: () => null,
+  [changeFavoriteContactRequest]: () => null,
 });
 
 export default combineReducers({

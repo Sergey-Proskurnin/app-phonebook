@@ -1,7 +1,20 @@
 import axios from 'axios';
 
-axios.defaults.baseURL =
-  'https://server-contacts-rest-api.herokuapp.com/api/v1';
+const env = process.env.NODE_ENV;
+switch (env) {
+  case 'development':
+    axios.defaults.baseURL = 'http://localhost:5737/api/v1';
+    break;
+  case 'production':
+    axios.defaults.baseURL =
+      'https://server-contacts-rest-api.herokuapp.com/api/v1';
+    break;
+  default:
+    axios.defaults.baseURL = 'http://localhost:5737/api/v1';
+    break;
+}
+// axios.defaults.baseURL =
+//   'https://server-contacts-rest-api.herokuapp.com/api/v1';
 // axios.defaults.baseURL = 'http://localhost:5737/api/v1/';
 
 //--------------------------------auth-operations-------------------------------
@@ -36,6 +49,9 @@ const fetchPostContacts = contact => axios.post('/contacts', contact);
 
 const fetchDeleteContacts = id => axios.delete(`/contacts/${id}`);
 
+const fetchFavoriteChangeContact = (id, favorite) =>
+  axios.patch(`/contacts/${id}/favorite`, { favorite });
+
 // const fetchChangeContacts = ({ id, name, number, email }) =>
 //   axios.put(`/contacts/${id}`, { name, number, email });
 
@@ -52,6 +68,7 @@ export {
   fetchPostContacts,
   fetchDeleteContacts,
   fetchChangeContact,
+  fetchFavoriteChangeContact,
   fetchEditUserInfo,
   fetchRefreshToken,
   fetchRepeatVerify,

@@ -16,6 +16,16 @@ const changeContactRequest = createAction('contacts/changeContactRequest');
 const changeContactSuccess = createAction('contacts/changeContactSuccess');
 const changeContactError = createAction('contacts/changeContactError');
 
+const changeFavoriteContactRequest = createAction(
+  'contacts/changeFavoriteContactRequest',
+);
+const changeFavoriteContactSuccess = createAction(
+  'contacts/changeFavoriteContactSuccess',
+);
+const changeFavoriteContactError = createAction(
+  'contacts/changeFavoriteContactError',
+);
+
 const changeFilter = createAction('contacts/changeFilter');
 
 const contactChange = createAction('contacts/changeContact');
@@ -29,6 +39,9 @@ export {
   changeContactRequest,
   changeContactSuccess,
   changeContactError,
+  changeFavoriteContactRequest,
+  changeFavoriteContactSuccess,
+  changeFavoriteContactError,
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,

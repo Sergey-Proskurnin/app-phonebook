@@ -12,6 +12,9 @@ import {
   changeContactRequest,
   changeContactSuccess,
   changeContactError,
+  changeFavoriteContactRequest,
+  changeFavoriteContactSuccess,
+  changeFavoriteContactError,
 } from './contacts-actions';
 
 import {
@@ -19,6 +22,7 @@ import {
   fetchPostContacts,
   fetchDeleteContacts,
   fetchChangeContact,
+  fetchFavoriteChangeContact,
 } from 'services/fetchApi';
 
 //--------------------------------createAsyncThunk------------------------
@@ -57,7 +61,24 @@ const changeContact = contact => async (dispatch, getState) => {
       dispatch(changeContactSuccess(response.data.data.contact));
     } else {
       dispatch(changeContactError(response.data.message));
-      alert(`Server error addContact: ${response.data.message}`);
+      alert(`Server error change contact: ${response.data.message}`);
+    }
+  }
+};
+
+const changeFavoriteContact = (id, favorite) => async (dispatch, getState) => {
+  dispatch(changeFavoriteContactRequest());
+  try {
+    const response = await fetchFavoriteChangeContact(id, favorite);
+    dispatch(changeFavoriteContactSuccess(response.data.data.contact));
+  } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetchFavoriteChangeContact(id, favorite);
+      dispatch(changeFavoriteContactSuccess(response.data.data.contact));
+    } else {
+      dispatch(changeFavoriteContactError(response.data.message));
+      alert(`Server error change favorite contact: ${response.data.message}`);
     }
   }
 };
@@ -74,9 +95,15 @@ const deleteContact = id => async (dispatch, getState) => {
       dispatch(deleteContactSuccess(id));
     } else {
       dispatch(deleteContactError(response.data.message));
-      alert(`Server error addContact: ${response.data.message}`);
+      alert(`Server error delete contact: ${response.data.message}`);
     }
   }
 };
 
-export { addContact, deleteContact, fetchContacts, changeContact };
+export {
+  addContact,
+  deleteContact,
+  fetchContacts,
+  changeContact,
+  changeFavoriteContact,
+};
