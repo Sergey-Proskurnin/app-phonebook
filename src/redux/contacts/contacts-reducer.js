@@ -53,6 +53,7 @@ const items = createReducer(contactsTest, {
     ...state.filter(({ id }) => id !== action.payload.id),
     action.payload,
   ],
+  [logoutSuccess]: () => contactsTest,
 });
 
 const loading = createReducer(false, {

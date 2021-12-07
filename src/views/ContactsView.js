@@ -16,13 +16,14 @@ import sAr from 'helpers/animation/animationRight.module.css';
 
 const ContactsView = () => {
   const isLoadingContacts = useSelector(getLoading);
-  const isLogout = useSelector(getStatusLogout);
+  // const isLogout = useSelector(getStatusLogout);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !isLogout && dispatch(fetchContacts());
-  }, [dispatch, isLogout]);
+    // !isLogout && dispatch(fetchContacts());
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <div className={s.ContactsContainer}>
