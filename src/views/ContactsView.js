@@ -8,7 +8,7 @@ import Container from 'components/Container';
 import ContactContainer from 'components/ContactContainer';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import { getLoading } from 'redux/contacts/contacts-selectors';
-import { getStatusLogout } from 'redux/auth/auth-selector';
+// import { getStatusLogout } from 'redux/auth/auth-selector';
 
 import s from './Views.module.css';
 import sAl from 'helpers/animation/animationLeft.module.css';
