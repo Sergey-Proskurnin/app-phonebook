@@ -67,7 +67,7 @@ const items = createReducer(contactUser, {
     ...state.filter(({ id }) => id !== action.payload.id),
     action.payload,
   ],
-  [logoutSuccess]: () => contactsTest,
+  [logoutSuccess]: () => contactUser,
 });
 
 const loading = createReducer(false, {
