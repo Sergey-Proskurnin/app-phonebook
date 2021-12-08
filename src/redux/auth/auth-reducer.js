@@ -1,5 +1,22 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
+import alert from 'helpers/alert';
+
+import {
+  changeContactRequest,
+  changeContactSuccess,
+  changeContactError,
+  changeFavoriteContactRequest,
+  changeFavoriteContactSuccess,
+  changeFavoriteContactError,
+  addContactRequest,
+  addContactSuccess,
+  addContactError,
+  deleteContactRequest,
+  deleteContactSuccess,
+  deleteContactError,
+  fetchContacts,
+} from 'redux/contacts';
 
 import {
   registerRequest,
@@ -34,12 +51,10 @@ const user = createReducer(initialUserState, {
 });
 
 const token = createReducer(null, {
-  // [registerSuccess]: (_, { payload }) => payload.token,
   [loginSuccess]: (_, { payload }) => payload.token,
   [logoutSuccess]: () => null,
 });
 const refreshToken = createReducer(null, {
-  // [registerSuccess]: (_, { payload }) => payload.token,
   [loginSuccess]: (_, { payload }) => payload.refreshToken,
   [logoutSuccess]: () => null,
 });
@@ -64,6 +79,24 @@ const error = createReducer(null, {
   [repeatEmailVerifyError]: setError,
   [repeatEmailVerifySuccess]: () => null,
   [repeatEmailVerifyRequest]: () => null,
+  [fetchContacts.rejected]: (_, { payload }) => {
+    alert(`Error server`);
+    return payload;
+  },
+  [fetchContacts.pending]: () => null,
+  [fetchContacts.fulfilled]: () => null,
+  [addContactError]: setError,
+  [addContactSuccess]: () => null,
+  [addContactRequest]: () => null,
+  [deleteContactError]: setError,
+  [deleteContactSuccess]: () => null,
+  [deleteContactRequest]: () => null,
+  [changeContactError]: setError,
+  [changeContactSuccess]: () => null,
+  [changeContactRequest]: () => null,
+  [changeFavoriteContactError]: setError,
+  [changeFavoriteContactSuccess]: () => null,
+  [changeFavoriteContactRequest]: () => null,
 });
 const isLogin = createReducer(false, {
   [registerSuccess]: () => false,
@@ -81,10 +114,16 @@ const isFetchigCurrentUser = createReducer(false, {
   [getCurrentUserError]: () => false,
 });
 
-const logout = createReducer(false, {
-  [logoutRequest]: () => true,
-  [logoutSuccess]: () => true,
-  [logoutError]: () => false,
+const logout = createReducer(true, {
+  [logoutRequest]: () => false,
+  [logoutSuccess]: () => false,
+  [logoutError]: () => true,
+  [loginRequest]: () => true,
+  [loginSuccess]: () => true,
+  [loginError]: () => true,
+  [getCurrentUserRequest]: () => true,
+  [getCurrentUserSuccess]: () => true,
+  [getCurrentUserError]: () => true,
 });
 
 const isRepeatEmailVerify = createReducer(null, {

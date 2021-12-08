@@ -1,21 +1,19 @@
 import axios from 'axios';
 
+import { DEV_URL, PROD_URL } from 'helpers/constants';
+
 const env = process.env.NODE_ENV;
 switch (env) {
   case 'development':
-    axios.defaults.baseURL = 'http://localhost:5737/api/v1';
+    axios.defaults.baseURL = DEV_URL;
     break;
   case 'production':
-    axios.defaults.baseURL =
-      'https://server-contacts-rest-api.herokuapp.com/api/v1';
+    axios.defaults.baseURL = PROD_URL;
     break;
   default:
-    axios.defaults.baseURL = 'http://localhost:5737/api/v1';
+    axios.defaults.baseURL = DEV_URL;
     break;
 }
-// axios.defaults.baseURL =
-//   'https://server-contacts-rest-api.herokuapp.com/api/v1';
-// axios.defaults.baseURL = 'http://localhost:5737/api/v1/';
 
 //--------------------------------auth-operations-------------------------------
 const token = {

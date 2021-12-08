@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import { withStyles } from '@material-ui/core/styles';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
@@ -11,6 +12,16 @@ import contextProps from 'context/context';
 import { contactChange, changeFavoriteContact } from 'redux/contacts';
 
 import s from './ElementContactList.module.css';
+
+const FavoriteCheckbox = withStyles({
+  root: {
+    color: '#3f51b5',
+    '&$checked': {
+      color: '#e84a5f',
+    },
+  },
+  checked: {},
+})(props => <Checkbox color="default" {...props} />);
 
 const ElementContactList = () => {
   const toggleModal = useContext(contextProps);
@@ -53,7 +64,7 @@ const ElementContactList = () => {
             <span className={s.span}>
               <FormControlLabel
                 control={
-                  <Checkbox
+                  <FavoriteCheckbox
                     icon={<FavoriteBorder />}
                     checked={favorite}
                     onChange={() => handleChange({ id, favorite })}

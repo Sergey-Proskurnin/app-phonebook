@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import { createReducer } from '@reduxjs/toolkit';
 import contactsTest from 'data/contactsTest.json';
-import alert from 'helpers/alert';
+
 import {
   changeFilter,
   contactChange,
@@ -40,7 +40,21 @@ import {
 
 import { fetchContacts } from './contacts-operations';
 
-const items = createReducer(contactsTest, {
+const env = process.env.NODE_ENV;
+let contactUser;
+switch (env) {
+  case 'development':
+    contactUser = contactsTest;
+    break;
+  case 'production':
+    contactUser = [];
+    break;
+  default:
+    contactUser = [];
+    break;
+}
+
+const items = createReducer(contactUser, {
   [fetchContacts.fulfilled]: (_, { payload }) => payload,
   [addContactSuccess]: (state, action) => [action.payload, ...state],
   [deleteContactSuccess]: (state, action) =>
@@ -101,33 +115,9 @@ const change = createReducer(
   },
 );
 
-const setError = (_, { payload }) => payload;
-
-const error = createReducer(null, {
-  [fetchContacts.rejected]: (_, { payload }) => {
-    alert(`Error server`);
-    return payload;
-  },
-  [fetchContacts.pending]: () => null,
-  [fetchContacts.fulfilled]: () => null,
-  [addContactError]: setError,
-  [addContactSuccess]: () => null,
-  [addContactRequest]: () => null,
-  [deleteContactError]: setError,
-  [deleteContactSuccess]: () => null,
-  [deleteContactRequest]: () => null,
-  [changeContactError]: setError,
-  [changeContactSuccess]: () => null,
-  [changeContactRequest]: () => null,
-  [changeFavoriteContactError]: setError,
-  [changeFavoriteContactSuccess]: () => null,
-  [changeFavoriteContactRequest]: () => null,
-});
-
 export default combineReducers({
   items,
   filter,
   loading,
   change,
-  error,
 });
