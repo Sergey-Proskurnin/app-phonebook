@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import alert from 'helpers/alert';
 
 import {
   changeContactRequest,
@@ -79,10 +78,7 @@ const error = createReducer(null, {
   [repeatEmailVerifyError]: setError,
   [repeatEmailVerifySuccess]: () => null,
   [repeatEmailVerifyRequest]: () => null,
-  [fetchContacts.rejected]: (_, { payload }) => {
-    alert(`Error server`);
-    return payload;
-  },
+  [fetchContacts.rejected]: setError,
   [fetchContacts.pending]: () => null,
   [fetchContacts.fulfilled]: () => null,
   [addContactError]: setError,

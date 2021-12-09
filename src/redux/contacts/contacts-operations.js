@@ -26,10 +26,23 @@ import {
 } from 'services/fetchApi';
 
 //--------------------------------createAsyncThunk------------------------
-const fetchContacts = createAsyncThunk('contacts/fetchContact', async () => {
-  const { data } = await fetchGetContacts();
-  return data.data.contacts;
-});
+const fetchContacts = createAsyncThunk(
+  'contacts/fetchContact',
+  async (_, { dispatch, getState }) => {
+    try {
+      const { data } = await fetchGetContacts();
+      return data.data.contacts;
+    } catch ({ response }) {
+      if (response.data.message === 'Unvalid token') {
+        await refresh(dispatch, getState);
+        const { data } = await fetchGetContacts();
+        return data.data.contacts;
+      }
+      dispatch(fetchContacts.rejected(response.data.message));
+      alert(`Server error addContact: ${response.data.message}`);
+    }
+  },
+);
 
 // --------------------------------then-cath----------------------------------
 const addContact = contact => async (dispatch, getState) => {

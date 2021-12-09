@@ -63,6 +63,7 @@ const ElementContactList = () => {
             </a>
             <span className={s.span}>
               <FormControlLabel
+                style={{ marginRight: '-11px' }}
                 control={
                   <FavoriteCheckbox
                     icon={<FavoriteBorder />}
