@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+
 import { textAnimation } from 'helpers/animationText';
 import { CSSTransition } from 'react-transition-group';
 import s from './Views.module.css';
@@ -9,6 +10,7 @@ import sAb from 'helpers/animation/animationBottom.module.css';
 
 const HomeView = () => {
   let textRef = useRef(null);
+
   useEffect(() => {
     textAnimation(textRef);
   }, []);

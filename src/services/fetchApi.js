@@ -1,19 +1,7 @@
 import axios from 'axios';
 
-import { DEV_URL, PROD_URL } from 'helpers/constants';
-
-const env = process.env.NODE_ENV;
-switch (env) {
-  case 'development':
-    axios.defaults.baseURL = DEV_URL;
-    break;
-  case 'production':
-    axios.defaults.baseURL = PROD_URL;
-    break;
-  default:
-    axios.defaults.baseURL = DEV_URL;
-    break;
-}
+import { BASE_URL } from 'helpers/constants';
+axios.defaults.baseURL = BASE_URL;
 
 //--------------------------------auth-operations-------------------------------
 const token = {

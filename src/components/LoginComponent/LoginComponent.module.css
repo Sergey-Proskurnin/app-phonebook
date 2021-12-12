@@ -10,6 +10,50 @@
   width: 300px;
 }
 
+.googleTitle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  margin-bottom: 24px;
+}
+.btnGoogle {
+  margin-right: auto;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f6f7fb;
+  border-radius: 26px;
+  border: 0;
+  width: 122px;
+  height: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #000000;
+}
+.btnGoogle::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+
+  margin-right: 10px;
+  margin-left: 20px;
+  background-image: url(../../images/svg/Group.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 @media screen and (min-width: 720px) {
   .LoginSection {
     align-items: flex-start;
