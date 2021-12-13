@@ -5,16 +5,15 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 import s from './LoginComponent.module.css';
-import { BASE_URL } from 'helpers/constants';
+import GoogleButtonWhite from 'components/GoogleButtonWhite';
+import FacebookButton from 'components/FacebookButton';
 
 const LoginComponent = ({ handleChange, email, password, handleSubmit }) => {
   return (
     <div className={s.LoginSection}>
       <h1 className={s.LoginTitle}>Login</h1>
-      <p className={s.googleTitle}>You can log in with Google Account:</p>
-      <a href={`${BASE_URL}/users/google`} className={s.btnGoogle}>
-        Google
-      </a>
+      <GoogleButtonWhite />
+      <FacebookButton />
       <FormControl className={s.LoginFormControl}>
         <TextField
           style={{ marginTop: '20px' }}

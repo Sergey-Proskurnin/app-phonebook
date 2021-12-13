@@ -5,8 +5,8 @@ import queryString from 'query-string';
 
 import {
   getIsAuthenticated,
-  loginGoogleSuccess,
-  refreshLoginGoogleSuccess,
+  loginGoogleFacebookSuccess,
+  refreshLoginGoogleFacebookSuccess,
 } from 'redux/auth';
 
 /**
@@ -20,8 +20,8 @@ const PrivateRoute = ({ redirectTo, children, location, ...routeProps }) => {
 
   useEffect(() => {
     if (token) {
-      dispatch(loginGoogleSuccess(token));
-      dispatch(refreshLoginGoogleSuccess(refreshToken));
+      dispatch(loginGoogleFacebookSuccess(token));
+      dispatch(refreshLoginGoogleFacebookSuccess(refreshToken));
     }
   }, [dispatch, refreshToken, token]);
 

@@ -37,12 +37,12 @@ import {
   repeatEmailVerifySuccess,
   repeatEmailVerifyOk,
   repeatEmailVerifyError,
-  loginGoogleRequest,
-  loginGoogleSuccess,
-  loginGoogleError,
-  refreshLoginGoogleRequest,
-  refreshLoginGoogleSuccess,
-  refreshLoginGoogleError,
+  loginGoogleFacebookRequest,
+  loginGoogleFacebookSuccess,
+  loginGoogleFacebookError,
+  refreshLoginGoogleFacebookRequest,
+  refreshLoginGoogleFacebookSuccess,
+  refreshLoginGoogleFacebookError,
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null };
@@ -57,12 +57,12 @@ const user = createReducer(initialUserState, {
 
 const token = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.token,
-  [loginGoogleSuccess]: (_, { payload }) => payload,
+  [loginGoogleFacebookSuccess]: (_, { payload }) => payload,
   [logoutSuccess]: () => null,
 });
 const refreshToken = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.refreshToken,
-  [refreshLoginGoogleSuccess]: (_, { payload }) => payload,
+  [refreshLoginGoogleFacebookSuccess]: (_, { payload }) => payload,
   [logoutSuccess]: () => null,
 });
 const setError = (_, { payload }) => payload;
@@ -101,12 +101,12 @@ const error = createReducer(null, {
   [changeFavoriteContactError]: setError,
   [changeFavoriteContactSuccess]: () => null,
   [changeFavoriteContactRequest]: () => null,
-  [loginGoogleError]: setError,
-  [loginGoogleSuccess]: () => null,
-  [loginGoogleRequest]: () => null,
-  [refreshLoginGoogleError]: setError,
-  [refreshLoginGoogleSuccess]: () => null,
-  [refreshLoginGoogleRequest]: () => null,
+  [loginGoogleFacebookError]: setError,
+  [loginGoogleFacebookSuccess]: () => null,
+  [loginGoogleFacebookRequest]: () => null,
+  [refreshLoginGoogleFacebookError]: setError,
+  [refreshLoginGoogleFacebookSuccess]: () => null,
+  [refreshLoginGoogleFacebookRequest]: () => null,
 });
 const isLogin = createReducer(false, {
   [registerSuccess]: () => false,

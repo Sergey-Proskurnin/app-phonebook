@@ -25,17 +25,23 @@ const repeatEmailVerifySuccess = createAction('auth/repeatEmailVerifySuccess');
 const repeatEmailVerifyOk = createAction('auth/repeatEmailVerifyOk');
 const repeatEmailVerifyError = createAction('auth/repeatEmailVerifyError');
 
-const loginGoogleRequest = createAction('auth/loginGoogleRequest');
-const loginGoogleSuccess = createAction('auth/loginGoogleSuccess');
-const loginGoogleError = createAction('auth/loginGoogleError');
+const loginGoogleFacebookRequest = createAction(
+  'auth/loginGoogleFacebookRequest',
+);
+const loginGoogleFacebookSuccess = createAction(
+  'auth/loginGoogleFacebookSuccess',
+);
+const loginGoogleFacebookError = createAction('auth/loginGoogleFacebookError');
 
-const refreshLoginGoogleRequest = createAction(
-  'auth/refreshLoginGoogleRequest',
+const refreshLoginGoogleFacebookRequest = createAction(
+  'auth/refreshLoginGoogleFacebookRequest',
 );
-const refreshLoginGoogleSuccess = createAction(
-  'auth/refreshLoginGoogleSuccess',
+const refreshLoginGoogleFacebookSuccess = createAction(
+  'auth/refreshLoginGoogleFacebookSuccess',
 );
-const refreshLoginGoogleError = createAction('auth/refreshLoginGoogleError');
+const refreshLoginGoogleFacebookError = createAction(
+  'auth/refreshLoginGoogleFacebookError',
+);
 
 export {
   registerRequest,
@@ -47,12 +53,12 @@ export {
   loginRequest,
   loginSuccess,
   loginError,
-  loginGoogleRequest,
-  loginGoogleSuccess,
-  loginGoogleError,
-  refreshLoginGoogleRequest,
-  refreshLoginGoogleSuccess,
-  refreshLoginGoogleError,
+  loginGoogleFacebookRequest,
+  loginGoogleFacebookSuccess,
+  loginGoogleFacebookError,
+  refreshLoginGoogleFacebookRequest,
+  refreshLoginGoogleFacebookSuccess,
+  refreshLoginGoogleFacebookError,
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
