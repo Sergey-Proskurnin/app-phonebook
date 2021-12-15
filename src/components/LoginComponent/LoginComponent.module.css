@@ -13,7 +13,7 @@
 @media screen and (min-width: 720px) {
   .LoginSection {
     align-items: flex-start;
-    padding: 15vw;
+    padding-left: 15vw;
   }
   .LoginTitle {
     margin-left: 100px;

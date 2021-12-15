@@ -23,6 +23,7 @@
   text-indent: 5%;
   font-style: italic;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  padding-bottom: 10px;
 }
 .HomeArticleDescription {
   font-size: 20px;
@@ -47,7 +48,8 @@
     background-attachment: fixed;
 
     width: 100vw;
-    height: 100vh;
+    overflow-x: hidden;
+    min-height: calc(100vh - 100px);
   }
 
   .ContactsContainer {
@@ -78,6 +80,9 @@
 
     width: 100vw;
     height: 100vh;
+
+    overflow-x: hidden;
+    padding-bottom: 10px;
   }
 
   .RegisterContainer {
@@ -92,6 +97,9 @@
 
     width: 100vw;
     height: 100vh;
+
+    overflow-x: hidden;
+    padding-bottom: 10px;
   }
   .HomeTitle {
     font-size: 100px;
