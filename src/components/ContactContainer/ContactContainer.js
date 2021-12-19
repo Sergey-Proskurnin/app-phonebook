@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useContext } from 'react';
 
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
@@ -8,22 +8,16 @@ import contextProps from 'context/context';
 import s from './ContactContainer.module.css';
 
 const ContactContainer = () => {
-  const [showModal, setStateShowModal] = useState(false);
-
-  const toggleModal = useCallback(() => {
-    setStateShowModal(prevShowModal => !prevShowModal);
-  }, []);
+  const { showModal } = useContext(contextProps);
 
   return (
-    <contextProps.Provider value={toggleModal}>
-      <div className={s.contactContainer}>
-        <Filter />
-        <div className={s.contactList}>
-          <ContactList />
-        </div>
-        {showModal && <Modal />}
+    <div className={s.contactContainer}>
+      <Filter />
+      <div className={s.contactList}>
+        <ContactList />
       </div>
-    </contextProps.Provider>
+      {showModal && <Modal />}
+    </div>
   );
 };
 

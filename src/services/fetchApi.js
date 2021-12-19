@@ -29,7 +29,10 @@ const fetchRepeatVerify = email => axios.post('/users/verify', email);
 
 //---------------------------contacts-operation----------------------------------
 
-const fetchGetContacts = () => axios.get('/contacts');
+const fetchGetContacts = favorite =>
+  favorite
+    ? axios.get(`/contacts/?favorite=${favorite}`)
+    : axios.get('/contacts');
 
 const fetchPostContacts = contact => axios.post('/contacts', contact);
 

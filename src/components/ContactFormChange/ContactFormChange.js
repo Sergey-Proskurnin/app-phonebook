@@ -14,7 +14,7 @@ import contextProps from 'context/context';
 import alert from 'helpers/alert';
 
 const ContactFormChange = () => {
-  const toggleModal = useContext(contextProps);
+  const { toggleModal } = useContext(contextProps);
   const { name, number, email, id } = useSelector(state =>
     getChangeContact(state),
   );

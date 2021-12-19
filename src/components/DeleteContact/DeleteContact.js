@@ -7,7 +7,7 @@ import { deleteContact, getChangeContact } from 'redux/contacts';
 import s from './DeleteContact.module.css';
 
 const DeleteContact = () => {
-  const toggleModal = useContext(contextProps);
+  const { toggleModal } = useContext(contextProps);
   const { id, name, number } = useSelector(state => getChangeContact(state));
   const dispatch = useDispatch();
   const onDeleteContact = id => {

@@ -1,30 +1,16 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import { withStyles } from '@material-ui/core/styles';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-
 import ContactMailIcon from '@material-ui/icons/ContactMail';
+
 import { getVisibleContacts } from 'redux/contacts';
 import contextProps from 'context/context';
 import { contactChange, changeFavoriteContact } from 'redux/contacts';
+import FavoriteCheckBox from 'components/FavoriteCheckbox';
 
 import s from './ElementContactList.module.css';
 
-const FavoriteCheckbox = withStyles({
-  root: {
-    color: '#3f51b5',
-    '&$checked': {
-      color: '#e84a5f',
-    },
-  },
-  checked: {},
-})(props => <Checkbox color="default" {...props} />);
-
 const ElementContactList = () => {
-  const toggleModal = useContext(contextProps);
+  const { toggleModal } = useContext(contextProps);
   const contacts = useSelector(state => getVisibleContacts(state));
 
   const dispatch = useDispatch();
@@ -34,9 +20,9 @@ const ElementContactList = () => {
     return toggleModal();
   };
 
-  const handleChange = contact => {
-    const newFavorite = !contact.favorite;
-    dispatch(changeFavoriteContact(contact.id, newFavorite));
+  const handleChange = ({ id, favorite }) => {
+    const newFavorite = !favorite;
+    dispatch(changeFavoriteContact(id, newFavorite));
   };
 
   return contacts.map(
@@ -62,18 +48,11 @@ const ElementContactList = () => {
               </span>
             </a>
             <span className={s.span}>
-              <FormControlLabel
-                style={{ marginRight: '-11px' }}
-                control={
-                  <FavoriteCheckbox
-                    icon={<FavoriteBorder />}
-                    checked={favorite}
-                    onChange={() => handleChange({ id, favorite })}
-                    checkedIcon={<Favorite />}
-                    name={`checked${id}`}
-                    size="small"
-                  />
-                }
+              <FavoriteCheckBox
+                favorite={favorite}
+                id={id}
+                handleChange={() => handleChange({ id, favorite })}
+                size="small"
               />
             </span>
           </div>

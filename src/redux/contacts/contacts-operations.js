@@ -28,9 +28,9 @@ import {
 //--------------------------------createAsyncThunk------------------------
 const fetchContacts = createAsyncThunk(
   'contacts/fetchContact',
-  async (_, { dispatch, getState }) => {
+  async (favorite, { dispatch, getState }) => {
     try {
-      const { data } = await fetchGetContacts();
+      const { data } = await fetchGetContacts(favorite);
       return data.data.contacts;
     } catch ({ response }) {
       if (response.data.message === 'Unvalid token') {
