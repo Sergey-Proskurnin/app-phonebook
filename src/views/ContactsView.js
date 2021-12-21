@@ -14,10 +14,14 @@ import s from './Views.module.css';
 import sAl from 'helpers/animation/animationLeft.module.css';
 import sAr from 'helpers/animation/animationRight.module.css';
 import contextProps from 'context/context';
+import useWindowDimensions from 'hooks/useWindowDimensions';
+import ButtonShowContactForm from 'components/ButtonShowContactForm';
 
 const ContactsView = () => {
+  const viewPort = useWindowDimensions();
   const [showModal, setStateShowModal] = useState(false);
   const [favorite, setFavorite] = useState(false);
+  const [contactsListRender, setContactsListRender] = useState(true);
 
   const toggleModal = useCallback(() => {
     setStateShowModal(prevShowModal => !prevShowModal);
@@ -33,40 +37,86 @@ const ContactsView = () => {
   }, [dispatch, isLogout, favorite]);
 
   return (
-    <div className={s.ContactsContainer}>
-      <Container title="Add contact">
-        <CSSTransition
-          in={true}
-          appear={true}
-          timeout={250}
-          classNames={sAl}
-          unmountOnExit
-        >
-          <ContactForm />
-        </CSSTransition>
-      </Container>
-
-      <contextProps.Provider
-        value={{ toggleModal, showModal, favorite, setFavorite }}
-      >
-        <Container title="Contacts">
-          {isLoadingContacts ? (
-            <OnLoader />
-          ) : (
+    <>
+      {viewPort.width >= 768 && (
+        <div className={s.ContactsContainer}>
+          <Container title="Add contact">
             <CSSTransition
               in={true}
               appear={true}
-              timeout={500}
-              classNames={sAr}
+              timeout={250}
+              classNames={sAl}
               unmountOnExit
             >
-              <ContactContainer />
+              <ContactForm />
             </CSSTransition>
+          </Container>
+
+          <contextProps.Provider
+            value={{ toggleModal, showModal, favorite, setFavorite }}
+          >
+            <Container title="Contacts">
+              {isLoadingContacts ? (
+                <OnLoader />
+              ) : (
+                <CSSTransition
+                  in={true}
+                  appear={true}
+                  timeout={500}
+                  classNames={sAr}
+                  unmountOnExit
+                >
+                  <ContactContainer />
+                </CSSTransition>
+              )}
+            </Container>
+          </contextProps.Provider>
+        </div>
+      )}
+      {viewPort.width < 768 && (
+        <>
+          <ButtonShowContactForm
+            contactsListRender={contactsListRender}
+            setContactsListRender={setContactsListRender}
+          />
+          {contactsListRender ? (
+            <contextProps.Provider
+              value={{ toggleModal, showModal, favorite, setFavorite }}
+            >
+              <Container title="Contacts">
+                {isLoadingContacts ? (
+                  <OnLoader />
+                ) : (
+                  <CSSTransition
+                    in={true}
+                    appear={true}
+                    timeout={500}
+                    classNames={sAr}
+                    unmountOnExit
+                  >
+                    <ContactContainer />
+                  </CSSTransition>
+                )}
+              </Container>
+            </contextProps.Provider>
+          ) : (
+            <div className={s.ContactsContainer}>
+              <Container title="Add contact">
+                <CSSTransition
+                  in={true}
+                  appear={true}
+                  timeout={250}
+                  classNames={sAl}
+                  unmountOnExit
+                >
+                  <ContactForm />
+                </CSSTransition>
+              </Container>
+            </div>
           )}
-        </Container>
-      </contextProps.Provider>
-    </div>
+        </>
+      )}
+    </>
   );
 };
-
 export default ContactsView;
