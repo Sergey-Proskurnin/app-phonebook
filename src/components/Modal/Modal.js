@@ -13,7 +13,7 @@ import sAl from 'helpers/animation/animationLeft.module.css';
 const Modal = () => {
   const { change } = useSelector(state => getChangeContact(state));
   const dispatch = useDispatch();
-  const toggleModal = useContext(contextProps);
+  const { toggleModal } = useContext(contextProps);
 
   const onKeyDown = e => {
     if (e.key === 'Escape') {
