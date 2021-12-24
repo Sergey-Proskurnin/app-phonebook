@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import queryString from 'query-string';
+import PropTypes from 'prop-types';
 
 import {
   getIsAuthenticated,
@@ -34,3 +35,8 @@ const PrivateRoute = ({ redirectTo, children, location, ...routeProps }) => {
   );
 };
 export default PrivateRoute;
+
+PrivateRoute.propTypes = {
+  redirectTo: PropTypes.string,
+  routeProps: PropTypes.object,
+};

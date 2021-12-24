@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 
 import { textAnimation } from 'helpers/animationText';
-import { CSSTransition } from 'react-transition-group';
 import s from './Views.module.css';
-
+import Animation from 'helpers/animation/Animation';
 import sAl from 'helpers/animation/animationLeft.module.css';
 import sAr from 'helpers/animation/animationRight.module.css';
 import sAb from 'helpers/animation/animationBottom.module.css';
@@ -17,39 +16,21 @@ const HomeView = () => {
 
   return (
     <div className={s.HomeContainer}>
-      <CSSTransition
-        in={true}
-        appear={true}
-        timeout={250}
-        classNames={sAl}
-        unmountOnExit
-      >
+      <Animation style={sAl} time={250}>
         <h1 className={s.HomeTitle}>Phonebook </h1>
-      </CSSTransition>
+      </Animation>
       <article className={s.HomeArticle}>
-        <CSSTransition
-          in={true}
-          appear={true}
-          timeout={500}
-          classNames={sAr}
-          unmountOnExit
-        >
+        <Animation style={sAr} time={500}>
           <p className={s.HomeArticleDescription}>
             We used to dream about this stuff. Now we get to build it. It's
             pretty great.
           </p>
-        </CSSTransition>
-        <CSSTransition
-          in={true}
-          appear={true}
-          timeout={750}
-          classNames={sAb}
-          unmountOnExit
-        >
+        </Animation>
+        <Animation style={sAb} time={750}>
           <span ref={el => (textRef = el)} className={s.HomeArticleSpan}>
             Steven Paul Jobs, Apple Worldwide Developers Conference (June 2004)
           </span>
-        </CSSTransition>
+        </Animation>
       </article>
     </div>
   );

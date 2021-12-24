@@ -1,22 +1,21 @@
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
 
 import s from './Container.module.css';
 import sAt from 'helpers/animation/animationTitle.module.css';
+import Animation from 'helpers/animation/Animation';
 
 const Container = ({ children, title }) => (
   <div className={s.container}>
-    <CSSTransition
-      in={true}
-      appear={true}
-      timeout={500}
-      classNames={sAt}
-      unmountOnExit
-    >
+    <Animation style={sAt} time={500}>
       <h1 className={s.title}>{title}</h1>
-    </CSSTransition>
+    </Animation>
     {children}
   </div>
 );
 
 export default Container;
+
+Container.propTypes = {
+  title: PropTypes.string.isRequired,
+};

@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 const FavoriteCheckBox = ({ id = uuidv4(), favorite, handleChange, size }) => {
   const FavoriteCheckbox = withStyles({
@@ -36,3 +37,10 @@ const FavoriteCheckBox = ({ id = uuidv4(), favorite, handleChange, size }) => {
 };
 
 export default FavoriteCheckBox;
+
+FavoriteCheckBox.propTypes = {
+  id: PropTypes.string,
+  favorite: PropTypes.bool,
+  handleChange: PropTypes.func.isRequired,
+  size: PropTypes.string.isRequired,
+};

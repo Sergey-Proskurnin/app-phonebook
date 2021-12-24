@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 import s from './InputsContact.module.css';
 
@@ -106,3 +107,14 @@ const InputsContact = ({
 };
 
 export default InputsContact;
+
+InputsContact.propTypes = {
+  fileInputId: PropTypes.string.isRequired,
+  setFile: PropTypes.func.isRequired,
+  handleDelFile: PropTypes.func.isRequired,
+  file: PropTypes.object,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};

@@ -3,6 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import s from './ButtonShowContactForm.module.css';
 import { AddContactSvg, ContactsSvg } from 'components/MaterialSvgIcon';
+import PropTypes from 'prop-types';
 
 const ButtonShowContactForm = ({
   contactsListRender,
@@ -25,3 +26,8 @@ const ButtonShowContactForm = ({
 };
 
 export default ButtonShowContactForm;
+
+ButtonShowContactForm.propTypes = {
+  contactsListRender: PropTypes.bool.isRequired,
+  setContactsListRender: PropTypes.func.isRequired,
+};

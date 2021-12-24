@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
 
 import { logIn } from 'redux/auth';
 import LoginComponent from 'components/LoginComponent';
 import alert from 'helpers/alert';
 import OnLoader from 'components/OnLoader';
 import { getLoading } from 'redux/contacts/contacts-selectors';
-
+import Animation from 'helpers/animation/Animation';
 import sAl from 'helpers/animation/animationLeft.module.css';
-
 import s from './Views.module.css';
 
 const LoginView = () => {
@@ -48,20 +46,14 @@ const LoginView = () => {
       {isLoading ? (
         <OnLoader />
       ) : (
-        <CSSTransition
-          in={true}
-          appear={true}
-          timeout={250}
-          classNames={sAl}
-          unmountOnExit
-        >
+        <Animation style={sAl} time={250}>
           <LoginComponent
             handleChange={handleChange}
             email={email}
             password={password}
             handleSubmit={handleSubmit}
           />
-        </CSSTransition>
+        </Animation>
       )}
     </div>
   );

@@ -58,10 +58,11 @@ const LoginComponent = ({ handleChange, email, password, handleSubmit }) => {
   );
 };
 
-LoginComponent.propTypes = {
-  handleChange: PropTypes.func,
-  email: PropTypes.string,
-  password: PropTypes.string,
-  handleSubmit: PropTypes.func,
-};
 export default LoginComponent;
+
+LoginComponent.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
 
 import OnLoader from 'components/OnLoader';
 import ContactForm from 'components/ContactForm';
@@ -9,10 +8,11 @@ import ContactContainer from 'components/ContactContainer';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import { getLoading } from 'redux/contacts/contacts-selectors';
 import { getStatusLogout } from 'redux/auth/auth-selector';
+import sAr from 'helpers/animation/animationRight.module.css';
+import sAl from 'helpers/animation/animationLeft.module.css';
+import Animation from 'helpers/animation/Animation';
 
 import s from './Views.module.css';
-import sAl from 'helpers/animation/animationLeft.module.css';
-import sAr from 'helpers/animation/animationRight.module.css';
 import contextProps from 'context/context';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import ButtonShowContactForm from 'components/ButtonShowContactForm';
@@ -41,15 +41,9 @@ const ContactsView = () => {
       {viewPort.width >= 768 && (
         <div className={s.ContactsContainer}>
           <Container title="Add contact">
-            <CSSTransition
-              in={true}
-              appear={true}
-              timeout={250}
-              classNames={sAl}
-              unmountOnExit
-            >
+            <Animation style={sAl} time={250}>
               <ContactForm />
-            </CSSTransition>
+            </Animation>
           </Container>
 
           <contextProps.Provider
@@ -59,15 +53,9 @@ const ContactsView = () => {
               {isLoadingContacts ? (
                 <OnLoader />
               ) : (
-                <CSSTransition
-                  in={true}
-                  appear={true}
-                  timeout={500}
-                  classNames={sAr}
-                  unmountOnExit
-                >
+                <Animation style={sAr} time={250}>
                   <ContactContainer />
-                </CSSTransition>
+                </Animation>
               )}
             </Container>
           </contextProps.Provider>
@@ -87,30 +75,18 @@ const ContactsView = () => {
                 {isLoadingContacts ? (
                   <OnLoader />
                 ) : (
-                  <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={500}
-                    classNames={sAr}
-                    unmountOnExit
-                  >
+                  <Animation style={sAr} time={250}>
                     <ContactContainer />
-                  </CSSTransition>
+                  </Animation>
                 )}
               </Container>
             </contextProps.Provider>
           ) : (
             <div className={s.ContactsContainer}>
               <Container title="Add contact">
-                <CSSTransition
-                  in={true}
-                  appear={true}
-                  timeout={250}
-                  classNames={sAl}
-                  unmountOnExit
-                >
+                <Animation style={sAl} time={250}>
                   <ContactForm />
-                </CSSTransition>
+                </Animation>
               </Container>
             </div>
           )}

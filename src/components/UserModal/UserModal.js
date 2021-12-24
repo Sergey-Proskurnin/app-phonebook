@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
 import { editUserInfo, getUserName } from 'redux/auth';
+import PropTypes from 'prop-types';
 
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import Alert from 'helpers/alert';
@@ -145,3 +146,7 @@ const UserModal = ({ closeAvatarModal }) => {
 };
 
 export default UserModal;
+
+UserModal.propTypes = {
+  closeAvatarModal: PropTypes.func.isRequired,
+};

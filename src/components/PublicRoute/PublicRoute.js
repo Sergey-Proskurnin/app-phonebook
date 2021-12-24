@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getIsAuthenticated } from 'redux/auth';
 
@@ -38,3 +39,8 @@ const PublicRoute = ({ redirectTo, children, ...routeProps }) => {
 // };
 
 export default PublicRoute;
+
+PublicRoute.propTypes = {
+  redirectTo: PropTypes.string,
+  routeProps: PropTypes.object,
+};

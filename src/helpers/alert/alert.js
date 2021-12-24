@@ -1,4 +1,5 @@
 import { alert } from '@pnotify/core';
+import PropTypes from 'prop-types';
 
 const onAlert = message =>
   alert({
@@ -7,3 +8,7 @@ const onAlert = message =>
     delay: 5000,
   });
 export default onAlert;
+
+alert.propTypes = {
+  message: PropTypes.string,
+};

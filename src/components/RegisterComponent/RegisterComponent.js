@@ -97,10 +97,10 @@ const RegisterComponent = ({
 export default RegisterComponent;
 
 RegisterComponent.propTypes = {
-  handleChange: PropTypes.func,
-  name: PropTypes.string,
-  email: PropTypes.string,
-  password: PropTypes.string,
-  passwordRepeat: PropTypes.string,
-  handleSubmit: PropTypes.func,
+  handleChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  passwordRepeat: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };

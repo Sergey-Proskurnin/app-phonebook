@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
 
 import { register } from 'redux/auth';
 import RegisterComponent from 'components/RegisterComponent';
 import alert from 'helpers/alert';
 import OnLoader from 'components/OnLoader';
 import { getLoading } from 'redux/contacts/contacts-selectors';
-// import routes from 'routes';
-
+import Animation from 'helpers/animation/Animation';
 import s from './Views.module.css';
 import sAr from 'helpers/animation/animationRight.module.css';
 
@@ -80,13 +78,7 @@ const RegisterView = () => {
         {isLoading ? (
           <OnLoader />
         ) : (
-          <CSSTransition
-            in={true}
-            appear={true}
-            timeout={500}
-            classNames={sAr}
-            unmountOnExit
-          >
+          <Animation style={sAr} time={500}>
             <RegisterComponent
               handleChange={handleChange}
               name={name}
@@ -95,7 +87,7 @@ const RegisterView = () => {
               passwordRepeat={passwordRepeat}
               handleSubmit={handleSubmit}
             />
-          </CSSTransition>
+          </Animation>
         )}
       </div>
     </>
