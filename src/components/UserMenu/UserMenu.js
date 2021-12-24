@@ -25,7 +25,9 @@ const UserMenu = () => {
 
   return (
     <>
-      {showModalUser && <UserModal closeAvatarModal={toggleModalUser} />}
+      {showModalUser && (
+        <UserModal closeAvatarModal={toggleModalUser} isOpen={showModalUser} />
+      )}
       <div className={s.container}>
         <div>
           <img

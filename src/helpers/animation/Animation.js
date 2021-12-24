@@ -2,10 +2,10 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
-const Animation = ({ children, style, time, nodeRef }) => {
+const Animation = ({ isOpen = true, children, style, time, nodeRef }) => {
   return (
     <CSSTransition
-      in={true}
+      in={isOpen}
       appear={true}
       timeout={time}
       classNames={style}
@@ -23,4 +23,5 @@ Animation.propTypes = {
   style: PropTypes.object.isRequired,
   time: PropTypes.number.isRequired,
   nodeRef: PropTypes.object.isRequired,
+  isOpen: PropTypes.bool,
 };

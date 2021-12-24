@@ -7,10 +7,12 @@ import PropTypes from 'prop-types';
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import Alert from 'helpers/alert';
 import s from './UserModal.module.css';
+import Animation from 'helpers/animation/Animation';
+import sAs from 'helpers/animation/animationScale.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const UserModal = ({ closeAvatarModal }) => {
+const UserModal = ({ closeAvatarModal, isOpen }) => {
   const dispatch = useDispatch();
   const userName = useSelector(state => getUserName(state));
   const [file, setFile] = useState(null);
@@ -18,6 +20,7 @@ const UserModal = ({ closeAvatarModal }) => {
   const [dragged, setDragged] = useState(false);
 
   const ref = useRef();
+  const nodeRef = useRef(null);
 
   useOnClickOutside(ref, closeAvatarModal);
   useEffect(() => {
@@ -74,72 +77,80 @@ const UserModal = ({ closeAvatarModal }) => {
 
   return createPortal(
     <div className={s.avatarModallWrapper}>
-      <form className={s.changeAvatarForm} onSubmit={handleSubmit} ref={ref}>
-        <span className={s.closeIcon} onClick={closeAvatarModal}>
-          &#10006;
-        </span>
-        <p className={s.modalAvatarTitle}>Edit profile</p>
-        <div
-          className={s.dropZone}
-          onDrop={handleDropAvatar}
-          onDragOver={handleDragOver}
-        >
-          Drag and drop your avatar here
-          {file ? (
-            <>
-              <p className={s.fileName}>{file.name}</p>
+      <Animation isOpen={isOpen} style={sAs} time={1000} nodeRef={nodeRef}>
+        <div ref={nodeRef}>
+          <form
+            className={s.changeAvatarForm}
+            onSubmit={handleSubmit}
+            ref={ref}
+          >
+            <span className={s.closeIcon} onClick={closeAvatarModal}>
+              &#10006;
+            </span>
+            <p className={s.modalAvatarTitle}>Edit profile</p>
+            <div
+              className={s.dropZone}
+              onDrop={handleDropAvatar}
+              onDragOver={handleDragOver}
+            >
+              Drag and drop your avatar here
+              {file ? (
+                <>
+                  <p className={s.fileName}>{file.name}</p>
+                  <button
+                    type="button"
+                    className={s.buttonDelFile}
+                    onClick={handleDelFile}
+                  >
+                    &#10006;
+                  </button>
+                </>
+              ) : (
+                <p className={dragged ? `${s.arrowDownRed}` : `${s.arrowDown}`}>
+                  &#11147;
+                </p>
+              )}
+            </div>
+            <span> or </span>
+            <label className={s.avatarInputFileLabel}>
+              Select a file avatar
+              <input
+                type="file"
+                name="avatar"
+                className={s.inputFileAvatar}
+                onChange={handleChangeAvatar}
+                accept="image/png, image/jpeg"
+              />
+            </label>
+            <label className={s.nameLabel}>
+              &#128396; Name:{' '}
+              <input
+                type="text"
+                className={s.nameInput}
+                placeholder={userNewName}
+                value={userNewName}
+                name="name"
+                onChange={onHandleChangeName}
+                pattern="^[A-Za-zА-Яа-яЁёЄєЇї' '\-()0-9]{3,30}$"
+                title="The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета etc."
+                required
+              />
+            </label>
+            <div className={s.buttonContainer}>
+              <button type="submit" className={s.buttonOk}>
+                ОК
+              </button>
               <button
                 type="button"
-                className={s.buttonDelFile}
-                onClick={handleDelFile}
+                className={s.buttonCancel}
+                onClick={closeAvatarModal}
               >
-                &#10006;
+                BACK
               </button>
-            </>
-          ) : (
-            <p className={dragged ? `${s.arrowDownRed}` : `${s.arrowDown}`}>
-              &#11147;
-            </p>
-          )}
+            </div>
+          </form>
         </div>
-        <span> or </span>
-        <label className={s.avatarInputFileLabel}>
-          Select a file avatar
-          <input
-            type="file"
-            name="avatar"
-            className={s.inputFileAvatar}
-            onChange={handleChangeAvatar}
-            accept="image/png, image/jpeg"
-          />
-        </label>
-        <label className={s.nameLabel}>
-          &#128396; Name:{' '}
-          <input
-            type="text"
-            className={s.nameInput}
-            placeholder={userNewName}
-            value={userNewName}
-            name="name"
-            onChange={onHandleChangeName}
-            pattern="^[A-Za-zА-Яа-яЁёЄєЇї' '\-()0-9]{3,30}$"
-            title="The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета etc."
-            required
-          />
-        </label>
-        <div className={s.buttonContainer}>
-          <button type="submit" className={s.buttonOk}>
-            ОК
-          </button>
-          <button
-            type="button"
-            className={s.buttonCancel}
-            onClick={closeAvatarModal}
-          >
-            BACK
-          </button>
-        </div>
-      </form>
+      </Animation>
     </div>,
     modalRoot,
   );
@@ -149,4 +160,5 @@ export default UserModal;
 
 UserModal.propTypes = {
   closeAvatarModal: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool,
 };

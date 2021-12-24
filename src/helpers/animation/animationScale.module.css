@@ -1,4 +1,4 @@
-.enter {
+/* .enter {
   opacity: 0;
   transform: scale(0.1);
 }
@@ -17,4 +17,36 @@
   opacity: 0;
   transform: scale(0.1);
   transition: all 1000ms linear;
+} */
+
+/* .enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.enterActive {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.exitActive {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+} */
+
+.appear {
+  opacity: 0;
+  transform: scale(0.1);
+}
+.appearActive {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1000ms ease-in-out, transform 1000ms ease-in-out;
 }
