@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { register } from 'redux/auth';
@@ -17,6 +17,7 @@ const RegisterView = () => {
     password: '',
     passwordRepeat: '',
   };
+  const nodeRef = useRef(null);
   const [state, setState] = useState(initialState);
   const isLoading = useSelector(getLoading);
 
@@ -78,7 +79,7 @@ const RegisterView = () => {
         {isLoading ? (
           <OnLoader />
         ) : (
-          <Animation style={sAr} time={500}>
+          <Animation style={sAr} time={500} nodeRef={nodeRef}>
             <RegisterComponent
               handleChange={handleChange}
               name={name}
@@ -86,6 +87,7 @@ const RegisterView = () => {
               password={password}
               passwordRepeat={passwordRepeat}
               handleSubmit={handleSubmit}
+              nodeRef={nodeRef}
             />
           </Animation>
         )}

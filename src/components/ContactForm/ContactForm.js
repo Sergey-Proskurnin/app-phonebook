@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import alert from 'helpers/alert';
 import { addContact, getAllContacts } from 'redux/contacts';
 import InputsContact from 'components/InputsContact';
 import s from './ContactForm.module.css';
 
-const ContactForm = () => {
+const ContactForm = ({ nodeRef }) => {
   const initialState = {
     name: '',
     number: '',
@@ -93,7 +94,7 @@ const ContactForm = () => {
 
   return (
     <>
-      <form className={s.form} onSubmit={handleSubmit}>
+      <form ref={nodeRef} className={s.form} onSubmit={handleSubmit}>
         <InputsContact
           fileInputId={fileInputId}
           setFile={setFile}
@@ -113,3 +114,7 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  nodeRef: PropTypes.object.isRequired,
+};

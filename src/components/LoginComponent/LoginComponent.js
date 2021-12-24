@@ -8,9 +8,15 @@ import s from './LoginComponent.module.css';
 import GoogleButtonWhite from 'components/GoogleButtonWhite';
 import FacebookButton from 'components/FacebookButton';
 
-const LoginComponent = ({ handleChange, email, password, handleSubmit }) => {
+const LoginComponent = ({
+  nodeRef,
+  handleChange,
+  email,
+  password,
+  handleSubmit,
+}) => {
   return (
-    <div className={s.LoginSection}>
+    <div ref={nodeRef} className={s.LoginSection}>
       <h1 className={s.LoginTitle}>Login</h1>
       <GoogleButtonWhite />
       <FacebookButton />
@@ -65,4 +71,5 @@ LoginComponent.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  nodeRef: PropTypes.object.isRequired,
 };

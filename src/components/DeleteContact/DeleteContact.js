@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import contextProps from 'context/context';
 import { deleteContact, getChangeContact } from 'redux/contacts';
 
 import s from './DeleteContact.module.css';
 
-const DeleteContact = () => {
+const DeleteContact = ({ nodeRef }) => {
   const { toggleModal } = useContext(contextProps);
   const { id, name, number } = useSelector(state => getChangeContact(state));
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const DeleteContact = () => {
 
   return (
     <form
+      ref={nodeRef}
       className={s.cardOverley}
       onSubmit={e => {
         e.preventDefault();
@@ -40,3 +42,7 @@ const DeleteContact = () => {
   );
 };
 export default DeleteContact;
+
+DeleteContact.propTypes = {
+  nodeRef: PropTypes.object.isRequired,
+};

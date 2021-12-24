@@ -5,14 +5,19 @@ import s from './Container.module.css';
 import sAt from 'helpers/animation/animationTitle.module.css';
 import Animation from 'helpers/animation/Animation';
 
-const Container = ({ children, title }) => (
-  <div className={s.container}>
-    <Animation style={sAt} time={500}>
-      <h1 className={s.title}>{title}</h1>
-    </Animation>
-    {children}
-  </div>
-);
+const Container = ({ children, title }) => {
+  const nodeRef = React.useRef(null);
+  return (
+    <div className={s.container}>
+      <Animation style={sAt} time={500} nodeRef={nodeRef}>
+        <h1 ref={nodeRef} className={s.title}>
+          {title}
+        </h1>
+      </Animation>
+      {children}
+    </div>
+  );
+};
 
 export default Container;
 

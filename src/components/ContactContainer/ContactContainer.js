@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
@@ -7,11 +8,11 @@ import contextProps from 'context/context';
 
 import s from './ContactContainer.module.css';
 
-const ContactContainer = () => {
+const ContactContainer = ({ nodeRef }) => {
   const { showModal } = useContext(contextProps);
 
   return (
-    <div className={s.contactContainer}>
+    <div ref={nodeRef} className={s.contactContainer}>
       <Filter />
       <div className={s.contactList}>
         <ContactList />
@@ -22,3 +23,7 @@ const ContactContainer = () => {
 };
 
 export default ContactContainer;
+
+ContactContainer.propTypes = {
+  nodeRef: PropTypes.object.isRequired,
+};

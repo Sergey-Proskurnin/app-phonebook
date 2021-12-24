@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { logIn } from 'redux/auth';
@@ -11,6 +11,7 @@ import sAl from 'helpers/animation/animationLeft.module.css';
 import s from './Views.module.css';
 
 const LoginView = () => {
+  const nodeRef = useRef(null);
   const initialState = {
     email: '',
     password: '',
@@ -46,12 +47,13 @@ const LoginView = () => {
       {isLoading ? (
         <OnLoader />
       ) : (
-        <Animation style={sAl} time={250}>
+        <Animation style={sAl} time={250} nodeRef={nodeRef}>
           <LoginComponent
             handleChange={handleChange}
             email={email}
             password={password}
             handleSubmit={handleSubmit}
+            nodeRef={nodeRef}
           />
         </Animation>
       )}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import OnLoader from 'components/OnLoader';
@@ -18,6 +18,8 @@ import useWindowDimensions from 'hooks/useWindowDimensions';
 import ButtonShowContactForm from 'components/ButtonShowContactForm';
 
 const ContactsView = () => {
+  const nodeRef1 = useRef(null);
+  const nodeRef2 = useRef(null);
   const viewPort = useWindowDimensions();
   const [showModal, setStateShowModal] = useState(false);
   const [favorite, setFavorite] = useState(false);
@@ -41,8 +43,8 @@ const ContactsView = () => {
       {viewPort.width >= 768 && (
         <div className={s.ContactsContainer}>
           <Container title="Add contact">
-            <Animation style={sAl} time={250}>
-              <ContactForm />
+            <Animation style={sAl} time={250} nodeRef={nodeRef1}>
+              <ContactForm nodeRef={nodeRef1} />
             </Animation>
           </Container>
 
@@ -53,8 +55,8 @@ const ContactsView = () => {
               {isLoadingContacts ? (
                 <OnLoader />
               ) : (
-                <Animation style={sAr} time={250}>
-                  <ContactContainer />
+                <Animation style={sAr} time={250} nodeRef={nodeRef2}>
+                  <ContactContainer nodeRef={nodeRef2} />
                 </Animation>
               )}
             </Container>
@@ -75,8 +77,8 @@ const ContactsView = () => {
                 {isLoadingContacts ? (
                   <OnLoader />
                 ) : (
-                  <Animation style={sAr} time={250}>
-                    <ContactContainer />
+                  <Animation style={sAr} time={250} nodeRef={nodeRef2}>
+                    <ContactContainer nodeRef={nodeRef2} />
                   </Animation>
                 )}
               </Container>
@@ -84,8 +86,8 @@ const ContactsView = () => {
           ) : (
             <div className={s.ContactsContainer}>
               <Container title="Add contact">
-                <Animation style={sAl} time={250}>
-                  <ContactForm />
+                <Animation style={sAl} time={250} nodeRef={nodeRef1}>
+                  <ContactForm nodeRef={nodeRef1} />
                 </Animation>
               </Container>
             </div>

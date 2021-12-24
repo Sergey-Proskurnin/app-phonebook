@@ -11,6 +11,7 @@ import RepeatEmail from 'components/RepeatEmail';
 import { getUserEmail } from 'redux/auth';
 
 const RegisterComponent = ({
+  nodeRef,
   handleChange,
   name,
   email,
@@ -20,7 +21,7 @@ const RegisterComponent = ({
 }) => {
   const userEmail = useSelector(getUserEmail);
   return (
-    <div className={s.RegisterSection}>
+    <div ref={nodeRef} className={s.RegisterSection}>
       <h1 className={s.RegisterTitle}>Registration</h1>
       <FormControl className={s.RegisterFormControl}>
         <TextField
@@ -103,4 +104,5 @@ RegisterComponent.propTypes = {
   password: PropTypes.string.isRequired,
   passwordRepeat: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  nodeRef: PropTypes.object.isRequired,
 };

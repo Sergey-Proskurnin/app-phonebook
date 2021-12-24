@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 import {
   getAllContacts,
@@ -13,7 +14,7 @@ import s from './ContactFormChange.module.css';
 import contextProps from 'context/context';
 import alert from 'helpers/alert';
 
-const ContactFormChange = () => {
+const ContactFormChange = ({ nodeRef }) => {
   const { toggleModal } = useContext(contextProps);
   const { name, number, email, id } = useSelector(state =>
     getChangeContact(state),
@@ -104,7 +105,7 @@ const ContactFormChange = () => {
     return toggleModal();
   };
   return (
-    <form className={s.cardOverley} onSubmit={handleSubmit}>
+    <form ref={nodeRef} className={s.cardOverley} onSubmit={handleSubmit}>
       <InputsContact
         fileInputId={fileInputId}
         setFile={setNewFile}
@@ -133,3 +134,7 @@ const ContactFormChange = () => {
 };
 
 export default ContactFormChange;
+
+ContactFormChange.propTypes = {
+  nodeRef: PropTypes.object.isRequired,
+};
