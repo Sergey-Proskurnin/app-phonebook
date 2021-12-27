@@ -26,6 +26,11 @@
 
   cursor: pointer;
 }
+.defaultСontactAvatar {
+  color: #52555f;
+  font-weight: bold;
+  border-radius: 50%;
+}
 .span {
   display: block;
   margin-right: 10px;
