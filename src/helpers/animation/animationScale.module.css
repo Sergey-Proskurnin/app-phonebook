@@ -48,5 +48,5 @@
 .appearActive {
   opacity: 1;
   transform: scale(1);
-  transition: opacity 1000ms ease-in-out, transform 1000ms ease-in-out;
+  transition: opacity 750ms ease-in-out, transform 750ms ease-in-out;
 }

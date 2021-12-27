@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 
 import { getVisibleContacts } from 'redux/contacts';
 import contextProps from 'context/context';
@@ -10,7 +11,7 @@ import FavoriteCheckBox from 'components/FavoriteCheckbox';
 import s from './ElementContactList.module.css';
 
 const ElementContactList = () => {
-  const { toggleModal } = useContext(contextProps);
+  const { toggleModal, setshowContact } = useContext(contextProps);
   const contacts = useSelector(state => getVisibleContacts(state));
 
   const dispatch = useDispatch();
@@ -25,28 +26,17 @@ const ElementContactList = () => {
     dispatch(changeFavoriteContact(id, newFavorite));
   };
 
+  const onContactInfo = contact => {
+    dispatch(contactChange(contact));
+    setshowContact(true);
+    return toggleModal();
+  };
+
   return contacts.map(
     ({ name, number, email, id, avatarContactURL, favorite }) => {
       return (
         <li className={s.item} key={id}>
           <div className={s.avatarContainer}>
-            {avatarContactURL ? (
-              <img
-                src={avatarContactURL}
-                alt="Avatar"
-                className={s.contactAvatar}
-              />
-            ) : (
-              <p className={s.contactAvatar}>
-                {name.slice(0, 1).toUpperCase()}
-              </p>
-            )}
-
-            <a className={s.link} href={`mailto:${email}`}>
-              <span className={s.span}>
-                <ContactMailIcon color="primary" fontSize="large" />
-              </span>
-            </a>
             <span className={s.span}>
               <FavoriteCheckBox
                 favorite={favorite}
@@ -55,12 +45,53 @@ const ElementContactList = () => {
                 size="small"
               />
             </span>
+            <div
+              className={s.contactAvatar}
+              onClick={() =>
+                onContactInfo({
+                  name,
+                  number,
+                  email,
+                  avatarContactURL,
+                  id,
+                  favorite,
+                })
+              }
+            >
+              {avatarContactURL ? (
+                <img src={avatarContactURL} alt="Avatar" />
+              ) : (
+                <p>{name.slice(0, 1).toUpperCase()}</p>
+              )}
+            </div>
           </div>
-          <a className={s.link} href={`tel:${number}`}>
-            <span className={s.spanLink}>
-              {name}: {number}
-            </span>
-          </a>
+          <div
+            className={s.nameContact}
+            onClick={() =>
+              onContactInfo({
+                name,
+                number,
+                email,
+                avatarContactURL,
+                id,
+                favorite,
+              })
+            }
+          >
+            <span className={s.spanLink}>{name}</span>
+          </div>
+          <div className={s.contactMailPhoneContainer}>
+            <a className={s.link} href={`mailto:${email}`}>
+              <span className={s.span}>
+                <ContactMailIcon color="primary" fontSize="large" />
+              </span>
+            </a>
+            <a className={s.link} href={`tel:${number}`}>
+              <span className={s.span}>
+                <ContactPhoneIcon color="primary" fontSize="large" />
+              </span>
+            </a>
+          </div>
           <div>
             <button
               type="button"

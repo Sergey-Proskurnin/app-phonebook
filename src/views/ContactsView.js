@@ -24,6 +24,7 @@ const ContactsView = () => {
   const [showModal, setStateShowModal] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const [contactsListRender, setContactsListRender] = useState(true);
+  const [showContact, setshowContact] = useState(false);
 
   const toggleModal = useCallback(() => {
     setStateShowModal(prevShowModal => !prevShowModal);
@@ -49,7 +50,14 @@ const ContactsView = () => {
           </Container>
 
           <contextProps.Provider
-            value={{ toggleModal, showModal, favorite, setFavorite }}
+            value={{
+              toggleModal,
+              showModal,
+              favorite,
+              setFavorite,
+              showContact,
+              setshowContact,
+            }}
           >
             <Container title="Contacts">
               {isLoadingContacts ? (
@@ -71,7 +79,14 @@ const ContactsView = () => {
           />
           {contactsListRender ? (
             <contextProps.Provider
-              value={{ toggleModal, showModal, favorite, setFavorite }}
+              value={{
+                toggleModal,
+                showModal,
+                favorite,
+                setFavorite,
+                showContact,
+                setshowContact,
+              }}
             >
               <Container title="Contacts">
                 {isLoadingContacts ? (

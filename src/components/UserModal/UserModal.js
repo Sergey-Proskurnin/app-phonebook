@@ -77,7 +77,7 @@ const UserModal = ({ closeAvatarModal, isOpen }) => {
 
   return createPortal(
     <div className={s.avatarModallWrapper}>
-      <Animation isOpen={isOpen} style={sAs} time={1000} nodeRef={nodeRef}>
+      <Animation isOpen={isOpen} style={sAs} time={750} nodeRef={nodeRef}>
         <div ref={nodeRef}>
           <form
             className={s.changeAvatarForm}

@@ -1,0 +1,53 @@
+.cardOverley {
+  position: relative;
+}
+.closeIcon {
+  position: absolute;
+  color: #52555f;
+  cursor: pointer;
+  top: -10%;
+  right: 0%;
+  font-size: 20px;
+  transition: 0.25s linear;
+}
+.closeIcon:hover,
+.closeIcon:focus {
+  margin-left: auto;
+  color: #e84a5f;
+}
+
+.closeIcon:hover {
+  transform: rotate(360deg);
+}
+
+.imgOverley {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #52555f;
+  font-weight: bold;
+  font-size: 85px;
+  line-height: 14px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  width: 200px;
+  height: 200px;
+  margin-right: 10px;
+  align-self: center;
+  border-radius: 100px;
+  border: 1px;
+  background-color: #a9adc2;
+  cursor: pointer;
+}
+.favoriteIcon {
+  position: absolute;
+  top: 75%;
+  right: 20%;
+}
+
+.descriptionContact {
+  margin-top: 10px;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+}
