@@ -59,9 +59,15 @@ const ElementContactList = () => {
               }
             >
               {avatarContactURL ? (
-                <img src={avatarContactURL} alt="Avatar" />
+                <img
+                  className={s.defaultСontactAvatar}
+                  src={avatarContactURL}
+                  alt="Avatar"
+                />
               ) : (
-                <p>{name.slice(0, 1).toUpperCase()}</p>
+                <p className={s.defaultСontactAvatar}>
+                  {name.slice(0, 1).toUpperCase()}
+                </p>
               )}
             </div>
           </div>
