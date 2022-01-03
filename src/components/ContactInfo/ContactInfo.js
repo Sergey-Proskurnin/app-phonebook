@@ -2,14 +2,25 @@ import React, { useRef, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import Favorite from '@material-ui/icons/Favorite';
 import PropTypes from 'prop-types';
+import ContactMailIcon from '@material-ui/icons/ContactMail';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 
 import { getChangeContact } from 'redux/contacts';
 import Animation from 'helpers/animation/Animation';
 import contextProps from 'context/context';
 import sAs from 'helpers/animation/animationScale.module.css';
 import s from './ContactInfo.module.css';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  customHoverFocus: {
+    '&:hover, &.Mui-focusVisible': { color: '#e84a5f' },
+  },
+}));
 
 const ContactInfo = ({ onCloseModal }) => {
+  const classes = useStyles();
+
   const { toggleModal } = useContext(contextProps);
 
   const nodeRef = useRef(null);
@@ -50,6 +61,27 @@ const ContactInfo = ({ onCloseModal }) => {
         <p className={s.descriptionContact}>{nameCapitolize}</p>
         <p className={s.descriptionContact}>{number}</p>
         <p className={s.descriptionContact}>{email}</p>
+        <div className={s.contactMailPhoneContainer}>
+          <a href={`mailto:${email}`}>
+            <span className={s.span}>
+              <ContactMailIcon
+                className={classes.customHoverFocus}
+                color="primary"
+                contactMailPhoneIconcon
+                style={{ fontSize: 60 }}
+              />
+            </span>
+          </a>
+          <a href={`tel:${number}`}>
+            <span className={s.span}>
+              <ContactPhoneIcon
+                className={classes.customHoverFocus}
+                color="primary"
+                style={{ fontSize: 60 }}
+              />
+            </span>
+          </a>
+        </div>
       </div>
     </Animation>
   );

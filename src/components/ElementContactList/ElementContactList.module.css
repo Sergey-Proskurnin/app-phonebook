@@ -79,20 +79,6 @@
   background-color: white;
 }
 
-.contactMailPhoneContainer {
-  display: flex;
-}
-.link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: white;
-}
-.link:hover,
-:focus {
-  color: #e84a5f;
-}
-
 .nameContact {
   display: flex;
   align-items: center;
@@ -118,7 +104,7 @@
   }
   .spanLink {
     font-size: 20px;
-    width: 270px;
+    width: 360px;
   }
   .btnListChan {
     margin-left: 5px;

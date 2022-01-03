@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ContactMailIcon from '@material-ui/icons/ContactMail';
-import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 
 import { getVisibleContacts } from 'redux/contacts';
 import contextProps from 'context/context';
@@ -85,18 +83,6 @@ const ElementContactList = () => {
             }
           >
             <span className={s.spanLink}>{name}</span>
-          </div>
-          <div className={s.contactMailPhoneContainer}>
-            <a className={s.link} href={`mailto:${email}`}>
-              <span className={s.span}>
-                <ContactMailIcon color="primary" fontSize="large" />
-              </span>
-            </a>
-            <a className={s.link} href={`tel:${number}`}>
-              <span className={s.span}>
-                <ContactPhoneIcon color="primary" fontSize="large" />
-              </span>
-            </a>
           </div>
           <div>
             <button
