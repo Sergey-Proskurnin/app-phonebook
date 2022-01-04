@@ -67,7 +67,6 @@ const ContactInfo = ({ onCloseModal }) => {
               <ContactMailIcon
                 className={classes.customHoverFocus}
                 color="primary"
-                contactMailPhoneIconcon
                 style={{ fontSize: 60 }}
               />
             </span>
