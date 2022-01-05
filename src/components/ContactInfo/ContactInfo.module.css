@@ -36,10 +36,11 @@
   margin-right: auto;
   margin-left: auto;
   align-self: center;
-  border-radius: 100px;
+  border-radius: 50%;
   border: 1px;
   background-color: #a9adc2;
   cursor: pointer;
+  overflow: hidden;
 }
 .favoriteIcon {
   position: absolute;
@@ -58,3 +59,13 @@
   display: flex;
   justify-content: space-around;
 }
+
+.buttonsArrow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* button.buttonsArrow:focus {
+  background-color: transparent;
+} */
