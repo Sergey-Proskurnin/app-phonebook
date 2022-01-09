@@ -1,0 +1,9 @@
+.contactMailPhoneContainer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  background-color: transparent;
+}
+.contactMailPhoneLink {
+  background-color: transparent;
+}

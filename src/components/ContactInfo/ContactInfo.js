@@ -2,30 +2,14 @@ import React, { useRef, useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Favorite from '@material-ui/icons/Favorite';
 import PropTypes from 'prop-types';
-import ContactMailIcon from '@material-ui/icons/ContactMail';
-import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import IconButton from '@material-ui/core/IconButton';
 
 import { getChangeContact, getVisibleContacts } from 'redux/contacts';
 import Animation from 'helpers/animation/Animation';
+import ContactPhoneMailIcons from 'components/ContactPhoneMailIcons';
 import contextProps from 'context/context';
 import sAs from 'helpers/animation/animationScale.module.css';
 import s from './ContactInfo.module.css';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
-  customHoverFocus: {
-    '&:hover, &.Mui-focusVisible': { color: '#e84a5f' },
-  },
-}));
-
-const useStylesArrow = makeStyles(theme => ({
-  customHoverFocus: {
-    '&:focus': { backgroundColor: 'transparent' },
-  },
-}));
+import ArrowsButtonsOnSlider from 'components/ArrowsButtonsOnSlider';
 
 const ContactInfo = ({ onCloseModal }) => {
   const { name, number, email, avatarContactURL, favorite } = useSelector(
@@ -38,9 +22,6 @@ const ContactInfo = ({ onCloseModal }) => {
   const [emailContact, setEmailContact] = useState(email);
   const [avatarContact, setAvatarContact] = useState(avatarContactURL || null);
   const [favoriteContact, setFavoriteContact] = useState(favorite);
-
-  const classes = useStyles();
-  const classesArrow = useStylesArrow();
 
   const { toggleModal } = useContext(contextProps);
 
@@ -107,59 +88,16 @@ const ContactInfo = ({ onCloseModal }) => {
         <p className={s.descriptionContact}>{nameCapitolize}</p>
         <p className={s.descriptionContact}>{numberContact}</p>
         <p className={s.descriptionContact}>{emailContact}</p>
-        <div className={s.contactMailPhoneContainer}>
-          <a href={`mailto:${emailContact}`}>
-            <span className={s.span}>
-              <ContactMailIcon
-                className={classes.customHoverFocus}
-                color="primary"
-                style={{ fontSize: 60 }}
-              />
-            </span>
-          </a>
-          <a href={`tel:${numberContact}`}>
-            <span className={s.span}>
-              <ContactPhoneIcon
-                className={classes.customHoverFocus}
-                color="primary"
-                style={{ fontSize: 60 }}
-              />
-            </span>
-          </a>
-        </div>
-        <div className={s.buttonsArrow}>
-          <div>
-            {idContact !== 0 && (
-              <IconButton
-                className={classesArrow.customHoverFocus}
-                onClick={getContactOnTheLeft}
-                color="primary"
-                aria-label="upload picture back contact information"
-                component="div"
-              >
-                <ArrowBackIosIcon
-                  style={{ fontSize: 65, paddingLeft: '15px' }}
-                />
-              </IconButton>
-            )}
-          </div>
-          <div>
-            {idContact !== contacts.length - 1 && (
-              <IconButton
-                className={classesArrow.customHoverFocus}
-                onClick={getContactOnTheRight}
-                color="primary"
-                aria-label="upload picture forward contact information"
-                component="div"
-              >
-                <ArrowForwardIosIcon
-                  className={classesArrow.customHoverFocus}
-                  style={{ fontSize: 65, paddingLeft: '15px' }}
-                />
-              </IconButton>
-            )}
-          </div>
-        </div>
+        <ContactPhoneMailIcons
+          emailContact={emailContact}
+          numberContact={numberContact}
+        />
+        <ArrowsButtonsOnSlider
+          idContact={idContact}
+          getContactOnTheLeft={getContactOnTheLeft}
+          contacts={contacts}
+          getContactOnTheRight={getContactOnTheRight}
+        />
       </div>
     </Animation>
   );
