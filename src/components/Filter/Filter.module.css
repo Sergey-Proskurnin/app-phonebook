@@ -38,12 +38,13 @@
 @media screen and (min-width: 768px) {
   .filterBlock {
     position: fixed;
-    top: 220px;
+    top: 140px;
     left: 45%;
   }
 }
 @media screen and (min-width: 1200px) {
   .filterBlock {
     left: 60%;
+    top: 220px;
   }
 }
