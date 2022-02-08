@@ -56,6 +56,7 @@
   "devDependencies": {
     "@pnotify/animate": "^5.2.0",
     "@pnotify/countdown": "^5.2.0",
+    "@types/query-string": "^6.3.0",
     "eslint": "^7.32.0",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",

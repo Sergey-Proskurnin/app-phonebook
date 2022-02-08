@@ -1,3 +1,8 @@
+.filterBlock {
+  position: fixed;
+  top: 160px;
+  left: 15%;
+}
 .spanInputGroup {
   display: flex;
   justify-content: center;
@@ -5,12 +10,13 @@
 }
 .span {
   display: block;
-  font-size: 25px;
-  padding-bottom: 20px;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 .spanCheckBox {
   display: block;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 .input {
   height: 30px;
@@ -20,6 +26,7 @@
   cursor: pointer;
   max-width: 300px;
   font-size: 20px;
+  margin-bottom: 20px;
 }
 .input:focus,
 .input:hover {
@@ -27,4 +34,16 @@
 }
 .input:focus {
   outline: none;
+}
+@media screen and (min-width: 768px) {
+  .filterBlock {
+    position: fixed;
+    top: 220px;
+    left: 45%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .filterBlock {
+    left: 60%;
+  }
 }

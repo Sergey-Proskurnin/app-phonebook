@@ -56,3 +56,20 @@
 .deleteBtn {
   height: 30px;
 }
+
+@media screen and (min-width: 768px) {
+  .uploadBtn {
+    width: 171px;
+  }
+  .input {
+    width: 199px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .uploadBtn {
+    width: 279px;
+  }
+  .input {
+    width: 305px;
+  }
+}

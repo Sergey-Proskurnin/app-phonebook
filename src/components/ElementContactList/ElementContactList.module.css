@@ -1,6 +1,6 @@
 .item {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 10px;
 }
@@ -97,17 +97,26 @@
   width: 145px;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 768px) {
+  .item {
+    justify-content: space-between;
+  }
   .btnList {
     width: 70px;
     font-size: 16px;
   }
   .spanLink {
     font-size: 20px;
-    width: 360px;
+    width: 338px;
   }
   .btnListChan {
     margin-left: 5px;
     margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .spanLink {
+    width: 361px;
   }
 }

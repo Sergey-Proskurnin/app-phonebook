@@ -72,7 +72,7 @@ const ContactsView = () => {
         </div>
       )}
       {viewPort.width < 768 && (
-        <>
+        <div className={s.ContactsContainer}>
           <ButtonShowContactForm
             contactsListRender={contactsListRender}
             setContactsListRender={setContactsListRender}
@@ -107,7 +107,7 @@ const ContactsView = () => {
               </Container>
             </div>
           )}
-        </>
+        </div>
       )}
     </>
   );

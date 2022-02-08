@@ -10,7 +10,7 @@
   width: 300px;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 768px) {
   .LoginSection {
     align-items: flex-start;
     padding-left: 15vw;

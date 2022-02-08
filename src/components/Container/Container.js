@@ -8,11 +8,16 @@ import Animation from 'helpers/animation/Animation';
 const Container = ({ children, title }) => {
   const nodeRef = React.useRef(null);
   return (
-    <div className={s.container}>
+    <div className={title === 'Add contact' ? s.container1 : s.container2}>
       <Animation style={sAt} time={500} nodeRef={nodeRef}>
-        <h1 ref={nodeRef} className={s.title}>
-          {title}
-        </h1>
+        <center>
+          <h1
+            ref={nodeRef}
+            className={title === 'Add contact' ? s.title1 : s.title2}
+          >
+            {title}
+          </h1>
+        </center>
       </Animation>
       {children}
     </div>

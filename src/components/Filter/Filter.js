@@ -10,7 +10,7 @@ import contextProps from 'context/context';
 
 const filterInputId = uuidv4();
 
-const Filter = () => {
+const Filter = ({ nodeRef }) => {
   const { favorite, setFavorite } = useContext(contextProps);
   const filter = useSelector(state => getFilter(state));
 
@@ -22,7 +22,7 @@ const Filter = () => {
   }, [setFavorite]);
 
   return (
-    <label htmlFor={filterInputId}>
+    <label htmlFor={filterInputId} className={s.filterBlock} ref={nodeRef}>
       <span className={s.span}>Find contacts by name and number</span>
       <div className={s.spanInputGroup}>
         <span className={s.spanCheckBox}>
