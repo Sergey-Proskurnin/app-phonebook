@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 import { getUserName, logOut, getUserAvatar } from 'redux/auth';
 import defaultAvatar from 'images/guardsman.png';
@@ -8,7 +9,7 @@ import UserModal from 'components/UserModal';
 
 import s from './UserMenu.module.css';
 
-const UserMenu = () => {
+const UserMenu = ({ t }) => {
   const name = useSelector(state => getUserName(state));
   const avatar = useSelector(state => getUserAvatar(state));
   const avatarUser = avatar ? avatar : defaultAvatar;
@@ -38,7 +39,7 @@ const UserMenu = () => {
           />
         </div>
         <span className={s.name} onClick={toggleModalUser}>
-          Welcome, {userName}
+          {t('userMenu.span')} {userName}
         </span>
         <Button
           type="button"
@@ -48,7 +49,7 @@ const UserMenu = () => {
           variant="contained"
           color="primary"
         >
-          Logout
+          {t('userMenu.button')}
         </Button>
       </div>
     </>
@@ -56,3 +57,7 @@ const UserMenu = () => {
 };
 
 export default UserMenu;
+
+UserMenu.propTypes = {
+  t: PropTypes.func.isRequired,
+};

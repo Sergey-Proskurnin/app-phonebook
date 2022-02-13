@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import s from 'components/Navigation/Navigation.module.css';
 
 import { getIsAuthenticated } from 'redux/auth';
 
-const Navigation = () => {
+const Navigation = ({ t }) => {
   const isAuthenticated = useSelector(state => getIsAuthenticated(state));
 
   return (
@@ -19,7 +20,7 @@ const Navigation = () => {
             className={s.link}
             activeClassName={s.activeLink}
           >
-            Home
+            {t('link')}
           </NavLink>
         </li>
         {isAuthenticated && (
@@ -30,7 +31,7 @@ const Navigation = () => {
               className={s.link}
               activeClassName={s.activeLink}
             >
-              Contacts
+              {t('link1')}
             </NavLink>
           </li>
         )}
@@ -40,3 +41,7 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+Navigation.propTypes = {
+  t: PropTypes.func.isRequired,
+};

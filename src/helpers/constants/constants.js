@@ -14,4 +14,10 @@ switch (env) {
     break;
 }
 
-export { BASE_URL };
+const options = [
+  { value: 'en', label: 'EN' },
+  { value: 'ru', label: 'RU' },
+  { value: 'ua', label: 'UA' },
+];
+
+export { BASE_URL, options };

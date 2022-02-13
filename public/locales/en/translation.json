@@ -1,0 +1,17 @@
+{
+  "title": "Phonebook",
+  "description": {
+    "part1": "We used to dream about this stuff. Now we get to build it. It's pretty great.",
+    "part2": "Steven Paul Jobs, Apple Worldwide Developers Conference (June 2004)"
+  },
+  "authNav": {
+    "link1": "Сheck in",
+    "link2": "Login"
+  },
+  "link": "Home",
+  "link1": "Contacts",
+  "userMenu":{
+    "span":"Welcome,",
+    "button": "Logout"
+  } 
+}

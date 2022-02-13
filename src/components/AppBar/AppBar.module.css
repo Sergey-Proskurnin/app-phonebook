@@ -15,6 +15,11 @@
 
   position: fixed;
 }
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
 @media screen and (min-width: 768px) {
   .header {
     min-height: 80px;
