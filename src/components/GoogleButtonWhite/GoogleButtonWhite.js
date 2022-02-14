@@ -1,7 +1,11 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import s from './GoogleButtonWhite.module.css';
 import { BASE_URL } from 'helpers/constants';
 
 const GoogleButton = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className={s.blockWrap}>
@@ -32,7 +36,7 @@ const GoogleButton = () => {
                 />
               </svg>
             </div>
-            <p>Sign in with Google</p>
+            <p>{t('login.googleButtonWhite')}</p>
           </div>
         </a>
       </div>

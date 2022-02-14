@@ -10,8 +10,49 @@
   },
   "link": "Home",
   "link1": "Contacts",
-  "userMenu":{
-    "span":"Welcome,",
+  "userMenu": {
+    "span": "Welcome,",
     "button": "Logout"
-  } 
+  },
+  "registration": {
+    "title": "Registration",
+    "inputName": {
+      "label": "Enter your name",
+      "placeholder": "For example 'John'",
+      "title": "The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета etc."
+    },
+    "inputEmail": {
+      "label": "Enter your email",
+      "placeholder": "For example 'email@gmail.com'",
+      "title": "Email can consist of letters, numbers and a required character '@'"
+    },
+    "inputPassword": {
+      "label": "Enter your password",
+      "placeholder": "qwerty123456",
+      "title": "The password can be at least six letters of numbers and symbols '!@#$%^&*'"
+    },
+    "inputPassword1": {
+      "label": "Enter your password again",
+      "placeholder": "qwerty123456",
+      "title": "The password can be at least six letters of numbers and symbols '!@#$%^&*'"
+    },
+    "button": "CHECK IN",
+    "repeatEmail": "Send a follow-up email to"
+  },
+  "login": {
+    "title": "Login",
+    "googleButtonWhite": "Sing in with Google",
+    "facebookButton": "Sing in with Facebook",
+    "inputEmail": {
+      "label": "Enter your email",
+      "placeholder": "For example 'email@gmail.com'",
+      "title": "Email can consist of letters, numbers and a required character '@'"
+    },
+    "inputPassword": {
+      "label": "Enter your password",
+      "placeholder": "qwerty123456",
+      "title": "The password can be at least six letters of numbers and symbols '!@#$%^&*'"
+    },
+    "button": "Sign in"
+  }
 }

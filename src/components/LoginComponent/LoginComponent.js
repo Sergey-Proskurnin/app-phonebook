@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useTranslation } from 'react-i18next';
 
 import s from './LoginComponent.module.css';
 import GoogleButtonWhite from 'components/GoogleButtonWhite';
@@ -15,9 +16,10 @@ const LoginComponent = ({
   password,
   handleSubmit,
 }) => {
+  const { t } = useTranslation();
   return (
     <div ref={nodeRef} className={s.LoginSection}>
-      <h1 className={s.LoginTitle}>Login</h1>
+      <h1 className={s.LoginTitle}>{t('login.title')}</h1>
       <GoogleButtonWhite />
       <FacebookButton />
       <FormControl className={s.LoginFormControl}>
@@ -27,14 +29,14 @@ const LoginComponent = ({
           type="email"
           name="email"
           pattern="^[a-zA-Zа-яА-Я0-9_]+(([' @ .-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Email can consist of letters of numbers and a mandatory symbol '@'. For example user@example.com etc."
+          title={t('login.inputEmail.title')}
           required
-          placeholder="For example 'email@gmail.com'"
+          placeholder={t('login.inputEmail.placeholder')}
           autoComplete="off"
           value={email}
           color="secondary"
           id="1"
-          label="Enter your email"
+          label={t('login.inputEmail.label')}
           variant="outlined"
         />
         <TextField
@@ -43,11 +45,12 @@ const LoginComponent = ({
           type="password"
           name="password"
           pattern="[0-9A-Za-zА-Яа-яЁёЄєЇї!@#$%^&*]{6,}"
-          title="The password can be at least six letters of numbers and symbols '!@#$%^&*'"
+          title={t('login.inputPassword.title')}
           required
+          placeholder={t('login.inputPassword.placeholder')}
           value={password}
           id="2"
-          label="Enter your password"
+          label={t('login.inputPassword.label')}
           variant="outlined"
         />
         <Button
@@ -57,7 +60,7 @@ const LoginComponent = ({
           color="primary"
           onClick={handleSubmit}
         >
-          Sign in
+          {t('login.button')}
         </Button>
       </FormControl>
     </div>

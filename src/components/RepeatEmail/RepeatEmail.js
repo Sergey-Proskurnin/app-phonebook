@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import s from './RepeatEmail.module.css';
 
@@ -14,7 +15,7 @@ const RepeatEmail = () => {
   const dispatch = useDispatch();
   const userEmail = useSelector(getUserEmail);
   const messageSent = useSelector(getMessageRepeatEmailVerify);
-
+  const { t } = useTranslation();
   useEffect(() => {
     messageSent && alert(messageSent);
   }, [messageSent]);
@@ -26,7 +27,7 @@ const RepeatEmail = () => {
   return (
     <>
       <p type="button" className={s.repeatedEmail} onClick={handleClick}>
-        {`Send a follow-up email to ${userEmail}`}
+        {`${t('registration.repeatEmail')} ${userEmail}`}
       </p>
     </>
   );

@@ -1,7 +1,11 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import s from './FacebookButton.module.css';
 import { BASE_URL } from 'helpers/constants';
 
 const FacebookButton = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className={s.blockWrap}>
@@ -25,7 +29,7 @@ const FacebookButton = () => {
                 />
               </svg>
             </div>
-            <p>Sign in with Facebook</p>
+            <p>{t('login.facebookButton')}</p>
           </div>
         </a>
       </div>
