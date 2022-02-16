@@ -16,7 +16,9 @@ const UserMenu = ({ t }) => {
 
   const dispatch = useDispatch();
   const onLogout = () => dispatch(logOut());
-  const userName = name.split(' ')[0].slice(0, 1).toUpperCase() + name.slice(1);
+  const userName =
+    name.split(' ')[0].slice(0, 1).toUpperCase() + name.split(' ')[0].slice(1);
+  console.log(userName);
 
   const [showModalUser, setStateShowModalUser] = useState(false);
 

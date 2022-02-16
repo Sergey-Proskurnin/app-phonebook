@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { getVisibleContacts } from 'redux/contacts';
 import contextProps from 'context/context';
@@ -9,6 +10,7 @@ import FavoriteCheckBox from 'components/FavoriteCheckbox';
 import s from './ElementContactList.module.css';
 
 const ElementContactList = () => {
+  const { t } = useTranslation();
   const { toggleModal, setshowContact } = useContext(contextProps);
   const contacts = useSelector(state => getVisibleContacts(state));
 
@@ -92,7 +94,7 @@ const ElementContactList = () => {
                 onChangeContact({ email, name, number, id, change: true })
               }
             >
-              Сhange
+              {t('contactsView.contactsBlock.contactButtonChange')}
             </button>
             <button
               type="button"
@@ -101,7 +103,7 @@ const ElementContactList = () => {
                 onChangeContact({ email, name, number, id, change: false })
               }
             >
-              Delete
+              {t('contactsView.contactsBlock.contactButtonDelete')}
             </button>
           </div>
         </li>

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import s from './InputsContact.module.css';
 
@@ -14,6 +15,7 @@ const InputsContact = ({
   email,
   handleChange,
 }) => {
+  const { t } = useTranslation();
   const fileInput = useRef(null);
 
   const nameInputId = uuidv4();
@@ -39,7 +41,9 @@ const InputsContact = ({
 
   return (
     <>
-      <span className={s.span}>Select avatar</span>
+      <span className={s.span}>
+        {t('contactsView.contactForm.inputsContact.spanAvatar')}
+      </span>
       <label className={s}>
         <input
           type="file"
@@ -52,14 +56,18 @@ const InputsContact = ({
           style={{ display: 'none' }}
         />
         <button className={s.uploadBtn} onClick={onClickInputFile}>
-          {file ? file.name : 'Choose File'}
+          {file
+            ? file.name
+            : t('contactsView.contactForm.inputsContact.buttonAvatar')}
         </button>
         <button type="button" className={s.deleteBtn} onClick={handleDelFile}>
           &#10006;
         </button>
       </label>
       <label htmlFor={nameInputId} className="lable">
-        <span className={s.span}>Name</span>
+        <span className={s.span}>
+          {t('contactsView.contactForm.inputsContact.spanName')}
+        </span>
         <input
           className={s.input}
           type="text"
@@ -67,14 +75,16 @@ const InputsContact = ({
           value={name}
           onChange={handleChange}
           pattern="^[A-Za-zА-Яа-яЁёЄєЇї' '\-()0-9]{3,30}$"
-          title="The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета etc."
+          title={t('contactsView.contactForm.inputsContact.titleName')}
           required
           id={nameInputId}
         />
       </label>
 
       <label htmlFor={numberInputId} className="lable">
-        <span className={s.span}>Number</span>
+        <span className={s.span}>
+          {t('contactsView.contactForm.inputsContact.spanNumber')}
+        </span>
         <input
           className={s.input}
           type="tel"
@@ -82,14 +92,16 @@ const InputsContact = ({
           value={number}
           onChange={handleChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          title={t('contactsView.contactForm.inputsContact.titleNumber')}
           required
           id={numberInputId}
         />
       </label>
 
       <label htmlFor={emailInputId} className="lable">
-        <span className={s.span}>Email</span>
+        <span className={s.span}>
+          {t('contactsView.contactForm.inputsContact.spanEmail')}
+        </span>
         <input
           className={s.input}
           type="text"
@@ -97,7 +109,7 @@ const InputsContact = ({
           value={email}
           onChange={handleChange}
           pattern="^[a-zA-Zа-яА-Я0-9_]+(([' @ .-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Email can consist of letters of numbers and a mandatory symbol '@'. For example user@example.com etc."
+          title={t('contactsView.contactForm.inputsContact.titleEmail')}
           required
           id={emailInputId}
         />

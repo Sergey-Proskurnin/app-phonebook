@@ -19,7 +19,7 @@
     "inputName": {
       "label": "Enter your name",
       "placeholder": "For example 'John'",
-      "title": "The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Александр Репета etc."
+      "title": "The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Alexander Repeta etc."
     },
     "inputEmail": {
       "label": "Enter your email",
@@ -54,5 +54,28 @@
       "title": "The password can be at least six letters of numbers and symbols '!@#$%^&*'"
     },
     "button": "Sign in"
+  },
+  "contactsView": {
+    "title1": "Add contact",
+    "title2": "Contacts",
+    "contactForm": {
+      "button": "Add contact",
+      "inputsContact": {
+        "spanAvatar": "Select avatar",
+        "buttonAvatar": "Choose File",
+        "spanName": "Name",
+        "titleName": "The name can only be from three to 30 letters, apostrophe, dash and spaces. For example Adrian, Jac Mercer, d'Artagnan, Alexander Repeta etc.",
+        "spanNumber": "Number",
+        "titleNumber": "Phone number must be digits and can contain spaces, dashes, parentheses and can start with +",
+        "spanEmail": "Email",
+        "titleEmail": "Email can consist of letters of numbers and a mandatory symbol '@'. For example user@example.com etc."
+      }
+    },
+    "contactsBlock": {
+      "filterDescription": "Find contacts by name and number",
+      "contactButtonDelete": "Delete",
+      "contactButtonChange": "Change"
+    }
+
   }
 }

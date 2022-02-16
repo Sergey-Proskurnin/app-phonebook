@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import OnLoader from 'components/OnLoader';
 import ContactForm from 'components/ContactForm';
@@ -18,6 +19,7 @@ import useWindowDimensions from 'hooks/useWindowDimensions';
 import ButtonShowContactForm from 'components/ButtonShowContactForm';
 
 const ContactsView = () => {
+  const { t } = useTranslation();
   const nodeRef1 = useRef(null);
   const nodeRef2 = useRef(null);
   const viewPort = useWindowDimensions();
@@ -43,7 +45,7 @@ const ContactsView = () => {
     <>
       {viewPort.width >= 768 && (
         <div className={s.ContactsContainer}>
-          <Container title="Add contact">
+          <Container title={t('contactsView.title1')} titles={'titles'}>
             <Animation style={sAl} time={250} nodeRef={nodeRef1}>
               <ContactForm nodeRef={nodeRef1} />
             </Animation>
@@ -59,7 +61,7 @@ const ContactsView = () => {
               setshowContact,
             }}
           >
-            <Container title="Contacts">
+            <Container title={t('contactsView.title2')}>
               {isLoadingContacts ? (
                 <OnLoader />
               ) : (

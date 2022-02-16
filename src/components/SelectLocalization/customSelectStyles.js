@@ -4,7 +4,12 @@ const customStyles = {
     borderBottom: '1px dotted #3f51b5',
     color: state.isSelected ? '#e84a5f' : '#2138b6',
     padding: 20,
+    cursor: 'pointer',
     backgroundColor: 'transparent',
+    zIndex: 1000,
+    '&:hover': {
+      color: state.isSelected ? '#2138b6' : '#e84a5f',
+    },
   }),
   input: provided => ({
     ...provided,

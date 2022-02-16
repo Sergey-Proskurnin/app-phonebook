@@ -42,7 +42,7 @@
 
 .btnListDel {
   cursor: pointer;
-  width: 50px;
+  width: 55px;
   border: none;
   color: white;
   padding: 5px 5px;
@@ -61,7 +61,7 @@
 }
 .btnListChan {
   cursor: pointer;
-  width: 50px;
+  width: 55px;
   border: none;
   color: white;
   padding: 5px 5px;
@@ -107,7 +107,7 @@
   }
   .spanLink {
     font-size: 20px;
-    width: 338px;
+    width: 328px;
   }
   .btnListChan {
     margin-left: 5px;
@@ -117,6 +117,6 @@
 
 @media screen and (min-width: 1200px) {
   .spanLink {
-    width: 361px;
+    width: 351px;
   }
 }

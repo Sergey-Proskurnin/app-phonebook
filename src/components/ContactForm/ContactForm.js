@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import alert from 'helpers/alert';
 import { addContact, getAllContacts } from 'redux/contacts';
@@ -15,6 +16,8 @@ const ContactForm = ({ nodeRef }) => {
     email: '',
     file: null,
   };
+
+  const { t } = useTranslation();
 
   const fileInputId = uuidv4();
 
@@ -106,7 +109,7 @@ const ContactForm = ({ nodeRef }) => {
           handleChange={handleChange}
         />
         <button className={s.button} type="submit">
-          Add contact
+          {t('contactsView.contactForm.button')}
         </button>
       </form>
     </>

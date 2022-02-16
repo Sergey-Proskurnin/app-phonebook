@@ -21,12 +21,17 @@
 }
 @media screen and (min-width: 768px) {
   .name {
-    font-size: 23px;
+    font-size: 20px;
   }
   .avatar {
     width: 57px;
   }
   .button {
     height: 40px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .name {
+    font-size: 23px;
   }
 }

@@ -44,7 +44,7 @@
     position: fixed;
     font-size: 29px;
     top: 100px;
-    left: 7.5%;
+    left: 6.5%;
   }
   .title2 {
     font-size: 29px;
@@ -54,7 +54,7 @@
 }
 @media screen and (min-width: 1200px) {
   .title1 {
-    left: 14.5%;
+    left: 13.5%;
     font-size: 38px;
   }
   .title2 {
