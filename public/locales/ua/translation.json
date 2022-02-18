@@ -77,5 +77,28 @@
       "contactButtonChange": "Змінити"
     }
 
+  },
+  "UserModal": {
+    "description": {
+      "title": "Редагувати профіль",
+      "dropZone": "Перетягніть сюди свій аватар",
+      "span": "або"
+    },
+    "inputs": {
+      "labelFile": "Виберіть файл аватара",
+      "titleName": "Ім'я"
+    },
+    "buttonOk": "OK",
+    "buttonBack": "НАЗАД"
+  },
+   "contactFormChange":{
+   "buttonChange": "Змінити",
+   "buttonUnchange": "Не змінювати"
+
+  },
+  "deleteContact": {
+    "title": "Ви впевнені, що хочете видалити контакт?",
+    "btnYes": "Так",
+    "btnNo": "Ні"
   }
 }

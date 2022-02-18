@@ -76,6 +76,29 @@
       "contactButtonDelete": "Удалить",
       "contactButtonChange": "Изменить"
     }
+  },
+  "UserModal": {
+    "description": {
+      "title": "Редактировать профиль",
+      "dropZone": "Перетащите сюда свой аватар",
+      "span": "или"
+    },
+    "inputs": {
+      "labelFile": "Выберите файл аватара",
+      "titleName": "Имя"
+    },
+    "buttonOk": "OK",
+    "buttonBack": "НАЗАД"
+  },
+  "contactFormChange":{
+"buttonChange": "Изменить",
+"buttonUnchange": "Не изменять"
 
+  },
+  "deleteContact": {
+    "title": "Вы уверены, что хотите удалить контакт?",
+    "btnYes": "Да",
+    "btnNo": "Нет"
   }
+
 }

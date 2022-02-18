@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import {
   getAllContacts,
@@ -15,6 +16,7 @@ import contextProps from 'context/context';
 import alert from 'helpers/alert';
 
 const ContactFormChange = ({ nodeRef }) => {
+  const { t } = useTranslation();
   const { toggleModal } = useContext(contextProps);
   const { name, number, email, id } = useSelector(state =>
     getChangeContact(state),
@@ -119,14 +121,14 @@ const ContactFormChange = ({ nodeRef }) => {
 
       <div className={s.buttonsGrup}>
         <button className={s.buttonChange} type="submit">
-          Change
+          {t('contactFormChange.buttonChange')}
         </button>
         <button
           className={s.buttonUnchanged}
           type="button"
           onClick={onUnchanged}
         >
-          Unchanged
+          {t('contactFormChange.buttonUnchange')}
         </button>
       </div>
     </form>

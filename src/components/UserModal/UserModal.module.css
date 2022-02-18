@@ -76,7 +76,7 @@
 }
 
 .avatarInputFileLabel {
-  width: 75%;
+  width: 85%;
   text-align: center;
   border-radius: 4px;
   padding: 10px;
@@ -92,7 +92,7 @@
   height: 30px;
   border-bottom: 1px solid #f5f6fb;
   cursor: pointer;
-  max-width: 79%;
+  width: 85%;
   border-radius: 4px;
 }
 .nameLabel {

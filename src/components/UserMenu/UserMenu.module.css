@@ -19,6 +19,16 @@
 .button {
   height: 30px;
 }
+
+.buttonTuneOutlinedIcon {
+  background-color: transparent;
+  border: none;
+  padding-top: 5px;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.buttonTuneOutlinedIcon:focus {
+  background-color: transparent;
+}
 @media screen and (min-width: 768px) {
   .name {
     font-size: 20px;
@@ -27,6 +37,7 @@
     width: 57px;
   }
   .button {
+    margin-left: 12px;
     height: 40px;
   }
 }

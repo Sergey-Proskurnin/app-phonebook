@@ -19,10 +19,10 @@
 
 .buttonChange {
   cursor: pointer;
-  width: 110px;
+  width: 137px;
   border: none;
   color: white;
-  padding: 5px 22px;
+  padding: 5px 5px;
   text-decoration: none;
   background-color: #e84a5f;
   font-size: 15px;
@@ -35,10 +35,10 @@
 }
 .buttonUnchanged {
   cursor: pointer;
-  width: 110px;
+  width: 137px;
   border: none;
   color: white;
-  padding: 5px 22px;
+  padding: 10px 5px;
   text-decoration: none;
   background-color: #3f51b5;
   font-size: 15px;
@@ -57,12 +57,12 @@
   }
 
   .buttonChange {
-    width: 130px;
+    width: 155px;
     font-size: 18px;
   }
 
   .buttonUnchanged {
-    width: 130px;
+    width: 155px;
     font-size: 18px;
   }
 }

@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import TuneOutlinedIcon from '@material-ui/icons/TuneOutlined';
+import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 import { getUserName, logOut, getUserAvatar } from 'redux/auth';
@@ -9,7 +11,21 @@ import UserModal from 'components/UserModal';
 
 import s from './UserMenu.module.css';
 
+const useStyles = makeStyles(theme => ({
+  customHoverFocus: {
+    color: '#3f51b5',
+    cursor: 'pointer',
+    '&:hover, &.Mui-focusVisible': {
+      color: '#e84a5f',
+      backgroundColor: 'transparent',
+    },
+    '&:focus': { backgroundColor: 'transparent' },
+  },
+}));
+
 const UserMenu = ({ t }) => {
+  const classes = useStyles();
+
   const name = useSelector(state => getUserName(state));
   const avatar = useSelector(state => getUserAvatar(state));
   const avatarUser = avatar ? avatar : defaultAvatar;
@@ -18,7 +34,6 @@ const UserMenu = ({ t }) => {
   const onLogout = () => dispatch(logOut());
   const userName =
     name.split(' ')[0].slice(0, 1).toUpperCase() + name.split(' ')[0].slice(1);
-  console.log(userName);
 
   const [showModalUser, setStateShowModalUser] = useState(false);
 
@@ -43,11 +58,22 @@ const UserMenu = ({ t }) => {
         <span className={s.name} onClick={toggleModalUser}>
           {t('userMenu.span')} {userName}
         </span>
+        <button
+          onClick={toggleModalUser}
+          className={s.buttonTuneOutlinedIcon}
+          type="button"
+        >
+          <TuneOutlinedIcon
+            fontSize="large"
+            className={classes.customHoverFocus}
+          />
+        </button>
+
         <Button
           type="button"
           className={s.button}
           onClick={onLogout}
-          style={{ marginTop: '05px', paddingTop: '10px' }}
+          style={{ paddingTop: '10px', marginLeft: '12px' }}
           variant="contained"
           color="primary"
         >

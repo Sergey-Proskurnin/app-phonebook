@@ -76,6 +76,28 @@
       "contactButtonDelete": "Delete",
       "contactButtonChange": "Change"
     }
+  },
+  "UserModal": {
+    "description": {
+      "title": "Edit profile",
+      "dropZone": "Drag and drop your avatar here",
+      "span": "or"
+    },
+    "inputs": {
+      "labelFile": "Select a file avatar",
+      "titleName": "Name"
+    },
+    "buttonOk": "OK",
+    "buttonBack": "BACK"
+  },
+  "contactFormChange":{
+"buttonChange": "Change",
+"buttonUnchange": "Unchanged"
 
+  },
+  "deleteContact": {
+    "title": "Are you sure that you want to delete the contact?",
+    "btnYes": "Yes",
+    "btnNo": "No"
   }
 }

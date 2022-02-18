@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
 import { editUserInfo, getUserName } from 'redux/auth';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import Alert from 'helpers/alert';
@@ -13,6 +14,7 @@ import sAs from 'helpers/animation/animationScale.module.css';
 const modalRoot = document.querySelector('#modal-root');
 
 const UserModal = ({ closeAvatarModal, isOpen }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const userName = useSelector(state => getUserName(state));
   const [file, setFile] = useState(null);
@@ -87,13 +89,15 @@ const UserModal = ({ closeAvatarModal, isOpen }) => {
             <span className={s.closeIcon} onClick={closeAvatarModal}>
               &#10006;
             </span>
-            <p className={s.modalAvatarTitle}>Edit profile</p>
+            <p className={s.modalAvatarTitle}>
+              {t('UserModal.description.title')}
+            </p>
             <div
               className={s.dropZone}
               onDrop={handleDropAvatar}
               onDragOver={handleDragOver}
             >
-              Drag and drop your avatar here
+              {t('UserModal.description.dropZone')}
               {file ? (
                 <>
                   <p className={s.fileName}>{file.name}</p>
@@ -111,9 +115,9 @@ const UserModal = ({ closeAvatarModal, isOpen }) => {
                 </p>
               )}
             </div>
-            <span> or </span>
+            <span> {t('UserModal.description.span')} </span>
             <label className={s.avatarInputFileLabel}>
-              Select a file avatar
+              {t('UserModal.inputs.labelFile')}
               <input
                 type="file"
                 name="avatar"
@@ -123,7 +127,7 @@ const UserModal = ({ closeAvatarModal, isOpen }) => {
               />
             </label>
             <label className={s.nameLabel}>
-              &#128396; Name:{' '}
+              &#128396; {t('UserModal.inputs.titleName')}:{' '}
               <input
                 type="text"
                 className={s.nameInput}
@@ -138,14 +142,14 @@ const UserModal = ({ closeAvatarModal, isOpen }) => {
             </label>
             <div className={s.buttonContainer}>
               <button type="submit" className={s.buttonOk}>
-                ОК
+                {t('UserModal.buttonOk')}
               </button>
               <button
                 type="button"
                 className={s.buttonCancel}
                 onClick={closeAvatarModal}
               >
-                BACK
+                {t('UserModal.buttonBack')}
               </button>
             </div>
           </form>
