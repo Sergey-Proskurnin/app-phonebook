@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { useTranslation } from 'react-i18next';
+
 import { options } from 'helpers/constants';
 import customSelectStyles from './customSelectStyles';
+import customSelectStylesTablet from './customSelectStylesTablet';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 // import s from './SelectLocalization.module.css'
 
@@ -27,7 +29,11 @@ const SelectLocalization = () => {
     <>
       {viewPort.width >= 768 && (
         <Select
-          styles={customSelectStyles}
+          styles={
+            viewPort.width >= 1200
+              ? customSelectStyles
+              : customSelectStylesTablet
+          }
           options={options}
           onChange={onValueChange}
           defaultValue="en"

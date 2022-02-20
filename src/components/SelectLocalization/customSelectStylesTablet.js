@@ -6,7 +6,6 @@ const customStyles = {
     padding: 20,
     cursor: 'pointer',
     backgroundColor: 'transparent',
-    zIndex: 1000,
     '&:hover': {
       color: state.isSelected ? '#2138b6' : '#e84a5f',
     },
@@ -26,11 +25,12 @@ const customStyles = {
   }),
   container: provided => ({
     ...provided,
-    marginLeft: '40px',
+    fontSize: '15px',
+    marginLeft: '20px',
   }),
   control: provided => ({
     ...provided,
-
+    minHeight: '36px',
     cursor: 'pointer',
     backgroundColor: 'transparent',
     borderColor: '#3f51b5',
@@ -48,6 +48,7 @@ const customStyles = {
   }),
   menu: provided => ({
     ...provided,
+    fontSize: '15px',
     color: '#3f51b5',
     backgroundColor: 'transparent',
   }),

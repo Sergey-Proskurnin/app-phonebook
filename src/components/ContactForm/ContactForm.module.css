@@ -10,10 +10,10 @@
   width: 231px;
   border: none;
   color: white;
-  padding: 5px 39px;
+  padding: 5px 15px;
   text-decoration: none;
   background-color: #3f51b5;
-  font-size: 22px;
+  font-size: 18px;
   border-radius: 4px;
   margin-top: 30px;
   margin-left: auto;
@@ -35,6 +35,7 @@
 @media screen and (min-width: 1200px) {
   .button {
     width: 305px;
+    font-size: 22px;
   }
   .form {
     padding: 0px 20px;
