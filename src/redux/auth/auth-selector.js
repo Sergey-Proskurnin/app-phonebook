@@ -14,6 +14,8 @@ const getStatusLogout = state => state.auth.logout;
 
 const getMessageRepeatEmailVerify = state => state.auth.isRepeatEmailVerify;
 
+const getСurrentLocalization = state => state.auth.localization;
+
 export {
   getIsAuthenticated,
   getUserName,
@@ -23,4 +25,5 @@ export {
   getStatusLogout,
   getUserEmail,
   getMessageRepeatEmailVerify,
+  getСurrentLocalization,
 };

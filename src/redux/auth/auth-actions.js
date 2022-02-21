@@ -43,6 +43,14 @@ const refreshLoginGoogleFacebookError = createAction(
   'auth/refreshLoginGoogleFacebookError',
 );
 
+const changeLocalizationRequest = createAction(
+  'auth/changeLocalizationRequest',
+);
+const changeLocalizationSuccess = createAction(
+  'auth/changeLocalizationSuccess',
+);
+const changeLocalizationError = createAction('auth/changeLocalizationError');
+
 export {
   registerRequest,
   registerSuccess,
@@ -69,4 +77,7 @@ export {
   repeatEmailVerifySuccess,
   repeatEmailVerifyOk,
   repeatEmailVerifyError,
+  changeLocalizationRequest,
+  changeLocalizationSuccess,
+  changeLocalizationError,
 };

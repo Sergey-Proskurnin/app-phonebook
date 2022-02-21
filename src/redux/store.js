@@ -26,7 +26,7 @@ const middleware = [
 const persistConfig = {
   key: 'token',
   storage,
-  whitelist: ['token', 'refreshToken'],
+  whitelist: ['token', 'refreshToken', 'localization'],
 };
 
 const store = configureStore({

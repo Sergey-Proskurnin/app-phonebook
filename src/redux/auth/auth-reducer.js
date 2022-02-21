@@ -43,6 +43,9 @@ import {
   refreshLoginGoogleFacebookRequest,
   refreshLoginGoogleFacebookSuccess,
   refreshLoginGoogleFacebookError,
+  changeLocalizationRequest,
+  changeLocalizationSuccess,
+  changeLocalizationError,
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null };
@@ -107,6 +110,9 @@ const error = createReducer(null, {
   [refreshLoginGoogleFacebookError]: setError,
   [refreshLoginGoogleFacebookSuccess]: () => null,
   [refreshLoginGoogleFacebookRequest]: () => null,
+  [changeLocalizationError]: setError,
+  [changeLocalizationSuccess]: () => null,
+  [changeLocalizationRequest]: () => null,
 });
 const isLogin = createReducer(false, {
   [registerSuccess]: () => false,
@@ -141,6 +147,10 @@ const isRepeatEmailVerify = createReducer(null, {
   [repeatEmailVerifyOk]: () => null,
 });
 
+const localization = createReducer('en', {
+  [changeLocalizationSuccess]: (_, { payload }) => payload,
+});
+
 const authReducer = combineReducers({
   user,
   isLogin,
@@ -150,5 +160,6 @@ const authReducer = combineReducers({
   isFetchigCurrentUser,
   logout,
   isRepeatEmailVerify,
+  localization,
 });
 export { authReducer };

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
 import { useTranslation } from 'react-i18next';
 
@@ -6,10 +7,14 @@ import { options } from 'helpers/constants';
 import customSelectStyles from './customSelectStyles';
 import customSelectStylesTablet from './customSelectStylesTablet';
 import useWindowDimensions from 'hooks/useWindowDimensions';
+import { changeLocalizationSuccess, getСurrentLocalization } from 'redux/auth';
 // import s from './SelectLocalization.module.css'
 
 const SelectLocalization = () => {
-  const [nameOptionSelect, setNameOptionSelect] = useState('en');
+  const currentLocalization = useSelector(getСurrentLocalization);
+
+  const dispatch = useDispatch();
+
   const viewPort = useWindowDimensions();
   const { i18n } = useTranslation();
   const changeLanguage = (language = 'en') => {
@@ -17,12 +22,12 @@ const SelectLocalization = () => {
   };
 
   useEffect(() => {
-    changeLanguage(nameOptionSelect);
+    changeLanguage(currentLocalization);
     // eslint-disable-next-line
-  }, [nameOptionSelect]);
+  }, [currentLocalization]);
 
   const onValueChange = e => {
-    setNameOptionSelect(e.value);
+    dispatch(changeLocalizationSuccess(e.value));
   };
 
   return (
@@ -38,7 +43,7 @@ const SelectLocalization = () => {
           onChange={onValueChange}
           defaultValue="en"
           name="select"
-          placeholder="EN"
+          placeholder={currentLocalization.toUpperCase()}
         />
       )}
       {viewPort.width < 768 && <></>}
