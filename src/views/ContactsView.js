@@ -90,7 +90,7 @@ const ContactsView = () => {
                 setshowContact,
               }}
             >
-              <Container title="Contacts">
+              <Container title={t('contactsView.title2')}>
                 {isLoadingContacts ? (
                   <OnLoader />
                 ) : (
@@ -102,7 +102,7 @@ const ContactsView = () => {
             </contextProps.Provider>
           ) : (
             <div className={s.ContactsContainer}>
-              <Container title="Add contact">
+              <Container title={t('contactsView.title1')} titles={'titles'}>
                 <Animation style={sAl} time={250} nodeRef={nodeRef1}>
                   <ContactForm nodeRef={nodeRef1} />
                 </Animation>

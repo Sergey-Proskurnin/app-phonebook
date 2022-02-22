@@ -106,7 +106,7 @@
   }
 
   .HomeTitle {
-    font-size: 100px;
+    font-size: 70px;
     font-weight: 500;
   }
 
@@ -114,11 +114,24 @@
     margin-top: 50px;
   }
   .HomeArticleDescription {
+    font-size: 26px;
+  }
+  .HomeArticleSpan {
+    font-size: 13px;
+    margin-top: 20px;
+    margin-left: 30%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .HomeTitle {
+    font-size: 100px;
+    font-weight: 500;
+  }
+
+  .HomeArticleDescription {
     font-size: 32px;
   }
   .HomeArticleSpan {
     font-size: 15px;
-    margin-top: 20px;
-    margin-left: 30%;
   }
 }

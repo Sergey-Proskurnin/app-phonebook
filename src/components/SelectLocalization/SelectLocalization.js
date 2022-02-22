@@ -5,10 +5,9 @@ import { useTranslation } from 'react-i18next';
 
 import { options } from 'helpers/constants';
 import customSelectStyles from './customSelectStyles';
-import customSelectStylesTablet from './customSelectStylesTablet';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import { changeLocalizationSuccess, getСurrentLocalization } from 'redux/auth';
-// import s from './SelectLocalization.module.css'
+import s from './SelectLocalization.module.css';
 
 const SelectLocalization = () => {
   const currentLocalization = useSelector(getСurrentLocalization);
@@ -32,13 +31,9 @@ const SelectLocalization = () => {
 
   return (
     <>
-      {viewPort.width >= 768 && (
+      {viewPort.width >= 1200 && (
         <Select
-          styles={
-            viewPort.width >= 1200
-              ? customSelectStyles
-              : customSelectStylesTablet
-          }
+          styles={customSelectStyles}
           options={options}
           onChange={onValueChange}
           defaultValue="en"
@@ -46,7 +41,37 @@ const SelectLocalization = () => {
           placeholder={currentLocalization.toUpperCase()}
         />
       )}
-      {viewPort.width < 768 && <></>}
+      {viewPort.width < 1200 && (
+        <>
+          {currentLocalization === 'en' && (
+            <button
+              type="button"
+              className={s.localizationButton}
+              onClick={() => dispatch(changeLocalizationSuccess('ru'))}
+            >
+              EN
+            </button>
+          )}
+          {currentLocalization === 'ru' && (
+            <button
+              type="button"
+              className={s.localizationButton}
+              onClick={() => dispatch(changeLocalizationSuccess('ua'))}
+            >
+              RU
+            </button>
+          )}
+          {currentLocalization === 'ua' && (
+            <button
+              type="button"
+              className={s.localizationButton}
+              onClick={() => dispatch(changeLocalizationSuccess('en'))}
+            >
+              UA
+            </button>
+          )}
+        </>
+      )}
     </>
   );
 };
