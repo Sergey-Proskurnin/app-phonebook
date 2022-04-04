@@ -16,7 +16,7 @@
   color: #e84a5f;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 768px) {
   .localizationButton {
     width: 50px;
     height: 40px;

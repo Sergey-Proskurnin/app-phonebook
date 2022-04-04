@@ -164,5 +164,5 @@ export default UserModal;
 
 UserModal.propTypes = {
   closeAvatarModal: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool,
+  isOpen: PropTypes.bool.isRequired,
 };

@@ -1,0 +1,63 @@
+.modalWrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  z-index: 999;
+}
+
+.menuNavigation {
+  width: 150px;
+  height: 210px;
+  background-color: rgb(214, 208, 208);
+  position: relative;
+}
+
+.closeIcon {
+  color: #3f51b5;
+  cursor: pointer;
+  position: absolute;
+  top: 3%;
+  left: 85%;
+}
+.closeIcon:hover,
+.closeIcon:focus {
+  color: #e84a5f;
+}
+
+.listNavigation {
+  padding: 50px 0 0 0;
+  margin: 0;
+  list-style: none;
+  background-color: rgb(214, 208, 208);
+  font-size: 23px;
+}
+
+.itemNav {
+  padding: 12px;
+  border-bottom: 1px solid #3f51b5;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12;
+  font-weight: 700;
+  color: #3f51b5;
+}
+.link:hover,
+.link:focus {
+  text-decoration-line: underline;
+  background-color: inherit;
+}
+.activeLink {
+  color: #e84a5f;
+}
+.ItemNav {
+  margin-right: 10px;
+}

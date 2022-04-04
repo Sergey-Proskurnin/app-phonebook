@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { getUserName, logOut, getUserAvatar } from 'redux/auth';
 import defaultAvatar from 'images/guardsman.png';
 import UserModal from 'components/UserModal';
+import useWindowDimensions from 'hooks/useWindowDimensions';
 
 import s from './UserMenu.module.css';
 
@@ -25,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 const UserMenu = ({ t }) => {
   const classes = useStyles();
+  const viewPort = useWindowDimensions();
 
   const name = useSelector(state => getUserName(state));
   const avatar = useSelector(state => getUserAvatar(state));
@@ -55,9 +57,16 @@ const UserMenu = ({ t }) => {
             onClick={toggleModalUser}
           />
         </div>
-        <span className={s.name} onClick={toggleModalUser}>
-          {t('userMenu.span')} {userName}
-        </span>
+        {viewPort.width >= 768 && (
+          <span className={s.name} onClick={toggleModalUser}>
+            {t('userMenu.span')} {userName}
+          </span>
+        )}
+        {viewPort.width < 768 && (
+          <span className={s.name} onClick={toggleModalUser}>
+            {userName}
+          </span>
+        )}
         <button
           onClick={toggleModalUser}
           className={s.buttonTuneOutlinedIcon}
@@ -69,16 +78,18 @@ const UserMenu = ({ t }) => {
           />
         </button>
 
-        <Button
-          type="button"
-          className={s.button}
-          onClick={onLogout}
-          style={{ paddingTop: '10px', marginLeft: '12px' }}
-          variant="contained"
-          color="primary"
-        >
-          {t('userMenu.button')}
-        </Button>
+        {viewPort.width >= 768 && (
+          <Button
+            type="button"
+            className={s.button}
+            onClick={onLogout}
+            style={{ paddingTop: '10px', marginLeft: '12px' }}
+            variant="contained"
+            color="primary"
+          >
+            {t('userMenu.button')}
+          </Button>
+        )}
       </div>
     </>
   );

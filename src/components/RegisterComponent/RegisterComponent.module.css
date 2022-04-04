@@ -12,8 +12,7 @@
 
 @media screen and (min-width: 768px) {
   .RegisterSection {
-    align-items: flex-end;
-    margin-left: 66vw;
+    margin-right: 15vw;
     width: 300px;
   }
   .RegisterTitle {
