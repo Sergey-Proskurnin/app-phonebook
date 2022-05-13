@@ -22,6 +22,12 @@ const useStyles = makeStyles(theme => ({
     },
     '&:focus': { backgroundColor: 'transparent' },
   },
+  customSubscribeBtn: {
+    backgroundColor: '#e84a5f',
+    '&:hover': {
+      backgroundColor: '#a92c3c',
+    },
+  },
 }));
 
 const UserMenu = ({ t }) => {
@@ -57,12 +63,12 @@ const UserMenu = ({ t }) => {
             onClick={toggleModalUser}
           />
         </div>
-        {viewPort.width >= 768 && (
+        {viewPort.width >= 1200 && (
           <span className={s.name} onClick={toggleModalUser}>
             {t('userMenu.span')} {userName}
           </span>
         )}
-        {viewPort.width < 768 && (
+        {viewPort.width < 1200 && (
           <span className={s.name} onClick={toggleModalUser}>
             {userName}
           </span>
@@ -79,16 +85,28 @@ const UserMenu = ({ t }) => {
         </button>
 
         {viewPort.width >= 768 && (
-          <Button
-            type="button"
-            className={s.button}
-            onClick={onLogout}
-            style={{ paddingTop: '10px', marginLeft: '12px' }}
-            variant="contained"
-            color="primary"
-          >
-            {t('userMenu.button')}
-          </Button>
+          <>
+            <Button
+              type="button"
+              className={classes.customSubscribeBtn}
+              // onClick={onLogout}
+              style={{ paddingTop: '10px', marginLeft: '12px' }}
+              variant="contained"
+              color="primary"
+            >
+              {t('userMenu.btnSubscribe')}
+            </Button>
+            <Button
+              type="button"
+              className={s.button}
+              onClick={onLogout}
+              style={{ paddingTop: '10px', marginLeft: '12px' }}
+              variant="contained"
+              color="primary"
+            >
+              {t('userMenu.button')}
+            </Button>
+          </>
         )}
       </div>
     </>

@@ -12,7 +12,8 @@
   "link1": "Contacts",
   "userMenu": {
     "span": "Welcome,",
-    "button": "Logout"
+    "button": "Logout",
+    "btnSubscribe": "Subscribe"
   },
   "registration": {
     "title": "Registration",

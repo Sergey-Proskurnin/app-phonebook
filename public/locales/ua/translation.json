@@ -12,7 +12,8 @@
   "link1": "Контакти",
   "userMenu": {
     "span": "Вітаю,",
-    "button": "Вийти"
+    "button": "Вийти",
+    "btnSubscribe": "Підписка"
   },
   "registration": {
     "title": "Реєстрація",
