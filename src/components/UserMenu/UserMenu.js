@@ -5,7 +5,12 @@ import TuneOutlinedIcon from '@material-ui/icons/TuneOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
-import { getUserName, logOut, getUserAvatar } from 'redux/auth';
+import {
+  getUserName,
+  logOut,
+  getUserAvatar,
+  getUserSubscription,
+} from 'redux/auth';
 import defaultAvatar from 'images/guardsman.png';
 import UserModal from 'components/UserModal';
 import useWindowDimensions from 'hooks/useWindowDimensions';
@@ -36,6 +41,7 @@ const UserMenu = ({ t }) => {
 
   const name = useSelector(state => getUserName(state));
   const avatar = useSelector(state => getUserAvatar(state));
+  const subscription = useSelector(state => getUserSubscription(state));
   const avatarUser = avatar ? avatar : defaultAvatar;
 
   const dispatch = useDispatch();
@@ -94,7 +100,7 @@ const UserMenu = ({ t }) => {
               variant="contained"
               color="primary"
             >
-              {t('userMenu.btnSubscribe')}
+              {subscription}
             </Button>
             <Button
               type="button"

@@ -6,6 +6,8 @@ const getUserEmail = state => state.auth.user.email;
 
 const getUserAvatar = state => state.auth.user.avatarURL;
 
+const getUserSubscription = state => state.auth.user.subscription;
+
 const getFetchigCurrentUser = state => state.auth.isFetchigCurrentUser;
 
 const getCurrentToken = state => state.auth.token;
@@ -22,6 +24,7 @@ export {
   getFetchigCurrentUser,
   getCurrentToken,
   getUserAvatar,
+  getUserSubscription,
   getStatusLogout,
   getUserEmail,
   getMessageRepeatEmailVerify,
