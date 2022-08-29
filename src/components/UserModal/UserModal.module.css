@@ -156,9 +156,14 @@
   margin-left: auto;
   color: #52555f;
   cursor: pointer;
+  transition: 0.25s linear;
 }
 .closeIcon:hover,
 .closeIcon:focus {
   margin-left: auto;
   color: #e84a5f;
+}
+
+.closeIcon:hover {
+  transform: rotate(360deg);
 }

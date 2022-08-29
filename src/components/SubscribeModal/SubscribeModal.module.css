@@ -10,3 +10,31 @@
   align-items: center;
   z-index: 999;
 }
+.changeSubscribeForm {
+  width: 450px;
+  height: 450px;
+  position: relative;
+
+  background: linear-gradient(rgba(150, 154, 187, 0.9), rgba(47, 48, 58, 0.7)),
+    url('images/subscribe-wallpapers.jpg') no-repeat center center fixed;
+  background-size: 450px;
+}
+.closeIcon {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  font-size: 20px;
+  margin-left: auto;
+  color: #52555f;
+  cursor: pointer;
+  transition: 0.25s linear;
+}
+
+.closeIcon:hover,
+.closeIcon:focus {
+  margin-left: auto;
+  color: #e84a5f;
+}
+.closeIcon:hover {
+  transform: rotate(360deg);
+}

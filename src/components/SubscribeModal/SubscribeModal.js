@@ -20,7 +20,11 @@ const SubscribeModal = ({ closeSubscribeModal, isOpen }) => {
 
   return createPortal(
     <div className={s.subscribeModalWrapper}>
-      <div ref={ref}></div>
+      <div className={s.changeSubscribeForm} ref={ref}>
+        <span className={s.closeIcon} onClick={closeSubscribeModal}>
+          &#10006;
+        </span>
+      </div>
     </div>,
     modalRoot,
   );
