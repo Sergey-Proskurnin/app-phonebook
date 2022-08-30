@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 import useOnClickOutside from 'hooks/useOnClickOutside';
+import ButtonCloseModal from 'components/ButtonCloseModal';
 import Alert from 'helpers/alert';
 import s from './UserModal.module.css';
 import Animation from 'helpers/animation/Animation';
@@ -86,9 +87,10 @@ const UserModal = ({ closeAvatarModal, isOpen }) => {
             onSubmit={handleSubmit}
             ref={ref}
           >
-            <span className={s.closeIcon} onClick={closeAvatarModal}>
-              &#10006;
-            </span>
+            <ButtonCloseModal
+              style={{ position: 'absolute', top: '2%', right: '2%' }}
+              closeModal={closeAvatarModal}
+            />
             <p className={s.modalAvatarTitle}>
               {t('UserModal.description.title')}
             </p>

@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import useOnClickOutside from 'hooks/useOnClickOutside';
+import ButtonCloseModal from 'components/ButtonCloseModal';
 import s from './SubscribeModal.module.css';
 
 const modalRoot = document.querySelector('#modal-subscribe-root');
@@ -21,9 +22,14 @@ const SubscribeModal = ({ closeSubscribeModal, isOpen }) => {
   return createPortal(
     <div className={s.subscribeModalWrapper}>
       <div className={s.changeSubscribeForm} ref={ref}>
-        <span className={s.closeIcon} onClick={closeSubscribeModal}>
-          &#10006;
-        </span>
+        <ButtonCloseModal
+          style={{
+            position: 'absolute',
+            top: '1%',
+            right: '1%',
+          }}
+          closeModal={closeSubscribeModal}
+        />
       </div>
     </div>,
     modalRoot,

@@ -10,6 +10,7 @@ import contextProps from 'context/context';
 import sAs from 'helpers/animation/animationScale.module.css';
 import s from './ContactInfo.module.css';
 import ArrowsButtonsOnSlider from 'components/ArrowsButtonsOnSlider';
+import ButtonCloseModal from 'components/ButtonCloseModal';
 
 const ContactInfo = ({ onCloseModal }) => {
   const { name, number, email, avatarContactURL, favorite } = useSelector(
@@ -68,9 +69,10 @@ const ContactInfo = ({ onCloseModal }) => {
   return (
     <Animation style={sAs} time={750} nodeRef={nodeRef}>
       <div ref={nodeRef} className={s.cardOverley}>
-        <span className={s.closeIcon} onClick={onCloseModalContactInfo}>
-          &#10006;
-        </span>
+        <ButtonCloseModal
+          style={{ position: 'absolute', top: '-10%', right: '0%' }}
+          onClick={onCloseModalContactInfo}
+        />
         <div className={s.imgOverley}>
           {avatarContact ? (
             <img src={avatarContact} alt="Contact's Avatar" />

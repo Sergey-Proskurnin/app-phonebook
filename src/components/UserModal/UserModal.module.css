@@ -11,6 +11,7 @@
   z-index: 999;
 }
 .changeAvatarForm {
+  position: relative;
   width: 285px;
   height: 420px;
   display: flex;
@@ -28,6 +29,7 @@
 
 .modalAvatarTitle {
   font-size: 26px;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 .dropZone {
@@ -150,20 +152,4 @@
   width: 120px;
   height: 35px;
   border-radius: 4px;
-}
-
-.closeIcon {
-  margin-left: auto;
-  color: #52555f;
-  cursor: pointer;
-  transition: 0.25s linear;
-}
-.closeIcon:hover,
-.closeIcon:focus {
-  margin-left: auto;
-  color: #e84a5f;
-}
-
-.closeIcon:hover {
-  transform: rotate(360deg);
 }

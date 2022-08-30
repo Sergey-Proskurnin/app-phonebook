@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 
 import useOnClickOutside from 'hooks/useOnClickOutside';
+import ButtonCloseModal from 'components/ButtonCloseModal';
+
 import s from './ModalNavigation.module.css';
 import sAl from 'helpers/animation/animationLeft.module.css';
 import Animation from 'helpers/animation/Animation';
@@ -36,9 +38,10 @@ const ModalNavigation = ({ closeModalNavigation, isOpen }) => {
     <div className={s.modalWrapper}>
       <Animation isOpen={isOpen} style={sAl} time={750} nodeRef={ref}>
         <div ref={ref} className={s.menuNavigation}>
-          <span className={s.closeIcon} onClick={closeModalNavigation}>
-            &#10006;
-          </span>
+          <ButtonCloseModal
+            style={{ position: 'absolute', top: '3%', left: '85%' }}
+            closeModal={closeModalNavigation}
+          />
           <ul className={s.listNavigation}>
             <li className={s.itemNav}>
               <NavLink

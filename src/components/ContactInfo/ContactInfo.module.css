@@ -1,25 +1,6 @@
 .cardOverley {
   position: relative;
 }
-.closeIcon {
-  position: absolute;
-  color: #52555f;
-  cursor: pointer;
-  top: -10%;
-  right: 0%;
-  font-size: 20px;
-  transition: 0.25s linear;
-}
-.closeIcon:hover,
-.closeIcon:focus {
-  margin-left: auto;
-  color: #e84a5f;
-}
-
-.closeIcon:hover {
-  transform: rotate(360deg);
-}
-
 .imgOverley {
   position: relative;
   display: flex;

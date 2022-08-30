@@ -1,0 +1,15 @@
+.closeButton {
+  padding: 0;
+  border: none;
+  font: inherit;
+  font-size: 20px;
+  color: #52555f;
+  background-color: transparent;
+  transition: 0.25s linear;
+  cursor: pointer;
+}
+.closeButton:hover,
+.closeButton:focus {
+  transform: rotate(360deg);
+  color: #e84a5f;
+}
