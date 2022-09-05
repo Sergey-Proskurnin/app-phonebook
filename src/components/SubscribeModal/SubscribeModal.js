@@ -1,15 +1,18 @@
 import { createPortal } from 'react-dom';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
 
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import ButtonCloseModal from 'components/ButtonCloseModal';
+import SubscribeRadioGroup from 'components/SubscribeRadioGroup';
 import s from './SubscribeModal.module.css';
 
 const modalRoot = document.querySelector('#modal-subscribe-root');
 
 const SubscribeModal = ({ closeSubscribeModal, isOpen }) => {
   const ref = useRef();
+  const [value, setValue] = useState('starter');
 
   useOnClickOutside(ref, closeSubscribeModal);
   useEffect(() => {
@@ -18,6 +21,12 @@ const SubscribeModal = ({ closeSubscribeModal, isOpen }) => {
       window.document.body.style.overflowY = 'visible';
     };
   });
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(value);
+    closeSubscribeModal();
+  };
 
   return createPortal(
     <div className={s.subscribeModalWrapper}>
@@ -30,6 +39,26 @@ const SubscribeModal = ({ closeSubscribeModal, isOpen }) => {
           }}
           closeModal={closeSubscribeModal}
         />
+        <form onSubmit={handleSubmit}>
+          <SubscribeRadioGroup
+            setValue={setValue}
+            style={{ marginLeft: '30px' }}
+          />
+          <Button
+            type="submit"
+            className={'s.button'}
+            style={{
+              paddingTop: '10px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              display: 'block',
+            }}
+            variant="contained"
+            color="primary"
+          >
+            Change
+          </Button>
+        </form>
       </div>
     </div>,
     modalRoot,
