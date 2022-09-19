@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -8,60 +9,8 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
-  root: {
-    // MuiFormLabel-root
-    marginBottom: '10px',
-    marginTop: '10px',
-
-    '&:hover': {
-      backgroundColor: 'transparent',
-    },
-  },
-  body: {
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    letterSpacing: '3px',
-    color: '#fff',
-  },
-  icon: {
-    marginRight: '10px',
-    borderRadius: '50%',
-    width: 26,
-    height: 26,
-    boxShadow:
-      'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
-    backgroundColor: '#f5f8fa',
-    backgroundImage:
-      'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
-    '$root.Mui-focusVisible &': {
-      outline: '2px auto rgba(19,124,189,.6)',
-      outlineOffset: 2,
-    },
-    'input:hover ~ &': {
-      backgroundColor: '#ebf1f5',
-    },
-    'input:disabled ~ &': {
-      boxShadow: 'none',
-      background: 'rgba(206,217,224,.5)',
-    },
-  },
-  checkedIcon: {
-    backgroundColor: '#3f51b5',
-    backgroundImage:
-      'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
-    '&:before': {
-      display: 'block',
-      width: 26,
-      height: 26,
-      backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)',
-      content: '""',
-    },
-    'input:hover ~ &': {
-      backgroundColor: '#3f51b5',
-    },
-  },
-});
+import useStyles from './useStyles';
+import { getUserSubscription } from 'redux/auth';
 
 // Inspired by blueprintjs
 function StyledRadio(props) {
@@ -83,12 +32,12 @@ function StyledRadio(props) {
   );
 }
 
-const SubsribeRadioGroup = ({ setValue }) => {
+const SubscriptionRadioGroup = ({ setValue, value }) => {
+  const subscription = useSelector(state => getUserSubscription(state));
   const classes = useStyles();
 
   const handChange = e => {
     setValue(e.target.value);
-    console.log(e.target.value);
   };
   return (
     <FormControl
@@ -98,24 +47,27 @@ const SubsribeRadioGroup = ({ setValue }) => {
       <FormLabel
         style={{
           color: '#e84a5f',
-          fontSize: '38px',
+          fontSize: '33px',
           marginBottom: '30px',
           fontWeight: 'bold',
           letterSpacing: '1px',
         }}
         component="legend"
       >
-        Change subscribe
+        Change subscription
       </FormLabel>
       <RadioGroup
         onChange={handChange}
-        defaultValue="starter"
+        defaultValue={subscription}
         aria-label="Change subscribe"
         name="customized-radios"
       >
         <FormControlLabel
           label={
-            <Typography variant="body2" className={classes.body}>
+            <Typography
+              variant="body2"
+              className={value === 'starter' ? classes.body1 : classes.body}
+            >
               Starter
             </Typography>
           }
@@ -124,7 +76,10 @@ const SubsribeRadioGroup = ({ setValue }) => {
         />
         <FormControlLabel
           label={
-            <Typography variant="body2" className={classes.body}>
+            <Typography
+              variant="body2"
+              className={value === 'pro' ? classes.body1 : classes.body}
+            >
               Pro
             </Typography>
           }
@@ -133,7 +88,10 @@ const SubsribeRadioGroup = ({ setValue }) => {
         />
         <FormControlLabel
           label={
-            <Typography variant="body2" className={classes.body}>
+            <Typography
+              variant="body2"
+              className={value === 'business' ? classes.body1 : classes.body}
+            >
               Business
             </Typography>
           }
@@ -145,4 +103,9 @@ const SubsribeRadioGroup = ({ setValue }) => {
   );
 };
 
-export default SubsribeRadioGroup;
+export default SubscriptionRadioGroup;
+
+SubscriptionRadioGroup.propTypes = {
+  setValue: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};

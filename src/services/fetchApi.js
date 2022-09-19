@@ -27,6 +27,9 @@ const fetchRefreshToken = () => axios.get('/users/refresh');
 
 const fetchRepeatVerify = email => axios.post('/users/verify', email);
 
+const fetchUserSubscription = subscription =>
+  axios.patch('/users', subscription);
+
 //---------------------------contacts-operation----------------------------------
 
 const fetchGetContacts = favorite =>
@@ -61,4 +64,5 @@ export {
   fetchEditUserInfo,
   fetchRefreshToken,
   fetchRepeatVerify,
+  fetchUserSubscription,
 };

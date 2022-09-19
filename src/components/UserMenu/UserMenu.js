@@ -13,7 +13,7 @@ import {
 } from 'redux/auth';
 import defaultAvatar from 'images/guardsman.png';
 import UserModal from 'components/UserModal';
-import SubscribeModal from 'components/SubscribeModal';
+import SubscriptionModal from 'components/SubscriptionModal';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 
 import s from './UserMenu.module.css';
@@ -51,23 +51,24 @@ const UserMenu = ({ t }) => {
     name.split(' ')[0].slice(0, 1).toUpperCase() + name.split(' ')[0].slice(1);
 
   const [showModalUser, setStateShowModalUser] = useState(false);
-  const [showSubscribeModal, setStateShowSubscribeModal] = useState(false);
+  const [showSubscriptionModal, setStateShowSubscriptionModal] =
+    useState(false);
 
   const toggleModalUser = useCallback(() => {
     setStateShowModalUser(prevShowModalUser => !prevShowModalUser);
   }, []);
-  const toggleSubscribeModal = useCallback(() => {
-    setStateShowSubscribeModal(
-      prevShowSubscribeModal => !prevShowSubscribeModal,
+  const toggleSubscriptionModal = useCallback(() => {
+    setStateShowSubscriptionModal(
+      prevShowSubscriptionModal => !prevShowSubscriptionModal,
     );
   }, []);
 
   return (
     <>
-      {showSubscribeModal && (
-        <SubscribeModal
-          closeSubscribeModal={toggleSubscribeModal}
-          isOpen={showSubscribeModal}
+      {showSubscriptionModal && (
+        <SubscriptionModal
+          closeSubscriptionModal={toggleSubscriptionModal}
+          isOpen={showSubscriptionModal}
         />
       )}
       {showModalUser && (
@@ -108,7 +109,7 @@ const UserMenu = ({ t }) => {
             <Button
               type="button"
               className={classes.customSubscribeBtn}
-              onClick={toggleSubscribeModal}
+              onClick={toggleSubscriptionModal}
               style={{ paddingTop: '10px', marginLeft: '12px' }}
               variant="contained"
               color="primary"

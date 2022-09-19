@@ -51,6 +51,16 @@ const changeLocalizationSuccess = createAction(
 );
 const changeLocalizationError = createAction('auth/changeLocalizationError');
 
+const changeUserSubscriptionRequest = createAction(
+  'auth/changeUserSubscriptionRequest',
+);
+const changeUserSubscriptionSuccess = createAction(
+  'auth/changeUserSubscriptionSuccess',
+);
+const changeUserSubscriptionError = createAction(
+  'auth/changeUserSubscriptionError',
+);
+
 export {
   registerRequest,
   registerSuccess,
@@ -80,4 +90,7 @@ export {
   changeLocalizationRequest,
   changeLocalizationSuccess,
   changeLocalizationError,
+  changeUserSubscriptionRequest,
+  changeUserSubscriptionSuccess,
+  changeUserSubscriptionError,
 };

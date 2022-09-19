@@ -36,6 +36,9 @@ import {
   loginRequest,
   loginSuccess,
   loginError,
+  changeUserSubscriptionRequest,
+  changeUserSubscriptionSuccess,
+  changeUserSubscriptionError,
 } from 'redux/auth/auth-actions';
 
 import { fetchContacts } from './contacts-operations';
@@ -98,6 +101,9 @@ const loading = createReducer(false, {
   [loginRequest]: () => true,
   [loginSuccess]: () => false,
   [loginError]: () => false,
+  [changeUserSubscriptionRequest]: () => true,
+  [changeUserSubscriptionSuccess]: () => false,
+  [changeUserSubscriptionError]: () => false,
   [repeatEmailVerifyRequest]: () => true,
   [repeatEmailVerifySuccess]: () => false,
   [repeatEmailVerifyOk]: () => false,

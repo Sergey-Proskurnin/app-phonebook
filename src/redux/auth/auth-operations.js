@@ -19,6 +19,9 @@ import {
   repeatEmailVerifySuccess,
   repeatEmailVerifyOk,
   repeatEmailVerifyError,
+  changeUserSubscriptionRequest,
+  changeUserSubscriptionSuccess,
+  changeUserSubscriptionError,
 } from './auth-actions';
 
 import {
@@ -30,6 +33,7 @@ import {
   fetchEditUserInfo,
   fetchRefreshToken,
   fetchRepeatVerify,
+  fetchUserSubscription,
 } from 'services/fetchApi';
 
 const register = credentials => async dispatch => {
@@ -125,6 +129,22 @@ const editUserInfo = formData => async (dispatch, getState) => {
   }
 };
 
+const changeUserSubscription = subscription => async (dispatch, getState) => {
+  dispatch(changeUserSubscriptionRequest());
+  try {
+    const response = await fetchUserSubscription(subscription);
+    dispatch(changeUserSubscriptionSuccess(response.data.data.subscription));
+  } catch ({ response }) {
+    if (response.data.message === 'Unvalid token') {
+      await refresh(dispatch, getState);
+      const response = await fetchUserSubscription(subscription);
+      dispatch(changeUserSubscriptionSuccess(response.data.data.subscription));
+    }
+    dispatch(changeUserSubscriptionError(response.data.message));
+    alert(`Server error: ${response.data.message}`);
+  }
+};
+
 const refresh = async (dispatch, getState) => {
   const {
     auth: { refreshToken: persistedRefreshToken },
@@ -144,7 +164,6 @@ const refresh = async (dispatch, getState) => {
     dispatch(logoutSuccess());
     dispatch(getCurrentUserError());
     token.unset();
-    console.log(error.message);
   }
 };
 
@@ -154,6 +173,7 @@ export {
   logIn,
   getCurrentUser,
   editUserInfo,
+  changeUserSubscription,
   refresh,
   repeatVerify,
 };

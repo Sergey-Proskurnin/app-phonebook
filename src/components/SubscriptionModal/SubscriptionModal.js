@@ -1,47 +1,53 @@
 import { createPortal } from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import ButtonCloseModal from 'components/ButtonCloseModal';
-import SubscribeRadioGroup from 'components/SubscribeRadioGroup';
-import s from './SubscribeModal.module.css';
+import SubscriptionRadioGroup from 'components/SubscriptionRadioGroup';
+import { changeUserSubscription, getUserSubscription } from 'redux/auth';
+import s from './SubscriptionModal.module.css';
 
 const modalRoot = document.querySelector('#modal-subscribe-root');
 
-const SubscribeModal = ({ closeSubscribeModal, isOpen }) => {
+const SubscriptionModal = ({ closeSubscriptionModal }) => {
+  const subscription = useSelector(state => getUserSubscription(state));
   const ref = useRef();
-  const [value, setValue] = useState('starter');
+  const [value, setValue] = useState(subscription);
 
-  useOnClickOutside(ref, closeSubscribeModal);
+  const dispatch = useDispatch();
+
+  useOnClickOutside(ref, closeSubscriptionModal);
   useEffect(() => {
     window.document.body.style.overflowY = 'hidden';
     return () => {
       window.document.body.style.overflowY = 'visible';
     };
   });
-
   const handleSubmit = e => {
+    const subscription = { subscription: value };
     e.preventDefault();
-    console.log(value);
-    closeSubscribeModal();
+    dispatch(changeUserSubscription(subscription));
+    closeSubscriptionModal();
   };
 
   return createPortal(
-    <div className={s.subscribeModalWrapper}>
-      <div className={s.changeSubscribeForm} ref={ref}>
+    <div className={s.subscriptionModalWrapper}>
+      <div className={s.changeSubscriptionForm} ref={ref}>
         <ButtonCloseModal
           style={{
             position: 'absolute',
             top: '1%',
             right: '1%',
           }}
-          closeModal={closeSubscribeModal}
+          closeModal={closeSubscriptionModal}
         />
         <form onSubmit={handleSubmit}>
-          <SubscribeRadioGroup
+          <SubscriptionRadioGroup
             setValue={setValue}
+            value={value}
             style={{ marginLeft: '30px' }}
           />
           <Button
@@ -65,9 +71,8 @@ const SubscribeModal = ({ closeSubscribeModal, isOpen }) => {
   );
 };
 
-export default SubscribeModal;
+export default SubscriptionModal;
 
-SubscribeModal.propTypes = {
-  closeSubscribeModal: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
+SubscriptionModal.propTypes = {
+  closeSubscriptionModal: PropTypes.func.isRequired,
 };

@@ -46,6 +46,9 @@ import {
   changeLocalizationRequest,
   changeLocalizationSuccess,
   changeLocalizationError,
+  changeUserSubscriptionRequest,
+  changeUserSubscriptionSuccess,
+  changeUserSubscriptionError,
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null };
@@ -56,6 +59,10 @@ const user = createReducer(initialUserState, {
   [logoutSuccess]: () => initialUserState,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
   [editUserInfoSuccess]: (_, { payload }) => payload.user,
+  [changeUserSubscriptionSuccess]: (state, { payload }) => ({
+    ...state,
+    subscription: payload,
+  }),
 });
 
 const token = createReducer(null, {
@@ -113,6 +120,9 @@ const error = createReducer(null, {
   [changeLocalizationError]: setError,
   [changeLocalizationSuccess]: () => null,
   [changeLocalizationRequest]: () => null,
+  [changeUserSubscriptionError]: setError,
+  [changeUserSubscriptionSuccess]: () => null,
+  [changeUserSubscriptionRequest]: () => null,
 });
 const isLogin = createReducer(false, {
   [registerSuccess]: () => false,

@@ -1,4 +1,4 @@
-.subscribeModalWrapper {
+.subscriptionModalWrapper {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -10,7 +10,7 @@
   align-items: center;
   z-index: 999;
 }
-.changeSubscribeForm {
+.changeSubscriptionForm {
   width: 450px;
   height: 450px;
   position: relative;
