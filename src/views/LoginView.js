@@ -9,6 +9,7 @@ import { getLoading } from 'redux/contacts/contacts-selectors';
 import Animation from 'helpers/animation/Animation';
 import sAl from 'helpers/animation/animationLeft.module.css';
 import s from './Views.module.css';
+import PrivacyPolicy from 'components/PrivacyPolicy';
 
 const LoginView = () => {
   const nodeRef = useRef(null);
@@ -57,6 +58,7 @@ const LoginView = () => {
           />
         </Animation>
       )}
+      <PrivacyPolicy />
     </div>
   );
 };

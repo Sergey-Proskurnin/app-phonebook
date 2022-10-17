@@ -100,5 +100,6 @@
     "title": "Are you sure that you want to delete the contact?",
     "btnYes": "Yes",
     "btnNo": "No"
-  }
+  },
+  "privacyPolicy": "Privacy Policy"
 }

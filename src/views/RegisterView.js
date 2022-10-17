@@ -9,6 +9,7 @@ import { getLoading } from 'redux/contacts/contacts-selectors';
 import Animation from 'helpers/animation/Animation';
 import s from './Views.module.css';
 import sAr from 'helpers/animation/animationRight.module.css';
+import PrivacyPolicy from 'components/PrivacyPolicy';
 
 const RegisterView = () => {
   const initialState = {
@@ -91,6 +92,7 @@ const RegisterView = () => {
             />
           </Animation>
         )}
+        <PrivacyPolicy />
       </div>
     </>
   );
