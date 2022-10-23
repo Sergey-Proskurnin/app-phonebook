@@ -128,6 +128,26 @@ const UserMenu = ({ t }) => {
             </Button>
           </>
         )}
+        {viewPort.width < 768 && (
+          <>
+            <Button
+              type="button"
+              className={classes.customSubscribeBtn}
+              onClick={toggleSubscriptionModal}
+              style={{
+                paddingTop: '5px',
+                fontSize: '10px',
+                marginLeft: '12px',
+                paddingLeft: '8px',
+                paddingRight: '8px',
+              }}
+              variant="contained"
+              color="primary"
+            >
+              {subscription}
+            </Button>
+          </>
+        )}
       </div>
     </>
   );

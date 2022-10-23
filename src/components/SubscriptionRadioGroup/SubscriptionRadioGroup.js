@@ -51,6 +51,7 @@ const SubscriptionRadioGroup = ({ setValue, value }) => {
           marginBottom: '30px',
           fontWeight: 'bold',
           letterSpacing: '1px',
+          textAlign: 'center',
         }}
         component="legend"
       >

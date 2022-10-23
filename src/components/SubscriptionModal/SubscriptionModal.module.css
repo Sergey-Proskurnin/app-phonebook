@@ -11,11 +11,17 @@
   z-index: 999;
 }
 .changeSubscriptionForm {
-  width: 450px;
+  width: 340px;
   height: 450px;
   position: relative;
 
   background: linear-gradient(rgba(150, 154, 187, 0.9), rgba(47, 48, 58, 0.7)),
     url('images/subscribe-wallpapers.jpg') no-repeat center center fixed;
   background-size: 450px;
+}
+
+@media screen and (min-width: 768px) {
+  .changeSubscriptionForm {
+    width: 450px;
+  }
 }
