@@ -101,5 +101,9 @@
     "btnYes": "Да",
     "btnNo": "Нет"
   },
-  "privacyPolicy": "Политика Конфиденциальности"
+  "privacyPolicy": "Политика Конфиденциальности",
+  "subscriptionModal":{
+    "title": "Изменить подписку",
+    "button": "Изменить"
+  }
 }

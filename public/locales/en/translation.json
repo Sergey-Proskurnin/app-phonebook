@@ -101,5 +101,9 @@
     "btnYes": "Yes",
     "btnNo": "No"
   },
-  "privacyPolicy": "Privacy Policy"
+  "privacyPolicy": "Privacy Policy",
+  "subscriptionModal":{
+    "title": "Change subscription",
+    "button": "CHANGE"
+  }
 }

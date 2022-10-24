@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import { useTranslation } from 'react-i18next';
 
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import ButtonCloseModal from 'components/ButtonCloseModal';
@@ -13,6 +14,7 @@ import s from './SubscriptionModal.module.css';
 const modalRoot = document.querySelector('#modal-subscribe-root');
 
 const SubscriptionModal = ({ closeSubscriptionModal }) => {
+  const { t } = useTranslation();
   const subscription = useSelector(state => getUserSubscription(state));
   const ref = useRef();
   const [value, setValue] = useState(subscription);
@@ -62,7 +64,7 @@ const SubscriptionModal = ({ closeSubscriptionModal }) => {
             variant="contained"
             color="primary"
           >
-            Change
+            {t('subscriptionModal.button')}
           </Button>
         </form>
       </div>

@@ -8,6 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Typography from '@material-ui/core/Typography';
+import { useTranslation } from 'react-i18next';
 
 import useStyles from './useStyles';
 import { getUserSubscription } from 'redux/auth';
@@ -33,6 +34,7 @@ function StyledRadio(props) {
 }
 
 const SubscriptionRadioGroup = ({ setValue, value }) => {
+  const { t } = useTranslation();
   const subscription = useSelector(state => getUserSubscription(state));
   const classes = useStyles();
 
@@ -41,7 +43,7 @@ const SubscriptionRadioGroup = ({ setValue, value }) => {
   };
   return (
     <FormControl
-      style={{ margin: '14%', marginBottom: '7%' }}
+      style={{ margin: '13%', marginBottom: '7%' }}
       component="fieldset"
     >
       <FormLabel
@@ -55,7 +57,7 @@ const SubscriptionRadioGroup = ({ setValue, value }) => {
         }}
         component="legend"
       >
-        Change subscription
+        {t('subscriptionModal.title')}
       </FormLabel>
       <RadioGroup
         onChange={handChange}
