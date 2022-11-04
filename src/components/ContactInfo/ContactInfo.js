@@ -71,7 +71,7 @@ const ContactInfo = ({ onCloseModal }) => {
       <div ref={nodeRef} className={s.cardOverley}>
         <ButtonCloseModal
           style={{ position: 'absolute', top: '-10%', right: '0%' }}
-          onClick={onCloseModalContactInfo}
+          closeModal={onCloseModalContactInfo}
         />
         <div className={s.imgOverley}>
           {avatarContact ? (
