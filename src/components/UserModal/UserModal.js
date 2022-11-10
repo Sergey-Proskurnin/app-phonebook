@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
-import { editUserInfo, getUserName } from 'redux/auth';
+import { editUserInfo, getUserName, getUserSubscription } from 'redux/auth';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
@@ -18,6 +18,7 @@ const UserModal = ({ closeAvatarModal, isOpen }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const userName = useSelector(state => getUserName(state));
+  const subscription = useSelector(state => getUserSubscription(state));
   const [file, setFile] = useState(null);
   const [userNewName, setUserNewName] = useState(userName);
   const [dragged, setDragged] = useState(false);
@@ -34,15 +35,19 @@ const UserModal = ({ closeAvatarModal, isOpen }) => {
   });
   const handleDropAvatar = e => {
     e.preventDefault();
-    const files = e.dataTransfer.files;
-    if (
-      (files[0].type.includes('image/png') ||
-        files[0].type.includes('image/jpeg')) &&
-      files[0].size <= 2000000
-    ) {
-      setFile(files[0]);
+    if (subscription !== 'starter') {
+      const files = e.dataTransfer.files;
+      if (
+        (files[0].type.includes('image/png') ||
+          files[0].type.includes('image/jpeg')) &&
+        files[0].size <= 2000000
+      ) {
+        setFile(files[0]);
+      } else {
+        Alert('The file format can be .png or .jpg and must not exceed 2 MB');
+      }
     } else {
-      Alert('The file format can be .png or .jpg and must not exceed 2 MB');
+      Alert('To change your avatar, subscribe to the "Business" package!');
     }
   };
   const handleDragOver = e => {
@@ -54,14 +59,18 @@ const UserModal = ({ closeAvatarModal, isOpen }) => {
   };
 
   const handleChangeAvatar = e => {
-    if (
-      (e.target.files[0].type.includes('image/png') ||
-        e.target.files[0].type.includes('image/jpeg')) &&
-      e.target.files[0].size <= 2000000
-    ) {
-      setFile(e.target.files[0]);
+    if (subscription !== 'starter') {
+      if (
+        (e.target.files[0].type.includes('image/png') ||
+          e.target.files[0].type.includes('image/jpeg')) &&
+        e.target.files[0].size <= 2000000
+      ) {
+        setFile(e.target.files[0]);
+      } else {
+        Alert('The file format can be .png or .jpg and must not exceed 2 MB');
+      }
     } else {
-      Alert('The file format can be .png or .jpg and must not exceed 2 MB');
+      Alert('To change your avatar, subscribe to the "Business" package!');
     }
   };
   const onHandleChangeName = e => {

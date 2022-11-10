@@ -1,8 +1,11 @@
 import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
+import alert from 'helpers/alert';
+import { getUserSubscription } from 'redux/auth';
 import s from './InputsContact.module.css';
 
 const InputsContact = ({
@@ -17,6 +20,7 @@ const InputsContact = ({
 }) => {
   const { t } = useTranslation();
   const fileInput = useRef(null);
+  const subscription = useSelector(state => getUserSubscription(state));
 
   const nameInputId = uuidv4();
   const numberInputId = uuidv4();
@@ -28,23 +32,27 @@ const InputsContact = ({
   };
 
   const handleChangeAvatar = e => {
-    if (
-      (e.target.files[0].type.includes('image/png') ||
-        e.target.files[0].type.includes('image/jpeg')) &&
-      e.target.files[0].size <= 2000000
-    ) {
-      setFile(e.target.files[0]);
+    if (subscription === 'business') {
+      if (
+        (e.target.files[0].type.includes('image/png') ||
+          e.target.files[0].type.includes('image/jpeg')) &&
+        e.target.files[0].size <= 2000000
+      ) {
+        setFile(e.target.files[0]);
+      } else {
+        alert('The file format can be .png or .jpg and must not exceed 2 MB');
+      }
     } else {
-      alert('The file format can be .png or .jpg and must not exceed 2 MB');
+      alert('To change your avatar, subscribe to the "Business" package!');
     }
   };
 
   return (
-    <>
+    <div className={s.lable}>
       <span className={s.span}>
         {t('contactsView.contactForm.inputsContact.spanAvatar')}
       </span>
-      <label className={s}>
+      <label>
         <input
           type="file"
           name="avatar"
@@ -114,7 +122,7 @@ const InputsContact = ({
           id={emailInputId}
         />
       </label>
-    </>
+    </div>
   );
 };
 

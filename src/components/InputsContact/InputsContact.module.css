@@ -5,6 +5,12 @@
   padding-bottom: 5px;
 }
 
+.lable {
+  width: 231px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .uploadBtn {
   width: 205px;
   height: 30px;
@@ -70,6 +76,9 @@
     font-size: 25px;
   }
 
+  .lable {
+    width: 305px;
+  }
   .uploadBtn {
     width: 279px;
   }
