@@ -11,5 +11,5 @@
   ],
   "name": "Phonebook application",
   "short_name": "Phonebook",
-  "start_url": "https://psg-phonebook.netlify.app/"
+  "start_url": "."
 }
