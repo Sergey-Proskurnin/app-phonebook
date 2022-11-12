@@ -1,0 +1,15 @@
+{
+  "background_color": "#e84a5f",
+  "description": "Stores and displays a person's contact information.",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "icon-app-phonebook.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "Phonebook application",
+  "short_name": "Phonebook",
+  "start_url": "https://psg-phonebook.netlify.app/"
+}
