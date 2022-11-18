@@ -7,6 +7,7 @@ import Animation from 'helpers/animation/Animation';
 import sAl from 'helpers/animation/animationLeft.module.css';
 import sAr from 'helpers/animation/animationRight.module.css';
 import sAb from 'helpers/animation/animationBottom.module.css';
+import ButtonAddToHomeScreen from 'components/ButtonAddToHomeScreen';
 
 const HomeView = () => {
   const { t } = useTranslation();
@@ -40,6 +41,7 @@ const HomeView = () => {
           </div>
         </Animation>
       </article>
+      <ButtonAddToHomeScreen />
     </div>
   );
 };
