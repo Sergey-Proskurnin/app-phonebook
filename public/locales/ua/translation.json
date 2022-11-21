@@ -77,7 +77,6 @@
       "contactButtonDelete": "Видалити",
       "contactButtonChange": "Змінити"
     }
-
   },
   "UserModal": {
     "description": {
@@ -92,10 +91,9 @@
     "buttonOk": "OK",
     "buttonBack": "НАЗАД"
   },
-   "contactFormChange":{
-   "buttonChange": "Змінити",
-   "buttonUnchange": "Не змінювати"
-
+  "contactFormChange": {
+    "buttonChange": "Змінити",
+    "buttonUnchange": "Не змінювати"
   },
   "deleteContact": {
     "title": "Ви впевнені, що хочете видалити контакт?",
@@ -103,8 +101,9 @@
     "btnNo": "Ні"
   },
   "privacyPolicy": "Політика Конфіденційності",
-  "subscriptionModal":{
+  "subscriptionModal": {
     "title": "Змінити підписку",
     "button": "Змінити"
-  }
+  },
+  "buttonAddToHomeScreen": "Встановити додаток"
 }

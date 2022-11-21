@@ -91,10 +91,9 @@
     "buttonOk": "OK",
     "buttonBack": "НАЗАД"
   },
-  "contactFormChange":{
-"buttonChange": "Изменить",
-"buttonUnchange": "Не изменять"
-
+  "contactFormChange": {
+    "buttonChange": "Изменить",
+    "buttonUnchange": "Не изменять"
   },
   "deleteContact": {
     "title": "Вы уверены, что хотите удалить контакт?",
@@ -102,8 +101,9 @@
     "btnNo": "Нет"
   },
   "privacyPolicy": "Политика Конфиденциальности",
-  "subscriptionModal":{
+  "subscriptionModal": {
     "title": "Изменить подписку",
     "button": "Изменить"
-  }
+  },
+  "buttonAddToHomeScreen": "Установить приложение"
 }

@@ -91,10 +91,9 @@
     "buttonOk": "OK",
     "buttonBack": "BACK"
   },
-  "contactFormChange":{
-"buttonChange": "Change",
-"buttonUnchange": "Unchanged"
-
+  "contactFormChange": {
+    "buttonChange": "Change",
+    "buttonUnchange": "Unchanged"
   },
   "deleteContact": {
     "title": "Are you sure that you want to delete the contact?",
@@ -102,8 +101,9 @@
     "btnNo": "No"
   },
   "privacyPolicy": "Privacy Policy",
-  "subscriptionModal":{
+  "subscriptionModal": {
     "title": "Change subscription",
     "button": "CHANGE"
-  }
+  },
+  "buttonAddToHomeScreen": "Add to home screen"
 }
