@@ -42,7 +42,10 @@ const ButtonAddToHomeScreen = () => {
           color="secondary"
           variant="contained"
           className={classes.customBtn}
-          onClick={promptToInstall}
+          onClick={() => {
+            promptToInstall();
+            hide();
+          }}
         >
           <img className={s.icon} src={icon} alt="Icon"></img>
           {t('buttonAddToHomeScreen')}
