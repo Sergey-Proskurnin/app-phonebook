@@ -14,6 +14,7 @@ import './index.css';
 import App from './App';
 import { store, persistor } from 'redux/store';
 import OnLoader from 'components/OnLoader';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -29,3 +30,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
+serviceWorkerRegistration.register();

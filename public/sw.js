@@ -1,7 +1,9 @@
+const assetUrls = ['./index.html'];
+
 /* eslint-disable-next-line no-restricted-globals */
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open('Phonebook-store').then(cache => cache.addAll(['./'])),
+    caches.open('Phonebook-store').then(cache => cache.addAll(assetUrls)),
   );
 });
 /* eslint-disable-next-line no-restricted-globals */
