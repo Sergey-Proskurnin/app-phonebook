@@ -25,6 +25,11 @@ const LoginView = lazy(() =>
 const ContactsView = lazy(() =>
   import('views/ContactsView' /*webpackChunkName: "contacts-view" */),
 );
+const OfflineView = lazy(() =>
+  import('views/OfflineView' /*webpackChunkName: "offline-view" */),
+);
+
+const online = window.navigator.onLine;
 
 const App = () => {
   const isFetchigCurrentUser = useSelector(state =>
@@ -41,35 +46,41 @@ const App = () => {
 
   return (
     <div>
-      <AppBar />
+      {online ? (
+        <div>
+          <AppBar />
 
-      {isFetchigCurrentUser ? (
-        <OnLoader />
+          {isFetchigCurrentUser ? (
+            <OnLoader />
+          ) : (
+            <Suspense fallback={<OnLoader />}>
+              <Switch>
+                <PublicRoute exact path={routes.home}>
+                  <HomeView />
+                </PublicRoute>
+                <PublicRoute
+                  path={routes.register}
+                  restricted
+                  redirectTo={routes.contacts}
+                >
+                  <RegisterView />
+                </PublicRoute>
+                <PublicRoute
+                  path={routes.login}
+                  restricted
+                  redirectTo={routes.contacts}
+                >
+                  <LoginView />
+                </PublicRoute>
+                <PrivateRoute path={routes.contacts} redirectTo={routes.login}>
+                  <ContactsView />
+                </PrivateRoute>
+              </Switch>
+            </Suspense>
+          )}
+        </div>
       ) : (
-        <Suspense fallback={<OnLoader />}>
-          <Switch>
-            <PublicRoute exact path={routes.home}>
-              <HomeView />
-            </PublicRoute>
-            <PublicRoute
-              path={routes.register}
-              restricted
-              redirectTo={routes.contacts}
-            >
-              <RegisterView />
-            </PublicRoute>
-            <PublicRoute
-              path={routes.login}
-              restricted
-              redirectTo={routes.contacts}
-            >
-              <LoginView />
-            </PublicRoute>
-            <PrivateRoute path={routes.contacts} redirectTo={routes.login}>
-              <ContactsView />
-            </PrivateRoute>
-          </Switch>
-        </Suspense>
+        <OfflineView />
       )}
     </div>
   );
