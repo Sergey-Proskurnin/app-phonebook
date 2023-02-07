@@ -21,16 +21,18 @@ const OfflineView = () => {
 
   switch (currentLocalization) {
     case 'en':
-      text = 'There is no internet,           please wait...';
+      text =
+        'There is no internet,                              please wait...';
       break;
     case 'ru':
-      text = 'Интернета нет,          подождите...';
+      text = 'Интернета нет,                                 подождите...';
       break;
     case 'ua':
-      text = 'Hемає Інтернету,      зачекайте...';
+      text = 'Hемає Інтернету,                              зачекайте...';
       break;
     default:
-      text = 'There is no internet,           please wait...';
+      text =
+        'There is no internet,                              please wait...';
       break;
   }
   console.log(currentLocalization);
@@ -40,7 +42,11 @@ const OfflineView = () => {
       <article className={s.HomeArticle}>
         <Animation style={sAb} time={750} nodeRef={nodeRef3}>
           <div ref={nodeRef3}>
-            <span ref={el => (textRef = el)} className={s.HomeArticleSpan}>
+            <span
+              ref={el => (textRef = el)}
+              className={s.HomeArticleSpan}
+              style={{ marginLeft: '-38%' }}
+            >
               {text}
             </span>
           </div>
